@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Despliegue — GitHub Pages</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</head>
+<body>
+  <nav class="sidebar">
+    <h2>airbnb_villarrica_202602</h2>
+    
+  </nav>
+  <main class="content">
+    <div class="top-actions no-print">
+      <button class="print-btn" onclick="window.print()">Exportar PDF</button>
+    </div>
+    <h1 id="guia-de-despliegue-github-pages">Guia de Despliegue — GitHub Pages</h1>
+<blockquote>
+<p>Cada caso se publica en un repositorio dedicado de GitHub Pages.
+Solo se sube el sitio HTML con capacidad de exportar PDF. Nada mas.</p>
+</blockquote>
+<hr>
+<h2 id="prerequisitos">Prerequisitos</h2>
+<ul>
+<li>Git instalado y autenticado con GitHub</li>
+<li>Python 3 con <code>pip install markdown</code></li>
+<li>Repositorio dedicado creado en GitHub (puede estar vacio)</li>
+</ul>
+<hr>
+<h2 id="paso-a-paso">Paso a Paso</h2>
+<h3 id="1-crear-repositorio-dedicado-en-github">1. Crear repositorio dedicado en GitHub</h3>
+<ul>
+<li>Ir a github.com → New Repository</li>
+<li>Nombre sugerido: <code>ka-{agente}-{caso}</code> (ej: <code>ka-trib-airbnbvilla2026</code>)</li>
+<li>Puede ser publico o privado (privado requiere GitHub Pro para Pages)</li>
+<li>NO inicializar con README (el script lo crea)</li>
+</ul>
+<h3 id="2-ejecutar-el-script-de-deploy">2. Ejecutar el script de deploy</h3>
+<pre><code class="language-bash">bash tools/deploy-gh-pages.sh &lt;carpeta_caso&gt; &lt;repo_url&gt;
+</code></pre>
+<p>Ejemplo:</p>
+<pre><code class="language-bash">bash tools/deploy-gh-pages.sh airbnb_villarrica_202602 https://github.com/Brownbull/ka-trib-airbnbvilla2026.git
+</code></pre>
+<p>El script automaticamente:
+1. Genera el sitio HTML desde los Markdown del caso
+2. Clona el repo dedicado
+3. Copia el sitio generado (HTML + CSS + Mermaid)
+4. Hace commit y push</p>
+<h3 id="3-activar-github-pages">3. Activar GitHub Pages</h3>
+<ol>
+<li>Ir al repositorio dedicado en GitHub</li>
+<li><strong>Settings → Pages</strong></li>
+<li><strong>Source</strong>: Deploy from a branch</li>
+<li><strong>Branch</strong>: <code>main</code> / <code>/ (root)</code></li>
+<li>Guardar</li>
+<li>Esperar ~1 minuto — el sitio estara en <code>https://&lt;usuario&gt;.github.io/&lt;repo&gt;/</code></li>
+</ol>
+<hr>
+<h2 id="repositorios-activos">Repositorios Activos</h2>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Agente</th>
+<th>Repo</th>
+<th>URL Sitio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>airbnb_villarrica_202602</td>
+<td>El Tributarista</td>
+<td><a href="https://github.com/Brownbull/ka-trib-airbnbvilla2026">ka-trib-airbnbvilla2026</a></td>
+<td>https://brownbull.github.io/ka-trib-airbnbvilla2026/</td>
+</tr>
+</tbody>
+</table>
+<p><em>(Agregar nuevos casos aqui al crear sus repos)</em></p>
+<hr>
+<h2 id="actualizar-un-sitio-existente">Actualizar un sitio existente</h2>
+<p>Despues de modificar documentos del caso, ejecutar el mismo comando:</p>
+<pre><code class="language-bash">bash tools/deploy-gh-pages.sh &lt;carpeta_caso&gt; &lt;repo_url&gt;
+</code></pre>
+<p>El script detecta el repo existente, actualiza los archivos y hace push.</p>
+<hr>
+<h2 id="que-se-sube-al-repo-dedicado">Que se sube al repo dedicado</h2>
+<pre><code>repo-dedicado/
+├── index.html              ← PANEL.md (landing page)
+├── assets/
+│   └── style.css           ← Estilos del sitio
+├── deploy-guide.html       ← Esta guia en formato HTML
+├── .nojekyll               ← Evita procesamiento Jekyll
+├── README.md               ← Generado automaticamente
+├── 99_entregable/
+│   ├── PANEL.html
+│   ├── 01_critico/...
+│   ├── 02_bloqueantes/...
+│   └── ...
+├── CASE.html
+└── ... (todas las paginas del caso)
+</code></pre>
+<h2 id="que-no-se-sube">Que NO se sube</h2>
+<ul>
+<li>Codigo fuente de agentes (YAML, sidecar)</li>
+<li>Scripts de build</li>
+<li>Otros casos</li>
+<li>Archivos de la plataforma (CLAUDE.md, SERVICE-CONFIG.yaml)</li>
+</ul>
+<hr>
+<h2 id="funcionalidades-del-sitio">Funcionalidades del sitio</h2>
+<ul>
+<li><strong>Sidebar</strong> de navegacion con todos los documentos del caso</li>
+<li><strong>Diagramas Mermaid</strong> renderizados (estados, flujos, timelines)</li>
+<li><strong>Boton "Exportar PDF"</strong> en cada pagina (usa el dialogo de impresion del navegador)</li>
+<li><strong>Tags de confianza</strong> estilizados (<span class="tag-verified">[VERIFICADO-WEB]</span>, <span class="tag-analysis">[ANALISIS-IA]</span>, etc.)</li>
+<li><strong>Disclaimers</strong> resaltados en amarillo</li>
+<li><strong>Responsive</strong> — se adapta a movil (sidebar se oculta)</li>
+<li><strong>Print-friendly</strong> — CSS especial para impresion/PDF</li>
+</ul>
+<hr>
+<h2 id="convencion-de-nombres-para-repos">Convencion de nombres para repos</h2>
+<pre><code>ka-{codigo-agente}-{nombre-caso}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Agente</th>
+<th>Codigo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El Letrado</td>
+<td><code>let</code></td>
+</tr>
+<tr>
+<td>El Tributarista</td>
+<td><code>trib</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplos:
+- <code>ka-trib-airbnbvilla2026</code> (Tributarista, Airbnb Villarrica)
+- <code>ka-let-villarrica2026</code> (Letrado, Negligencia Villarrica)</p>
+<hr>
+<p><em>Framework: El Director v1.0 | Herramienta: tools/build-html.py + tools/deploy-gh-pages.sh</em></p>
+    <footer class="site-footer no-print">
+      <hr>
+      <small>El Director v1.0 &middot; <a href="{{deploy_guide_path}}">Guia de Despliegue</a></small>
+    </footer>
+  </main>
+</body>
+</html>
