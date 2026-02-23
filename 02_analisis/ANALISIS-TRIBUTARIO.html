@@ -1,82 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANALISIS TRIBUTARIO - Airbnb Villarrica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <script>
+    // Guardar fuentes Mermaid ANTES de que Mermaid procese los elementos.
+    // window._mermaidSrc se llena en DOMContentLoaded, antes de mermaid.run().
+    window._mermaidSrc = {};
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+  <script>
+    // Tema inicial: aplicar ANTES del primer render para evitar flash
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        mermaid.initialize({ startOnLoad: false, theme: saved === 'dark' ? 'dark' : 'neutral' });
+      } catch(e) {
+        mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+      }
+    })();
+  </script>
 </head>
 <body>
-  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Menu">
+  <!-- Hamburger mobile (fixed, solo visible en ≤768px) -->
+  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Abrir menú">
     <span></span><span></span><span></span>
   </button>
   <div class="sidebar-overlay no-print" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+  <!-- Sidebar (sin botón de colapso interno) -->
   <nav class="sidebar">
-    <h2>airbnb_villarrica_202602</h2>
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-home-link">Panel del caso</a>
+    </div>
     <ul>
-<li class="section-title">01 Investigacion</li>
+<li><a href="../CASE.html">Caso Airbnb Villarrica</a></li>
+<li><a href="../optimization-tracker.html">Optimización del Caso</a></li>
+<li class="section-title">Investigación</li>
 <ul>
-<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigacion Compilada</a></li>
-<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion Marco Legal Airbnb</a></li>
-<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa Sii</a></li>
-<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion Spa Operadora</a></li>
-<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Jurisprudencia Airbnb Arriendo Amoblado</a></li>
+<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigación Compilada</a></li>
+<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion</a></li>
+<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa SII</a></li>
+<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion</a></li>
+<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Investigacion de Jurisprudencia y Casos Reales</a></li>
 </ul>
-<li class="section-title">02 Analisis</li>
+<li class="section-title">Analisis</li>
 <ul>
 <li><a href="../02_analisis/ANALISIS-TRIBUTARIO.html">Analisis Tributario</a></li>
-<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificacion Pro Pyme Art20</a></li>
-<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo Costos Operacionales</a></li>
+<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificación Pro-PyME</a></li>
+<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo De Costos Operacionales</a></li>
 </ul>
-<li class="section-title">03 Simulacion</li>
+<li class="section-title">Simulacion</li>
 <ul>
-<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion 5 Anos</a></li>
+<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion A 5 Anos</a></li>
 </ul>
-<li class="section-title">04 Estructura</li>
+<li class="section-title">Estructura</li>
 <ul>
-<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa Alternativas</a></li>
-<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta Estructura</a></li>
+<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa De Alternativas</a></li>
+<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta De Estructura Tributaria</a></li>
 </ul>
-<li class="section-title">05 Revision</li>
+<li class="section-title">Revisión</li>
 <ul>
-<li><a href="../05_revision/2026-02-15-correcciones-roast.html">2026 02 15 Correcciones Roast</a></li>
-<li><a href="../05_revision/2026-02-15-proof.html">2026 02 15 Proof</a></li>
-<li><a href="../05_revision/2026-02-15-roast.html">2026 02 15 Roast</a></li>
+<li><a href="../05_revision/2026-02-15-correcciones-roast.html">Correcciones Post-Roast</a></li>
+<li><a href="../05_revision/2026-02-15-proof.html">Verificacion De Compliance</a></li>
+<li><a href="../05_revision/2026-02-15-roast.html">Revision Adversarial Sii</a></li>
 </ul>
-<li class="section-title">99 Entregable</li>
+<li class="section-title">Entregable</li>
 <ul>
-<li class="section-title">01 Critico</li>
+<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Humanas</a></li>
+<li><a href="../99_entregable/PANEL.html">Panel de Control</a></li>
+<li class="section-title">Crítico</li>
 <ul>
-<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1 Validar Art20 N3</a></li>
-<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2 Inicio Actividades Claudia</a></li>
-<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3 Deducibilidad Intereses</a></li>
-<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4 Comparables Arriendo</a></li>
+<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1</a></li>
+<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2</a></li>
+<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3</a></li>
+<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4</a></li>
 </ul>
-<li class="section-title">02 Bloqueantes</li>
+<li class="section-title">Bloqueantes</li>
 <ul>
-<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1 Reglamento Copropiedad</a></li>
+<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1</a></li>
 </ul>
-<li class="section-title">03 Siguientes-Pasos</li>
+<li class="section-title">Siguientes Pasos</li>
 <ul>
-<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1 Seguro Rc</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2 Iva Comision Airbnb</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3 Revision Estatutos</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4 Registro Sernatur</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4</a></li>
 </ul>
-<li class="section-title">06 Con-Supervision-Ia</li>
+<li class="section-title">Con Supervision Ia</li>
 <ul>
-<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1 Reunion Contador Consolidada</a></li>
+<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1. Reunión Consolidada con Contador</a></li>
 </ul>
-<li class="section-title">07 Operacion</li>
+<li class="section-title">Operacion</li>
 <ul>
-<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Calendario</a></li>
+<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Guia De Operacion</a></li>
+<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Anual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/anual/guia-anual.html">Guia Anual</a></li>
 </ul>
-<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Eventual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guia Por Reserva</a></li>
@@ -86,22 +114,55 @@
 <li><a href="../99_entregable/07_operacion/mensual/guia-mensual.html">Guia Mensual</a></li>
 </ul>
 </ul>
-<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Legacy</a></li>
-<li><a href="../99_entregable/PANEL.html">Panel</a></li>
-<li class="section-title">Entrega-Profesional</li>
+<li class="section-title">Entrega Profesional</li>
 <ul>
-<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Profesional</a></li>
-<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist Verificacion</a></li>
+<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist De Verificacion Profesional</a></li>
+<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Para Revision Profesional</a></li>
 </ul>
 </ul>
-<li><a href="../CASE.html">Case</a></li>
-<li><a href="../optimization-tracker.html">Optimization Tracker</a></li>
 </ul>
   </nav>
+
   <main class="content">
+    <!-- Barra de acciones: izquierda = toggle sidebar desktop | derecha = controles -->
     <div class="top-actions no-print">
-      <button class="print-btn" onclick="window.print()">Exportar PDF</button>
+      <div class="top-actions-left">
+        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn"
+                onclick="toggleSidebar()" title="Mostrar/ocultar menú">✕</button>
+      </div>
+      <div class="top-actions-right">
+        <select class="font-size-select" id="font-size-select"
+                onchange="changeFontSize(this.value)" title="Tamaño de letra">
+          <option value="small">Aa pequeño</option>
+          <option value="normal" selected>Aa normal</option>
+          <option value="large">Aa grande</option>
+        </select>
+        <button class="theme-toggle" id="theme-toggle"
+                onclick="toggleTheme()" title="Cambiar tema">🌙</button>
+        <button class="print-btn" onclick="window.print()"
+                title="Usar 'Guardar como PDF' en el diálogo de impresión">⬇ PDF</button>
+        <div class="pii-loader">
+          <button class="pii-load-btn" id="pii-load-btn"
+                  title="Abogado: cargar pii-manifest.json para revelar datos reales">
+            🔒 Revelar datos
+          </button>
+          <span class="pii-status" id="pii-status"></span>
+        </div>
+      </div>
     </div>
+
+    <div class="disclaimer-bar no-print">
+      <span class="disclaimer-short">⚠ Este documento es orientativo y no constituye asesoría legal profesional.</span>
+      <button class="disclaimer-expand-btn" id="disclaimer-expand-btn"
+              onclick="toggleDisclaimerFull()" aria-expanded="false" title="Ver aviso completo">ⓘ más</button>
+      <div class="disclaimer-full" id="disclaimer-full" hidden>
+        Ha sido elaborado con apoyo de inteligencia artificial como guía orientativa.
+        Su contenido es <strong>no vinculante</strong> y tiene carácter exclusivamente informativo.
+        Consulte con un abogado habilitado antes de actuar.
+        Ver sección <strong>Contactos para Verificación Profesional</strong> al final de cada documento.
+      </div>
+    </div>
+
     <h1 id="analisis-tributario-airbnb-villarrica">ANALISIS TRIBUTARIO - Airbnb Villarrica</h1>
 <blockquote>
 <p><strong>IMPORTANTE</strong>: Este documento ha sido elaborado con inteligencia artificial.
@@ -111,7 +172,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 </blockquote>
 <hr>
 <p><strong>Caso:</strong> airbnb_villarrica_202602
-<strong>Cliente:</strong> Claudia Violeta Pino Brito (RUT 13.457.909-9)
+<strong>Cliente:</strong> <span class="pii-redacted" data-token="NOMBRE_CONTRIBUYENTE">[redactado]</span> (RUT <span class="pii-redacted" data-token="RUT_CONTRIBUYENTE">[redactado]</span>)
 <strong>Fecha de analisis:</strong> 2026-02-14
 <strong>Analizado por:</strong> El Tributarista</p>
 <hr>
@@ -120,7 +181,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <hr>
 <h2 id="1-situacion-actual">1. SITUACION ACTUAL</h2>
 <h3 id="operacion">Operacion</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -134,7 +195,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 </tr>
 <tr>
 <td>Ubicacion</td>
-<td>Edificio LINK, Villarrica, Region de la Araucania</td>
+<td><span class="pii-redacted" data-token="EDIFICIO_REFERENCIA">[redactado]</span>, Region de la Araucania</td>
 </tr>
 <tr>
 <td>Unidades</td>
@@ -142,7 +203,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 </tr>
 <tr>
 <td>Monto inversion inmueble</td>
-<td>$146.200.079 CLP (ya pagado como PN)</td>
+<td><span class="pii-redacted" data-token="VALOR_INMUEBLE">[redactado]</span> (ya pagado como PN)</td>
 </tr>
 <tr>
 <td>Monto inversion amoblamiento</td>
@@ -153,9 +214,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>$710.000/mes, tasa fija, 20 anos</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="estructura-actual">Estructura Actual</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -188,9 +249,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Sueldo ~$3.000.000/mes ($36.000.000/ano bruto)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="perfil-del-proyecto">Perfil del Proyecto</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -215,10 +276,10 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Buenas terminaciones, equipamiento calidad, operadores con experiencia internacional</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="2-normativa-aplicable">2. NORMATIVA APLICABLE</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Norma</th>
@@ -263,12 +324,12 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Patente comercial obligatoria</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Detalle en:</strong> <a href="clasificacion-pro-pyme-art20.html">clasificacion-pro-pyme-art20.md</a>, <a href="../01_investigacion/INVESTIGACION-COMPILADA.html">INVESTIGACION-COMPILADA.md</a></p>
 <hr>
 <h2 id="3-escenarios-de-ingreso">3. ESCENARIOS DE INGRESO</h2>
 <h3 id="supuestos-de-mercado-villarrica-araucania">Supuestos de mercado (Villarrica, Araucania)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Parametro</th>
@@ -309,9 +370,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>$2.888.319</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="gastos-operacionales-estimados-anuales">Gastos operacionales estimados (anuales)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Gasto</th>
@@ -371,8 +432,8 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>$728.067</strong></td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Gasto variable</th>
@@ -395,9 +456,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>$6.762.700</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="inversion-inicial-amoblamiento">Inversion inicial (amoblamiento)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Item</th>
@@ -450,11 +511,11 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>$4.110.924</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="4-tributacion-comparada-escenario-moderado-11480000ano">4. TRIBUTACION COMPARADA (Escenario Moderado: $11.480.000/ano)</h2>
 <h3 id="estructura-a-persona-natural-directa">Estructura A: Persona Natural Directa</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -515,11 +576,11 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>~$315.798 (IVA)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Observacion:</strong> Como PN, la perdida tributaria (por intereses hipotecarios altos) elimina el impuesto a la renta. Pero el beneficio fiscal es limitado porque la perdida no se puede usar contra el sueldo. Los gastos deducibles como PN son debatibles sin contabilidad completa.</p>
 <h3 id="estructura-b-spa-pro-pyme-art-14-d-n3-recomendada">Estructura B: SpA Pro-PyME (Art. 14 D N°3) -- RECOMENDADA</h3>
 <p><strong>Capa 1: SpA Operadora</strong></p>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -596,9 +657,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>~$2.074.286</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Capa 2: Claudia (PN) recibe arriendo de la SpA</strong></p>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -627,9 +688,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>$0 (la perdida no se suma al sueldo)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Capa 3: Consolidado SpA + PN</strong></p>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -679,10 +740,10 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>$7.305.606</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="estructura-c-spa-semi-integrado-art-14-a">Estructura C: SpA Semi-Integrado (Art. 14 A)</h3>
 <p>Aplica solo si Pro-PyME no es viable (Art. 20 N°1 &gt; 35%).</p>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -711,8 +772,8 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Completa (vs simplificada)</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -757,11 +818,11 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>+$1.108.235</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="5-analisis-flujo-de-caja-escenario-moderado-spa-pro-pyme">5. ANALISIS FLUJO DE CAJA (Escenario Moderado, SpA Pro-PyME)</h2>
 <h3 id="flujo-mensual-estimado-operacion-estable-ano-2">Flujo mensual estimado (operacion estable, ano 2+)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Concepto</th>
@@ -810,7 +871,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>-$394.691</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Observacion critica:</strong> En el escenario moderado, la operacion es <strong>deficitaria en flujo de caja</strong> por el peso del dividendo hipotecario ($710K/mes). Sin embargo, $710K incluye amortizacion de capital (no es todo gasto). En terminos tributarios, la operacion tiene sentido porque:</p>
 <ol>
 <li>El dividendo hipotecario construye patrimonio (paga la propiedad)</li>
@@ -818,7 +879,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <li>La operacion Airbnb reduce el costo neto de mantener la propiedad vs tenerla sin uso</li>
 </ol>
 <h3 id="punto-de-equilibrio-flujo-caja-neutro-sin-considerar-amortizacion">Punto de equilibrio (flujo caja neutro, sin considerar amortizacion)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Parametro</th>
@@ -855,11 +916,11 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>77%</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Conclusion flujo de caja:</strong> La operacion cubre gastos operacionales con ~35% ocupacion, pero necesita ~77% para cubrir tambien el dividendo. El dividendo se pagaria de todas formas (Claudia es propietaria), por lo que el Airbnb <strong>reduce el costo neto de mantener la propiedad</strong>.</p>
 <hr>
 <h2 id="6-riesgos-identificados">6. RIESGOS IDENTIFICADOS</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -920,10 +981,10 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Monitorear ordenanzas</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="7-oportunidades-de-optimizacion">7. OPORTUNIDADES DE OPTIMIZACION</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -984,7 +1045,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>EVALUAR</strong> anualmente</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="detalle-oportunidad-principal">Detalle Oportunidad Principal</h3>
 <p><strong>SpA Pro-PyME con Depreciacion Instantanea</strong></p>
 <ul>
@@ -1007,7 +1068,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <p><strong>SpA Operadora bajo Regimen Pro-PyME (Art. 14 D N°3)</strong></p>
 <p><strong>Justificacion:</strong> La SpA Pro-PyME ofrece la mejor combinacion de beneficios para este caso: depreciacion instantanea de muebles ($1M+ en ahorro de impuesto), credito fiscal IVA ($789K en ano 1 + $728K/ano recurrente), tasa reducida del 25% con credito 100% contra IGC, contabilidad simplificada, y separacion patrimonial. El costo de constitucion es $0 (tuempresaenundia.cl) y el costo de mantención (~$680K/ano entre contador y patente) es ampliamente cubierto por los beneficios fiscales. La estructura PN→SpA con arriendo sin amoblar permite separar la propiedad del inmueble (protegida) de la operacion (en SpA con responsabilidad limitada).</p>
 <h3 id="proximos-pasos">Proximos Pasos</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -1084,11 +1145,11 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>Claudia</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Plazo total estimado:</strong> 30-45 dias desde el paso 1 hasta operacion.</p>
 <hr>
 <h2 id="9-resumen-ejecutivo">9. RESUMEN EJECUTIVO</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Metrica</th>
@@ -1137,9 +1198,9 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td><strong>MEDIO-BAJO</strong> (con compliance desde dia 1)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="indicadores-clave-por-escenario-spa-pro-pyme">Indicadores clave por escenario (SpA Pro-PyME)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Metrica</th>
@@ -1210,18 +1271,18 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>~205 (56%)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Veredicto:</strong> <strong>IMPLEMENTAR</strong> -- La estructura SpA Pro-PyME es claramente superior a operar como PN para cualquier escenario de ingresos. El beneficio se materializa desde el primer ano.</p>
 <hr>
 <h2 id="10-informacion-adicional-necesaria">10. INFORMACION ADICIONAL NECESARIA</h2>
 <ul>
-<li>[ ] <strong>Reglamento de copropiedad</strong> del Edificio LINK Villarrica -- BLOQUEANTE</li>
-<li>[ ] <strong>Confirmacion clasificacion Art. 20 N°3</strong> con contador profesional -- CRITICO</li>
-<li>[ ] <strong>Valor de mercado</strong> arriendo sin amoblar en Villarrica (buscar comparables en portales)</li>
-<li>[ ] <strong>Avaluo fiscal</strong> del inmueble (para calculo rebaja 11% base imponible IVA)</li>
-<li>[ ] <strong>Desglose dividendo</strong> hipotecario: porcion intereses vs amortizacion capital</li>
-<li>[ ] <strong>Reglamento interno</strong> del edificio (horarios, uso areas comunes)</li>
-<li>[ ] <strong>Plan Regulador</strong> Villarrica: confirmar uso de suelo compatible en zona del edificio</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Reglamento de copropiedad</strong> del Edificio LINK Villarrica -- BLOQUEANTE</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Confirmacion clasificacion Art. 20 N°3</strong> con contador profesional -- CRITICO</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Valor de mercado</strong> arriendo sin amoblar en Villarrica (buscar comparables en portales)</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Avaluo fiscal</strong> del inmueble (para calculo rebaja 11% base imponible IVA)</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Desglose dividendo</strong> hipotecario: porcion intereses vs amortizacion capital</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Reglamento interno</strong> del edificio (horarios, uso areas comunes)</li>
+<li class="task-item"><input type="checkbox" disabled>  <strong>Plan Regulador</strong> Villarrica: confirmar uso de suelo compatible en zona del edificio</li>
 </ul>
 <hr>
 <h3 id="siguiente-fase-simular">Siguiente fase: SIMULAR</h3>
@@ -1231,7 +1292,7 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <em>Los montos son estimaciones basadas en supuestos razonables. Validar con datos reales y contador profesional antes de implementar.</em></p>
 <hr>
 <h2 id="contactos-para-verificacion-profesional">Contactos para Verificación Profesional</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Categoría</th>
@@ -1261,16 +1322,310 @@ Ver sección <strong>Contactos para Verificación Profesional</strong> al final.
 <td>tta.cl / +56 2 2839 6500</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <blockquote>
 <p><strong>Nivel INFORMADO</strong>: Los términos técnicos se explican entre paréntesis la primera vez que aparecen.
 <strong>Nivel GUIADO</strong>: Este documento requiere validación profesional antes de implementar.</p>
 </blockquote>
+
     <footer class="site-footer no-print">
       <hr>
-      <small>El Director v1.0 &middot; <a href="../deploy-guide.html">Guia de Despliegue</a></small>
+      <small>Contenido generado con apoyo de IA — orientativo, no vinculante. Consulte con un abogado habilitado.</small>
     </footer>
   </main>
+
+  <script>
+    // ── Indicador de página activa en sidebar ──────────────────────────────
+    (function() {
+      var current = window.location.href.split('?')[0].split('#')[0];
+      document.querySelectorAll('.sidebar a').forEach(function(link) {
+        if (link.href.split('?')[0].split('#')[0] === current)
+          link.classList.add('active');
+      });
+    })();
+
+    // ── Cargador PII client-side ───────────────────────────────────────────
+    (function() {
+      var btn = document.getElementById('pii-load-btn');
+      var status = document.getElementById('pii-status');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.onchange = function(e) {
+          var file = e.target.files[0];
+          if (!file) return;
+          var reader = new FileReader();
+          reader.onload = function(ev) {
+            try {
+              var manifest = JSON.parse(ev.target.result);
+              var spans = document.querySelectorAll('.pii-redacted');
+              var count = 0;
+              spans.forEach(function(span) {
+                var token = span.getAttribute('data-token');
+                if (manifest[token]) {
+                  span.textContent = manifest[token];
+                  span.classList.remove('pii-redacted');
+                  span.classList.add('pii-revealed');
+                  count++;
+                }
+              });
+              if (count > 0) {
+                btn.textContent = '✓ Datos revelados (' + count + ')';
+                btn.classList.add('pii-loaded');
+                if (status) status.textContent = '';
+              } else {
+                if (status) status.textContent = 'Sin datos en esta página';
+              }
+            } catch(err) {
+              if (status) status.textContent = 'Error: JSON inválido';
+            }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      });
+    })();
+
+    // ── Mermaid: guardar fuentes ANTES de render, luego inicializar ────────
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Guardar innerHTML original antes de que Mermaid lo reemplace
+      document.querySelectorAll('.mermaid').forEach(function(el, i) {
+        var id = 'mermaid-' + i;
+        el.setAttribute('data-mermaid-id', id);
+        window._mermaidSrc[id] = el.innerHTML.trim();
+      });
+      // 2. Renderizar
+      mermaid.run({ querySelector: '.mermaid' });
+    });
+
+    // ── Theme toggle ──────────────────────────────────────────────────────
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.textContent = t === 'dark' ? '☀' : '🌙';
+
+      var mermaidTheme = t === 'dark' ? 'dark' : 'neutral';
+      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
+
+      // Re-renderizar diagramas desde fuente original guardada
+      document.querySelectorAll('.mermaid').forEach(function(el) {
+        var id = el.getAttribute('data-mermaid-id');
+        var src = id ? window._mermaidSrc[id] : null;
+        if (src) {
+          el.removeAttribute('data-processed');
+          el.innerHTML = src;
+        }
+      });
+      mermaid.run({ querySelector: '.mermaid' });
+    }
+
+    function toggleTheme() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('villarrica-theme', next); } catch(e) {}
+    }
+
+    // Restaurar ícono del tema al cargar
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        var btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = saved === 'dark' ? '☀' : '🌙';
+      } catch(e) {}
+    })();
+
+    // ── Sidebar toggle (desktop) ──────────────────────────────────────────
+    function toggleSidebar() {
+      var collapsed = document.body.classList.toggle('sidebar-collapsed');
+      var btn = document.getElementById('sidebar-toggle-btn');
+      if (btn) btn.textContent = collapsed ? '☰' : '✕';
+      try { localStorage.setItem('villarrica-sidebar', collapsed ? '1' : '0'); } catch(e) {}
+    }
+
+    // Restaurar estado sidebar al cargar
+    (function() {
+      try {
+        if (localStorage.getItem('villarrica-sidebar') === '1') {
+          document.body.classList.add('sidebar-collapsed');
+          var btn = document.getElementById('sidebar-toggle-btn');
+          if (btn) btn.textContent = '☰';
+        }
+      } catch(e) {}
+    })();
+
+    // ── Font size selector ────────────────────────────────────────────────
+    var _fontSizes = { small: '0.875rem', normal: '1rem', large: '1.125rem' };
+
+    function changeFontSize(size) {
+      var val = _fontSizes[size] || '1rem';
+      document.documentElement.style.setProperty('--font-size-base', val);
+      try { localStorage.setItem('villarrica-fontsize', size); } catch(e) {}
+    }
+
+    // Restaurar tamaño de letra al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        var saved = localStorage.getItem('villarrica-fontsize');
+        if (saved && _fontSizes[saved]) {
+          document.documentElement.style.setProperty('--font-size-base', _fontSizes[saved]);
+          var sel = document.getElementById('font-size-select');
+          if (sel) sel.value = saved;
+        }
+      } catch(e) {}
+    });
+
+    // ── Disclaimer expandible ─────────────────────────────────────────────
+    function toggleDisclaimerFull() {
+      var el = document.getElementById('disclaimer-full');
+      var btn = document.getElementById('disclaimer-expand-btn');
+      if (!el || !btn) return;
+      var expanded = !el.hidden;
+      el.hidden = expanded;
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'ⓘ más' : '✕ cerrar';
+    }
+
+    // ── Sidebar accordion (secciones colapsables) ─────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      var titles = document.querySelectorAll('.sidebar li.section-title');
+      titles.forEach(function(title) {
+        var ul = title.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL') return;
+
+        // Indicador de toggle
+        var icon = document.createElement('span');
+        icon.className = 'section-toggle-icon';
+        icon.textContent = '▸';
+        title.appendChild(icon);
+        title.setAttribute('tabindex', '0');
+
+        // Empezar colapsado
+        ul.style.display = 'none';
+        ul.style.marginTop = '0';
+
+        function toggle() {
+          var open = ul.style.display !== 'none';
+          ul.style.display = open ? 'none' : '';
+          icon.textContent = open ? '▸' : '▾';
+        }
+        title.addEventListener('click', toggle);
+        title.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+
+      // Expandir la sección que contiene el enlace activo
+      var activeLink = document.querySelector('.sidebar a.active');
+      if (activeLink) {
+        var el = activeLink.parentElement;
+        var sidebar = document.querySelector('.sidebar');
+        while (el && el !== sidebar) {
+          if (el.tagName === 'UL') {
+            el.style.display = '';
+            var prev = el.previousElementSibling;
+            if (prev && prev.classList.contains('section-title')) {
+              var icon = prev.querySelector('.section-toggle-icon');
+              if (icon) icon.textContent = '▾';
+            }
+          }
+          el = el.parentElement;
+        }
+      }
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!window.IntersectionObserver) return;
+      var targets = document.querySelectorAll('h2, .table-wrapper, blockquote');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+    });
+
+    // ── Score ring: count-up + fill stroke (dynamic radius) ──────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.score-ring').forEach(function(ring) {
+        var numEl = ring.querySelector('.number[data-target]');
+        if (!numEl) return;
+        var target = parseInt(numEl.getAttribute('data-target'), 10);
+        var fillCircle = ring.querySelector('circle.fill');
+
+        if (fillCircle) {
+          var r = parseFloat(fillCircle.getAttribute('r') || '44');
+          var circumference = 2 * Math.PI * r;
+          fillCircle.style.strokeDasharray = String(circumference);
+          fillCircle.style.strokeDashoffset = String(circumference); // start empty
+          setTimeout(function() {
+            fillCircle.style.strokeDashoffset = String(circumference * (1 - target / 100));
+          }, 150);
+        }
+
+        // Count-up number
+        var duration = 1200;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          numEl.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    });
+
+    // ── Strength tracker: dimension toggle + bar animation ────────────────
+    function toggleDimDetail(btn) {
+      var row = btn.closest('.st-dim-row');
+      if (!row) return;
+      var body = row.querySelector('.st-dim-detail-body');
+      if (!body) return;
+      var open = !body.hidden;
+      body.hidden = open;
+      btn.setAttribute('aria-expanded', String(!open));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate dimension bars on load
+      setTimeout(function() {
+        document.querySelectorAll('.st-dim-bar-fill[data-width]').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        });
+      }, 300);
+    });
+
+    // ── Severity row auto-detection ───────────────────────────────────────
+    // Detecta keywords en celdas cortas (<35 chars) y agrega clase al <tr>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante|🔴/i;
+      var reSuccess  = /completo|completado|resuelto|listo|blindado|✓|✅|🟢/i;
+      var reWarning  = /pendiente|revisar|verificar|atenci[oó]n|🟡|⚠/i;
+      document.querySelectorAll('table tr').forEach(function(row) {
+        if (row.closest('thead')) return;
+        var cells = row.querySelectorAll('td');
+        var detected = null;
+        cells.forEach(function(td) {
+          var t = td.textContent.trim();
+          if (t.length > 35) return;
+          if (!detected && reCritical.test(t)) detected = 'critical';
+          else if (!detected && reSuccess.test(t))  detected = 'success';
+          else if (!detected && reWarning.test(t))  detected = 'warning';
+        });
+        if (detected) row.classList.add('row-' + detected);
+      });
+    });
+  </script>
 </body>
 </html>

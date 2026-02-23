@@ -1,82 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investigacion: Marco Legal para Operar Airbnb en Edificio de Departamentos (Chile)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <script>
+    // Guardar fuentes Mermaid ANTES de que Mermaid procese los elementos.
+    // window._mermaidSrc se llena en DOMContentLoaded, antes de mermaid.run().
+    window._mermaidSrc = {};
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+  <script>
+    // Tema inicial: aplicar ANTES del primer render para evitar flash
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        mermaid.initialize({ startOnLoad: false, theme: saved === 'dark' ? 'dark' : 'neutral' });
+      } catch(e) {
+        mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+      }
+    })();
+  </script>
 </head>
 <body>
-  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Menu">
+  <!-- Hamburger mobile (fixed, solo visible en ≤768px) -->
+  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Abrir menú">
     <span></span><span></span><span></span>
   </button>
   <div class="sidebar-overlay no-print" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+  <!-- Sidebar (sin botón de colapso interno) -->
   <nav class="sidebar">
-    <h2>airbnb_villarrica_202602</h2>
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-home-link">Panel del caso</a>
+    </div>
     <ul>
-<li class="section-title">01 Investigacion</li>
+<li><a href="../CASE.html">Caso Airbnb Villarrica</a></li>
+<li><a href="../optimization-tracker.html">Optimización del Caso</a></li>
+<li class="section-title">Investigación</li>
 <ul>
-<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigacion Compilada</a></li>
-<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion Marco Legal Airbnb</a></li>
-<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa Sii</a></li>
-<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion Spa Operadora</a></li>
-<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Jurisprudencia Airbnb Arriendo Amoblado</a></li>
+<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigación Compilada</a></li>
+<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion</a></li>
+<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa SII</a></li>
+<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion</a></li>
+<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Investigacion de Jurisprudencia y Casos Reales</a></li>
 </ul>
-<li class="section-title">02 Analisis</li>
+<li class="section-title">Analisis</li>
 <ul>
 <li><a href="../02_analisis/ANALISIS-TRIBUTARIO.html">Analisis Tributario</a></li>
-<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificacion Pro Pyme Art20</a></li>
-<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo Costos Operacionales</a></li>
+<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificación Pro-PyME</a></li>
+<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo De Costos Operacionales</a></li>
 </ul>
-<li class="section-title">03 Simulacion</li>
+<li class="section-title">Simulacion</li>
 <ul>
-<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion 5 Anos</a></li>
+<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion A 5 Anos</a></li>
 </ul>
-<li class="section-title">04 Estructura</li>
+<li class="section-title">Estructura</li>
 <ul>
-<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa Alternativas</a></li>
-<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta Estructura</a></li>
+<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa De Alternativas</a></li>
+<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta De Estructura Tributaria</a></li>
 </ul>
-<li class="section-title">05 Revision</li>
+<li class="section-title">Revisión</li>
 <ul>
-<li><a href="../05_revision/2026-02-15-correcciones-roast.html">2026 02 15 Correcciones Roast</a></li>
-<li><a href="../05_revision/2026-02-15-proof.html">2026 02 15 Proof</a></li>
-<li><a href="../05_revision/2026-02-15-roast.html">2026 02 15 Roast</a></li>
+<li><a href="../05_revision/2026-02-15-correcciones-roast.html">Correcciones Post-Roast</a></li>
+<li><a href="../05_revision/2026-02-15-proof.html">Verificacion De Compliance</a></li>
+<li><a href="../05_revision/2026-02-15-roast.html">Revision Adversarial Sii</a></li>
 </ul>
-<li class="section-title">99 Entregable</li>
+<li class="section-title">Entregable</li>
 <ul>
-<li class="section-title">01 Critico</li>
+<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Humanas</a></li>
+<li><a href="../99_entregable/PANEL.html">Panel de Control</a></li>
+<li class="section-title">Crítico</li>
 <ul>
-<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1 Validar Art20 N3</a></li>
-<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2 Inicio Actividades Claudia</a></li>
-<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3 Deducibilidad Intereses</a></li>
-<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4 Comparables Arriendo</a></li>
+<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1</a></li>
+<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2</a></li>
+<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3</a></li>
+<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4</a></li>
 </ul>
-<li class="section-title">02 Bloqueantes</li>
+<li class="section-title">Bloqueantes</li>
 <ul>
-<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1 Reglamento Copropiedad</a></li>
+<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1</a></li>
 </ul>
-<li class="section-title">03 Siguientes-Pasos</li>
+<li class="section-title">Siguientes Pasos</li>
 <ul>
-<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1 Seguro Rc</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2 Iva Comision Airbnb</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3 Revision Estatutos</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4 Registro Sernatur</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4</a></li>
 </ul>
-<li class="section-title">06 Con-Supervision-Ia</li>
+<li class="section-title">Con Supervision Ia</li>
 <ul>
-<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1 Reunion Contador Consolidada</a></li>
+<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1. Reunión Consolidada con Contador</a></li>
 </ul>
-<li class="section-title">07 Operacion</li>
+<li class="section-title">Operacion</li>
 <ul>
-<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Calendario</a></li>
+<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Guia De Operacion</a></li>
+<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Anual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/anual/guia-anual.html">Guia Anual</a></li>
 </ul>
-<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Eventual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guia Por Reserva</a></li>
@@ -86,22 +114,55 @@
 <li><a href="../99_entregable/07_operacion/mensual/guia-mensual.html">Guia Mensual</a></li>
 </ul>
 </ul>
-<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Legacy</a></li>
-<li><a href="../99_entregable/PANEL.html">Panel</a></li>
-<li class="section-title">Entrega-Profesional</li>
+<li class="section-title">Entrega Profesional</li>
 <ul>
-<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Profesional</a></li>
-<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist Verificacion</a></li>
+<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist De Verificacion Profesional</a></li>
+<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Para Revision Profesional</a></li>
 </ul>
 </ul>
-<li><a href="../CASE.html">Case</a></li>
-<li><a href="../optimization-tracker.html">Optimization Tracker</a></li>
 </ul>
   </nav>
+
   <main class="content">
+    <!-- Barra de acciones: izquierda = toggle sidebar desktop | derecha = controles -->
     <div class="top-actions no-print">
-      <button class="print-btn" onclick="window.print()">Exportar PDF</button>
+      <div class="top-actions-left">
+        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn"
+                onclick="toggleSidebar()" title="Mostrar/ocultar menú">✕</button>
+      </div>
+      <div class="top-actions-right">
+        <select class="font-size-select" id="font-size-select"
+                onchange="changeFontSize(this.value)" title="Tamaño de letra">
+          <option value="small">Aa pequeño</option>
+          <option value="normal" selected>Aa normal</option>
+          <option value="large">Aa grande</option>
+        </select>
+        <button class="theme-toggle" id="theme-toggle"
+                onclick="toggleTheme()" title="Cambiar tema">🌙</button>
+        <button class="print-btn" onclick="window.print()"
+                title="Usar 'Guardar como PDF' en el diálogo de impresión">⬇ PDF</button>
+        <div class="pii-loader">
+          <button class="pii-load-btn" id="pii-load-btn"
+                  title="Abogado: cargar pii-manifest.json para revelar datos reales">
+            🔒 Revelar datos
+          </button>
+          <span class="pii-status" id="pii-status"></span>
+        </div>
+      </div>
     </div>
+
+    <div class="disclaimer-bar no-print">
+      <span class="disclaimer-short">⚠ Este documento es orientativo y no constituye asesoría legal profesional.</span>
+      <button class="disclaimer-expand-btn" id="disclaimer-expand-btn"
+              onclick="toggleDisclaimerFull()" aria-expanded="false" title="Ver aviso completo">ⓘ más</button>
+      <div class="disclaimer-full" id="disclaimer-full" hidden>
+        Ha sido elaborado con apoyo de inteligencia artificial como guía orientativa.
+        Su contenido es <strong>no vinculante</strong> y tiene carácter exclusivamente informativo.
+        Consulte con un abogado habilitado antes de actuar.
+        Ver sección <strong>Contactos para Verificación Profesional</strong> al final de cada documento.
+      </div>
+    </div>
+
     <h1 id="investigacion-marco-legal-para-operar-airbnb-en-edificio-de-departamentos-chile">Investigacion: Marco Legal para Operar Airbnb en Edificio de Departamentos (Chile)</h1>
 <blockquote>
 <p><strong>Caso:</strong> Airbnb Villarrica 202602
@@ -132,7 +193,7 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <p><strong>Fuente:</strong> Codigo Civil, Libro IV, Titulo XXVI "Del contrato de arrendamiento"
 <strong>URL referencia:</strong> https://www.leychile.cl/Navegar?idNorma=172986</p>
 <h3 id="11-definicion-de-arriendo">1.1 Definicion de Arriendo</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -157,8 +218,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Define el marco basico. El arriendo turistico (Airbnb) es un arriendo de cosa (inmueble) por un precio. Sin embargo, cuando incluye servicios adicionales (limpieza, amenities, wifi, etc.), se acerca mas a un "servicio de alojamiento" que a un arriendo puro. Esta distincion es critica para efectos tributarios (IVA) y de copropiedad.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -183,8 +244,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Airbnb cae en "arrendamiento de cosas" (inmueble), pero con elementos de "servicio". La clasificacion importa para determinar el regimen aplicable.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -209,9 +270,9 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>En Airbnb el precio es dinero (cobrado por noche). Tecnicamente cada reserva genera una "renta" de arriendo.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="12-obligaciones-del-arrendador">1.2 Obligaciones del Arrendador</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -236,8 +297,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>El operador Airbnb (arrendador) debe: (1) entregar el depto en condiciones, (2) mantenerlo funcional durante la estadia, (3) proteger al huesped de turbaciones (ej: si la administracion del edificio impide el acceso, el arrendador responde).</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -262,8 +323,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>En Airbnb de corta estadia, practicamente todas las reparaciones son de cargo del arrendador/operador, ya que los huespedes no estan obligados a reparaciones locativas en estadias de dias.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -288,8 +349,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Si el departamento tiene vicios (ej: humedad, problemas electricos, calefaccion deficiente) que impiden su uso como alojamiento turistico, el arrendador responde. Esto incluye vicios ocultos.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -314,9 +375,9 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Riesgo reputacional y legal: si el huesped sufre danos por un vicio conocido (ej: instalacion electrica defectuosa), el operador es responsable de indemnizar.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="13-obligaciones-del-arrendatario">1.3 Obligaciones del Arrendatario</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -341,8 +402,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td><strong>CRITICO para copropiedad</strong>: Si el reglamento de copropiedad establece uso "habitacional" y el propietario usa para arriendo turistico (uso comercial), podria argumentarse infraccion a este principio. El "destino" de la unidad es clave.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -367,8 +428,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>El operador debe asegurarse de que los huespedes cuiden la propiedad. Si los huespedes causan danos, el operador/arrendador es responsable frente al edificio y los vecinos.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -393,8 +454,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td><strong>ARTICULO CLAVE</strong>: El propietario/operador es responsable de los danos que causen sus huespedes Airbnb en el edificio (areas comunes, otras unidades, vecinos). Esto incluye ruido, danos a propiedad comun, etc.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -419,9 +480,9 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Si el operador Airbnb no es el dueno sino un arrendatario que subarrienda, necesita autorizacion expresa. Operar Airbnb como subarriendo sin permiso del dueno es causal de terminacion del contrato.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="14-termino-del-arriendo">1.4 Termino del Arriendo</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -446,8 +507,8 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>En Airbnb, cada reserva es un contrato de arriendo independiente que termina al vencer el plazo de la reserva. No aplica la Ley 18.101 (arrendamiento de predios urbanos) porque los arriendos son de menos de un ano.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -472,9 +533,9 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>En Airbnb siempre hay plazo determinado (noches reservadas), por lo que el contrato termina automaticamente sin necesidad de desahucio.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="15-diferencia-arriendo-civil-vs-arriendo-comercialturistico">1.5 Diferencia Arriendo Civil vs Arriendo Comercial/Turistico</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
@@ -524,7 +585,7 @@ con la marca <strong>[VERIFICAR]</strong>.</p>
 <td>Requiere inicio actividades</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Nota importante sobre Ley 18.101:</strong> Esta ley protege al arrendatario de viviendas urbanas
 con plazos de desahucio, restricciones de terminacion, etc. <strong>No aplica a arriendos turisticos
 de corta duracion</strong>, lo que es favorable para el operador Airbnb (no hay riesgo de que un
@@ -534,7 +595,7 @@ huesped invoque proteccion de arrendatario).</p>
 <p><strong>Fuente:</strong> Codigo Civil, Libro IV
 <strong>URL referencia:</strong> https://www.leychile.cl/Navegar?idNorma=172986</p>
 <h3 id="21-responsabilidad-contractual-arrendador-huesped">2.1 Responsabilidad Contractual (Arrendador-Huesped)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -559,8 +620,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>La reserva Airbnb constituye un contrato. Las condiciones publicadas en el anuncio y las politicas de la plataforma obligan al operador. Si promete ciertas condiciones (wifi, estacionamiento, vista al lago) y no las cumple, hay incumplimiento contractual.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -585,8 +646,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Aunque no se explicite, se entiende que el alojamiento debe ser seguro, habitable, limpio. La "costumbre" del mercado Airbnb impone estandares implicitos (agua caliente, cerradura funcional, acceso al edificio).</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -611,8 +672,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>El operador Airbnb debe emplear diligencia media (buen padre de familia). Si un huesped sufre un dano por falta de mantencion (ej: escalera rota dentro del depto), el operador debe probar que fue diligente. La culpa se presume.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -637,9 +698,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si un huesped sufre danos (ej: lesion por mal estado del inmueble), puede reclamar gastos medicos (dano emergente) + dias de trabajo perdidos (lucro cesante). Tambien dano moral (aceptado jurisprudencialmente).</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="22-responsabilidad-extracontractual-propietario-frente-a-terceros">2.2 Responsabilidad Extracontractual (Propietario frente a Terceros)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -664,8 +725,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si los huespedes causan danos a vecinos o a terceros en el edificio, podria generarse responsabilidad extracontractual.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -690,8 +751,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td><strong>ARTICULO RELEVANTE</strong>: Si el operador Airbnb es considerado "dueno de un establecimiento" (alojamiento turistico), podria ser responsable por los actos de sus huespedes frente a terceros (vecinos del edificio).</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -716,8 +777,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si el operador contrata personal de limpieza o administracion que causa danos, responde por ellos.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -742,8 +803,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si el departamento tiene problemas estructurales o de mantencion que causan dano (ej: filtracion que dana al departamento de abajo), el dueno responde.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -768,8 +829,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si un huesped arroja objetos desde el balcon causando danos, el propietario de la unidad puede ser responsable solidariamente.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -794,9 +855,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Regla general de responsabilidad. Si el operador fue negligente (ej: no verifico antecedentes del huesped, no mantuvo el inmueble), responde por los danos resultantes.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="23-resumen-de-riesgos-de-responsabilidad">2.3 Resumen de Riesgos de Responsabilidad</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Tipo de Responsabilidad</th>
@@ -837,7 +898,7 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Objetos arrojados por huespedes</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="3-ley-21442-de-copropiedad-inmobiliaria">3. Ley 21.442 de Copropiedad Inmobiliaria</h2>
 <p><strong>Fuente:</strong> Ley 21.442, publicada en el Diario Oficial el 28 de abril de 2022
@@ -845,7 +906,7 @@ huesped invoque proteccion de arrendatario).</p>
 <strong>URL referencia:</strong> https://www.leychile.cl/Navegar?idNorma=1164694
 <strong>Vigencia:</strong> 28 de abril de 2023 (1 ano despues de su publicacion)</p>
 <h3 id="31-definiciones-y-ambito">3.1 Definiciones y Ambito</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -870,8 +931,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Todo edificio de departamentos sujeto a esta ley tiene bienes de dominio exclusivo (el departamento) y bienes comunes (pasillos, ascensores, lobby, estacionamientos comunes). El operador Airbnb usa ambos.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -896,9 +957,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Las definiciones determinan el marco en que opera el propietario. El "copropietario" tiene derechos pero tambien obligaciones respecto del uso de su unidad y los bienes comunes.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="32-uso-de-unidades-y-destino">3.2 Uso de Unidades y Destino</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -923,8 +984,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td><strong>ARTICULO CRITICO</strong>: Si el reglamento establece uso "habitacional" exclusivo, operar Airbnb (uso comercial/turistico) podria ser una infraccion. La clave esta en lo que diga el reglamento de copropiedad del Edificio LINK.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -949,9 +1010,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>El flujo constante de huespedes distintos, maletas, ruido, uso intensivo de ascensores y areas comunes puede considerarse "perturbacion de la tranquilidad". Los vecinos pueden invocar este articulo.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="33-reglamento-de-copropiedad">3.3 Reglamento de Copropiedad</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -976,8 +1037,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>El reglamento es la norma interna que define si se puede o no operar Airbnb. Si dice "uso habitacional exclusivo", hay un problema. Si dice "uso habitacional y comercial" o "mixto", hay mas espacio.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1002,9 +1063,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si el reglamento prohibe Airbnb, modificarlo requiere convencer a 2/3 o 3/4 de los copropietarios. Esto es muy dificil en la practica, ya que muchos vecinos se oponen al arriendo turistico.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="34-facultades-del-comite-de-administracion">3.4 Facultades del Comite de Administracion</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1029,8 +1090,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>El comite puede: (1) prohibir el ingreso de huespedes si el reglamento lo respalda, (2) aplicar multas, (3) demandar judicialmente al copropietario infractor.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1055,9 +1116,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>El administrador del edificio es el principal "enforcement" de las reglas. Si detecta operacion Airbnb no autorizada, puede denunciar.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="35-sanciones-por-uso-no-autorizado">3.5 Sanciones por Uso No Autorizado</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1082,8 +1143,8 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Cada vez que se arriende a un huesped Airbnb en infraccion al reglamento podria ser una "infraccion" separada. Las multas se acumulan. <strong>1 UTM = ~$65.000 CLP</strong> (febrero 2026). Multa maxima por infraccion reiterada: ~$650.000.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1108,9 +1169,9 @@ huesped invoque proteccion de arrendatario).</p>
 <td>Si hay conflicto por operacion Airbnb, el caso va al Juzgado de Policia Local (procedimiento rapido, sin abogado obligatorio). El copropietario puede ser demandado alli.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="36-arriendo-temporal-y-airbnb-regulacion-especifica">3.6 Arriendo Temporal y Airbnb - Regulacion Especifica</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1135,7 +1196,7 @@ huesped invoque proteccion de arrendatario).</p>
 <td><strong>NOVEDAD DE LA LEY 21.442</strong>: Explicitamente permite que los reglamentos de copropiedad regulen (incluso prohiban) el arriendo temporal tipo Airbnb. Antes de esta ley, habia un vacio legal que se prestaba para debate.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Nota sobre el estado de la regulacion:</strong></p>
 <p>La Ley 21.442 no prohibe el Airbnb per se, pero <strong>delega en el reglamento de copropiedad</strong> la
 facultad de regularlo o prohibirlo. Esto significa que:</p>
@@ -1146,7 +1207,7 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <li>Si el reglamento es <strong>anterior a la Ley 21.442</strong>: hay un periodo de adaptacion</li>
 </ol>
 <h3 id="37-gastos-comunes-y-arriendo-temporal">3.7 Gastos Comunes y Arriendo Temporal</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1171,14 +1232,14 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>El comite de administracion podria exigir un gasto comun diferenciado (mayor) para unidades que operan Airbnb, por el mayor desgaste de bienes comunes. Esto es un costo operacional adicional a considerar.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="4-ley-20423-turismo">4. Ley 20.423 - Turismo</h2>
 <p><strong>Fuente:</strong> Ley 20.423, "Del Sistema Institucional para el Desarrollo del Turismo"
 <strong>Publicacion:</strong> 12 de febrero de 2010
 <strong>URL referencia:</strong> https://www.leychile.cl/Navegar?idNorma=1010960</p>
 <h3 id="41-marco-institucional">4.1 Marco Institucional</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1203,8 +1264,8 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>Define el marco regulatorio general. SERNATUR es el organismo que puede fiscalizar prestadores de servicios turisticos.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1229,9 +1290,9 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>El Airbnb cae claramente en esta definicion: estancias cortas, fuera del entorno habitual, con fines de ocio.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="42-prestador-de-servicios-turisticos">4.2 Prestador de Servicios Turisticos</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1256,8 +1317,8 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>El operador Airbnb es un "prestador de servicios turisticos" en la categoria de "alojamiento turistico". La clave es la "habitualidad" -- operar regularmente (no una vez al ano) lo convierte en prestador.</td>
 </tr>
 </tbody>
-</table>
-<table>
+</table></div>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1282,9 +1343,9 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>La categoria "otros establecimientos similares" es la que captura al Airbnb. No hay una categoria explicita "Airbnb" en la ley, pero se subsume en "alojamiento turistico".</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="43-registro-en-sernatur">4.3 Registro en SERNATUR</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1309,9 +1370,9 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>El registro en SERNATUR es: (a) gratuito, (b) da legitimidad, (c) puede ser exigido por la municipalidad como requisito para la patente, (d) permite aparecer en el catalogo oficial de SERNATUR. <strong>Recomendacion: registrarse siempre.</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="44-obligaciones-del-prestador">4.4 Obligaciones del Prestador</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1336,9 +1397,9 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>El operador Airbnb debe cumplir estandares de seguridad (extintores, vias de evacuacion si aplica), higiene, y no hacer publicidad enganosa sobre las condiciones del departamento.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="45-fiscalizacion-y-sanciones">4.5 Fiscalizacion y Sanciones</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1363,7 +1424,7 @@ facultad de regularlo o prohibirlo. Esto significa que:</p>
 <td>En la practica, la fiscalizacion de SERNATUR a operadores Airbnb individuales es limitada. El riesgo mayor viene de la municipalidad (patente) y del SII (tributacion). Pero el marco legal existe para sancionar.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Nota:</strong> La Ley 20.423 es un marco general que no fue disenado especificamente para el fenomeno
 Airbnb (anterior a su masificacion en Chile). Existe discusion legislativa pendiente sobre una
 regulacion especifica de plataformas de alojamiento temporal.</p>
@@ -1374,7 +1435,7 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 <strong>Derogada por:</strong> Ley 21.442 (vigente desde 28 de abril de 2023)
 <strong>URL referencia (texto historico):</strong> https://www.leychile.cl/Navegar?idNorma=82199</p>
 <h3 id="51-contexto-historico">5.1 Contexto Historico</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1399,9 +1460,9 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 <td>La Ley 19.537 NO tenia regulacion especifica sobre arriendo temporal o Airbnb. El fenomeno no existia cuando se dicto la ley (1997). Esto genero un <strong>vacio legal</strong> que fue explotado por operadores Airbnb y que generaba conflictos en edificios sin herramientas claras para resolverlos.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="52-principales-diferencias-entre-ley-19537-y-ley-21442">5.2 Principales Diferencias entre Ley 19.537 y Ley 21.442</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
@@ -1451,9 +1512,9 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 <td>Mas detallado, permite especificar en reglamento</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="53-disposiciones-transitorias">5.3 Disposiciones Transitorias</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -1478,9 +1539,9 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 <td>Si el Edificio LINK tiene un reglamento anterior a 2023, las disposiciones sobre uso de unidades siguen vigentes en lo compatible con la Ley 21.442. Si el reglamento no mencionaba Airbnb (probable), la nueva ley permite que la asamblea lo modifique para regularlo.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="54-impacto-practico-del-cambio-de-ley">5.4 Impacto Practico del Cambio de Ley</h3>
-<p><strong>Para el caso Edificio LINK, Villarrica:</strong></p>
+<p><strong>Para el caso <span class="pii-redacted" data-token="EDIFICIO_REFERENCIA">[redactado]</span>:</strong></p>
 <ol>
 <li>
 <p><strong>Si el edificio es nuevo (2025):</strong> El reglamento de copropiedad deberia haber sido redactado
@@ -1525,7 +1586,7 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 └──────────────────┴──────────────────────────────────────┘
 </code></pre>
 <h3 id="62-checklist-de-riesgos-legales">6.2 Checklist de Riesgos Legales</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -1593,7 +1654,7 @@ regulacion especifica de plataformas de alojamiento temporal.</p>
 <td>Solo aplica si operador no es dueno</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="63-prioridad-de-acciones-para-el-caso">6.3 Prioridad de Acciones para el Caso</h3>
 <pre><code>URGENTE (hacer antes de operar):
   1. Obtener reglamento de copropiedad del Edificio LINK
@@ -1614,7 +1675,7 @@ RECOMENDABLE:
 </code></pre>
 <hr>
 <h2 id="7-fuentes-y-urls-de-referencia">7. Fuentes y URLs de Referencia</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Norma</th>
@@ -1651,16 +1712,310 @@ RECOMENDABLE:
 <td>https://www.leychile.cl/Navegar?idNorma=6369</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>NOTA FINAL:</strong> Se recomienda verificar cada articulo directamente en leychile.cl.
 Los numeros de articulo marcados con [VERIFICAR] requieren confirmacion, ya que la
 numeracion exacta de la Ley 21.442 puede diferir del conocimiento del modelo.
 Los articulos del Codigo Civil (Art. 1915-1977, 1545-1558, 2314-2329) son estables
 y bien conocidos, con alta confiabilidad en la cita.</p>
+
     <footer class="site-footer no-print">
       <hr>
-      <small>El Director v1.0 &middot; <a href="../deploy-guide.html">Guia de Despliegue</a></small>
+      <small>Contenido generado con apoyo de IA — orientativo, no vinculante. Consulte con un abogado habilitado.</small>
     </footer>
   </main>
+
+  <script>
+    // ── Indicador de página activa en sidebar ──────────────────────────────
+    (function() {
+      var current = window.location.href.split('?')[0].split('#')[0];
+      document.querySelectorAll('.sidebar a').forEach(function(link) {
+        if (link.href.split('?')[0].split('#')[0] === current)
+          link.classList.add('active');
+      });
+    })();
+
+    // ── Cargador PII client-side ───────────────────────────────────────────
+    (function() {
+      var btn = document.getElementById('pii-load-btn');
+      var status = document.getElementById('pii-status');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.onchange = function(e) {
+          var file = e.target.files[0];
+          if (!file) return;
+          var reader = new FileReader();
+          reader.onload = function(ev) {
+            try {
+              var manifest = JSON.parse(ev.target.result);
+              var spans = document.querySelectorAll('.pii-redacted');
+              var count = 0;
+              spans.forEach(function(span) {
+                var token = span.getAttribute('data-token');
+                if (manifest[token]) {
+                  span.textContent = manifest[token];
+                  span.classList.remove('pii-redacted');
+                  span.classList.add('pii-revealed');
+                  count++;
+                }
+              });
+              if (count > 0) {
+                btn.textContent = '✓ Datos revelados (' + count + ')';
+                btn.classList.add('pii-loaded');
+                if (status) status.textContent = '';
+              } else {
+                if (status) status.textContent = 'Sin datos en esta página';
+              }
+            } catch(err) {
+              if (status) status.textContent = 'Error: JSON inválido';
+            }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      });
+    })();
+
+    // ── Mermaid: guardar fuentes ANTES de render, luego inicializar ────────
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Guardar innerHTML original antes de que Mermaid lo reemplace
+      document.querySelectorAll('.mermaid').forEach(function(el, i) {
+        var id = 'mermaid-' + i;
+        el.setAttribute('data-mermaid-id', id);
+        window._mermaidSrc[id] = el.innerHTML.trim();
+      });
+      // 2. Renderizar
+      mermaid.run({ querySelector: '.mermaid' });
+    });
+
+    // ── Theme toggle ──────────────────────────────────────────────────────
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.textContent = t === 'dark' ? '☀' : '🌙';
+
+      var mermaidTheme = t === 'dark' ? 'dark' : 'neutral';
+      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
+
+      // Re-renderizar diagramas desde fuente original guardada
+      document.querySelectorAll('.mermaid').forEach(function(el) {
+        var id = el.getAttribute('data-mermaid-id');
+        var src = id ? window._mermaidSrc[id] : null;
+        if (src) {
+          el.removeAttribute('data-processed');
+          el.innerHTML = src;
+        }
+      });
+      mermaid.run({ querySelector: '.mermaid' });
+    }
+
+    function toggleTheme() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('villarrica-theme', next); } catch(e) {}
+    }
+
+    // Restaurar ícono del tema al cargar
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        var btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = saved === 'dark' ? '☀' : '🌙';
+      } catch(e) {}
+    })();
+
+    // ── Sidebar toggle (desktop) ──────────────────────────────────────────
+    function toggleSidebar() {
+      var collapsed = document.body.classList.toggle('sidebar-collapsed');
+      var btn = document.getElementById('sidebar-toggle-btn');
+      if (btn) btn.textContent = collapsed ? '☰' : '✕';
+      try { localStorage.setItem('villarrica-sidebar', collapsed ? '1' : '0'); } catch(e) {}
+    }
+
+    // Restaurar estado sidebar al cargar
+    (function() {
+      try {
+        if (localStorage.getItem('villarrica-sidebar') === '1') {
+          document.body.classList.add('sidebar-collapsed');
+          var btn = document.getElementById('sidebar-toggle-btn');
+          if (btn) btn.textContent = '☰';
+        }
+      } catch(e) {}
+    })();
+
+    // ── Font size selector ────────────────────────────────────────────────
+    var _fontSizes = { small: '0.875rem', normal: '1rem', large: '1.125rem' };
+
+    function changeFontSize(size) {
+      var val = _fontSizes[size] || '1rem';
+      document.documentElement.style.setProperty('--font-size-base', val);
+      try { localStorage.setItem('villarrica-fontsize', size); } catch(e) {}
+    }
+
+    // Restaurar tamaño de letra al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        var saved = localStorage.getItem('villarrica-fontsize');
+        if (saved && _fontSizes[saved]) {
+          document.documentElement.style.setProperty('--font-size-base', _fontSizes[saved]);
+          var sel = document.getElementById('font-size-select');
+          if (sel) sel.value = saved;
+        }
+      } catch(e) {}
+    });
+
+    // ── Disclaimer expandible ─────────────────────────────────────────────
+    function toggleDisclaimerFull() {
+      var el = document.getElementById('disclaimer-full');
+      var btn = document.getElementById('disclaimer-expand-btn');
+      if (!el || !btn) return;
+      var expanded = !el.hidden;
+      el.hidden = expanded;
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'ⓘ más' : '✕ cerrar';
+    }
+
+    // ── Sidebar accordion (secciones colapsables) ─────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      var titles = document.querySelectorAll('.sidebar li.section-title');
+      titles.forEach(function(title) {
+        var ul = title.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL') return;
+
+        // Indicador de toggle
+        var icon = document.createElement('span');
+        icon.className = 'section-toggle-icon';
+        icon.textContent = '▸';
+        title.appendChild(icon);
+        title.setAttribute('tabindex', '0');
+
+        // Empezar colapsado
+        ul.style.display = 'none';
+        ul.style.marginTop = '0';
+
+        function toggle() {
+          var open = ul.style.display !== 'none';
+          ul.style.display = open ? 'none' : '';
+          icon.textContent = open ? '▸' : '▾';
+        }
+        title.addEventListener('click', toggle);
+        title.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+
+      // Expandir la sección que contiene el enlace activo
+      var activeLink = document.querySelector('.sidebar a.active');
+      if (activeLink) {
+        var el = activeLink.parentElement;
+        var sidebar = document.querySelector('.sidebar');
+        while (el && el !== sidebar) {
+          if (el.tagName === 'UL') {
+            el.style.display = '';
+            var prev = el.previousElementSibling;
+            if (prev && prev.classList.contains('section-title')) {
+              var icon = prev.querySelector('.section-toggle-icon');
+              if (icon) icon.textContent = '▾';
+            }
+          }
+          el = el.parentElement;
+        }
+      }
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!window.IntersectionObserver) return;
+      var targets = document.querySelectorAll('h2, .table-wrapper, blockquote');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+    });
+
+    // ── Score ring: count-up + fill stroke (dynamic radius) ──────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.score-ring').forEach(function(ring) {
+        var numEl = ring.querySelector('.number[data-target]');
+        if (!numEl) return;
+        var target = parseInt(numEl.getAttribute('data-target'), 10);
+        var fillCircle = ring.querySelector('circle.fill');
+
+        if (fillCircle) {
+          var r = parseFloat(fillCircle.getAttribute('r') || '44');
+          var circumference = 2 * Math.PI * r;
+          fillCircle.style.strokeDasharray = String(circumference);
+          fillCircle.style.strokeDashoffset = String(circumference); // start empty
+          setTimeout(function() {
+            fillCircle.style.strokeDashoffset = String(circumference * (1 - target / 100));
+          }, 150);
+        }
+
+        // Count-up number
+        var duration = 1200;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          numEl.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    });
+
+    // ── Strength tracker: dimension toggle + bar animation ────────────────
+    function toggleDimDetail(btn) {
+      var row = btn.closest('.st-dim-row');
+      if (!row) return;
+      var body = row.querySelector('.st-dim-detail-body');
+      if (!body) return;
+      var open = !body.hidden;
+      body.hidden = open;
+      btn.setAttribute('aria-expanded', String(!open));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate dimension bars on load
+      setTimeout(function() {
+        document.querySelectorAll('.st-dim-bar-fill[data-width]').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        });
+      }, 300);
+    });
+
+    // ── Severity row auto-detection ───────────────────────────────────────
+    // Detecta keywords en celdas cortas (<35 chars) y agrega clase al <tr>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante|🔴/i;
+      var reSuccess  = /completo|completado|resuelto|listo|blindado|✓|✅|🟢/i;
+      var reWarning  = /pendiente|revisar|verificar|atenci[oó]n|🟡|⚠/i;
+      document.querySelectorAll('table tr').forEach(function(row) {
+        if (row.closest('thead')) return;
+        var cells = row.querySelectorAll('td');
+        var detected = null;
+        cells.forEach(function(td) {
+          var t = td.textContent.trim();
+          if (t.length > 35) return;
+          if (!detected && reCritical.test(t)) detected = 'critical';
+          else if (!detected && reSuccess.test(t))  detected = 'success';
+          else if (!detected && reWarning.test(t))  detected = 'warning';
+        });
+        if (detected) row.classList.add('row-' + detected);
+      });
+    });
+  </script>
 </body>
 </html>

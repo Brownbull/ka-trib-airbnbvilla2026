@@ -1,82 +1,110 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Investigacion Normativa SII: Arriendo Amoblado y Airbnb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/style.css">
+  <script>
+    // Guardar fuentes Mermaid ANTES de que Mermaid procese los elementos.
+    // window._mermaidSrc se llena en DOMContentLoaded, antes de mermaid.run().
+    window._mermaidSrc = {};
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+  <script>
+    // Tema inicial: aplicar ANTES del primer render para evitar flash
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        mermaid.initialize({ startOnLoad: false, theme: saved === 'dark' ? 'dark' : 'neutral' });
+      } catch(e) {
+        mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+      }
+    })();
+  </script>
 </head>
 <body>
-  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Menu">
+  <!-- Hamburger mobile (fixed, solo visible en ≤768px) -->
+  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Abrir menú">
     <span></span><span></span><span></span>
   </button>
   <div class="sidebar-overlay no-print" onclick="document.body.classList.remove('sidebar-open')"></div>
+
+  <!-- Sidebar (sin botón de colapso interno) -->
   <nav class="sidebar">
-    <h2>airbnb_villarrica_202602</h2>
+    <div class="sidebar-header">
+      <a href="../index.html" class="sidebar-home-link">Panel del caso</a>
+    </div>
     <ul>
-<li class="section-title">01 Investigacion</li>
+<li><a href="../CASE.html">Caso Airbnb Villarrica</a></li>
+<li><a href="../optimization-tracker.html">Optimización del Caso</a></li>
+<li class="section-title">Investigación</li>
 <ul>
-<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigacion Compilada</a></li>
-<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion Marco Legal Airbnb</a></li>
-<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa Sii</a></li>
-<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion Spa Operadora</a></li>
-<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Jurisprudencia Airbnb Arriendo Amoblado</a></li>
+<li><a href="../01_investigacion/INVESTIGACION-COMPILADA.html">Investigación Compilada</a></li>
+<li><a href="../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion</a></li>
+<li><a href="../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa SII</a></li>
+<li><a href="../01_investigacion/investigacion-spa-operadora.html">Investigacion</a></li>
+<li><a href="../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Investigacion de Jurisprudencia y Casos Reales</a></li>
 </ul>
-<li class="section-title">02 Analisis</li>
+<li class="section-title">Analisis</li>
 <ul>
 <li><a href="../02_analisis/ANALISIS-TRIBUTARIO.html">Analisis Tributario</a></li>
-<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificacion Pro Pyme Art20</a></li>
-<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo Costos Operacionales</a></li>
+<li><a href="../02_analisis/clasificacion-pro-pyme-art20.html">Clasificación Pro-PyME</a></li>
+<li><a href="../02_analisis/mapeo-costos-operacionales.html">Mapeo De Costos Operacionales</a></li>
 </ul>
-<li class="section-title">03 Simulacion</li>
+<li class="section-title">Simulacion</li>
 <ul>
-<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion 5 Anos</a></li>
+<li><a href="../03_simulacion/SIMULACION-5-ANOS.html">Simulacion A 5 Anos</a></li>
 </ul>
-<li class="section-title">04 Estructura</li>
+<li class="section-title">Estructura</li>
 <ul>
-<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa Alternativas</a></li>
-<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta Estructura</a></li>
+<li><a href="../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa De Alternativas</a></li>
+<li><a href="../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta De Estructura Tributaria</a></li>
 </ul>
-<li class="section-title">05 Revision</li>
+<li class="section-title">Revisión</li>
 <ul>
-<li><a href="../05_revision/2026-02-15-correcciones-roast.html">2026 02 15 Correcciones Roast</a></li>
-<li><a href="../05_revision/2026-02-15-proof.html">2026 02 15 Proof</a></li>
-<li><a href="../05_revision/2026-02-15-roast.html">2026 02 15 Roast</a></li>
+<li><a href="../05_revision/2026-02-15-correcciones-roast.html">Correcciones Post-Roast</a></li>
+<li><a href="../05_revision/2026-02-15-proof.html">Verificacion De Compliance</a></li>
+<li><a href="../05_revision/2026-02-15-roast.html">Revision Adversarial Sii</a></li>
 </ul>
-<li class="section-title">99 Entregable</li>
+<li class="section-title">Entregable</li>
 <ul>
-<li class="section-title">01 Critico</li>
+<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Humanas</a></li>
+<li><a href="../99_entregable/PANEL.html">Panel de Control</a></li>
+<li class="section-title">Crítico</li>
 <ul>
-<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1 Validar Art20 N3</a></li>
-<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2 Inicio Actividades Claudia</a></li>
-<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3 Deducibilidad Intereses</a></li>
-<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4 Comparables Arriendo</a></li>
+<li><a href="../99_entregable/01_critico/C1-validar-art20-n3.html">C1</a></li>
+<li><a href="../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2</a></li>
+<li><a href="../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3</a></li>
+<li><a href="../99_entregable/01_critico/C4-comparables-arriendo.html">C4</a></li>
 </ul>
-<li class="section-title">02 Bloqueantes</li>
+<li class="section-title">Bloqueantes</li>
 <ul>
-<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1 Reglamento Copropiedad</a></li>
+<li><a href="../99_entregable/02_bloqueantes/B1-reglamento-copropiedad.html">B1</a></li>
 </ul>
-<li class="section-title">03 Siguientes-Pasos</li>
+<li class="section-title">Siguientes Pasos</li>
 <ul>
-<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1 Seguro Rc</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2 Iva Comision Airbnb</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3 Revision Estatutos</a></li>
-<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4 Registro Sernatur</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3</a></li>
+<li><a href="../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4</a></li>
 </ul>
-<li class="section-title">06 Con-Supervision-Ia</li>
+<li class="section-title">Con Supervision Ia</li>
 <ul>
-<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1 Reunion Contador Consolidada</a></li>
+<li><a href="../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1. Reunión Consolidada con Contador</a></li>
 </ul>
-<li class="section-title">07 Operacion</li>
+<li class="section-title">Operacion</li>
 <ul>
-<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Calendario</a></li>
+<li><a href="../99_entregable/07_operacion/CALENDARIO.html">Guia De Operacion</a></li>
+<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Anual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/anual/guia-anual.html">Guia Anual</a></li>
 </ul>
-<li><a href="../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
 <li class="section-title">Eventual</li>
 <ul>
 <li><a href="../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guia Por Reserva</a></li>
@@ -86,22 +114,55 @@
 <li><a href="../99_entregable/07_operacion/mensual/guia-mensual.html">Guia Mensual</a></li>
 </ul>
 </ul>
-<li><a href="../99_entregable/ACCIONES-LEGACY.html">Acciones Legacy</a></li>
-<li><a href="../99_entregable/PANEL.html">Panel</a></li>
-<li class="section-title">Entrega-Profesional</li>
+<li class="section-title">Entrega Profesional</li>
 <ul>
-<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Profesional</a></li>
-<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist Verificacion</a></li>
+<li><a href="../99_entregable/entrega-profesional/checklist-verificacion.html">Checklist De Verificacion Profesional</a></li>
+<li><a href="../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Para Revision Profesional</a></li>
 </ul>
 </ul>
-<li><a href="../CASE.html">Case</a></li>
-<li><a href="../optimization-tracker.html">Optimization Tracker</a></li>
 </ul>
   </nav>
+
   <main class="content">
+    <!-- Barra de acciones: izquierda = toggle sidebar desktop | derecha = controles -->
     <div class="top-actions no-print">
-      <button class="print-btn" onclick="window.print()">Exportar PDF</button>
+      <div class="top-actions-left">
+        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn"
+                onclick="toggleSidebar()" title="Mostrar/ocultar menú">✕</button>
+      </div>
+      <div class="top-actions-right">
+        <select class="font-size-select" id="font-size-select"
+                onchange="changeFontSize(this.value)" title="Tamaño de letra">
+          <option value="small">Aa pequeño</option>
+          <option value="normal" selected>Aa normal</option>
+          <option value="large">Aa grande</option>
+        </select>
+        <button class="theme-toggle" id="theme-toggle"
+                onclick="toggleTheme()" title="Cambiar tema">🌙</button>
+        <button class="print-btn" onclick="window.print()"
+                title="Usar 'Guardar como PDF' en el diálogo de impresión">⬇ PDF</button>
+        <div class="pii-loader">
+          <button class="pii-load-btn" id="pii-load-btn"
+                  title="Abogado: cargar pii-manifest.json para revelar datos reales">
+            🔒 Revelar datos
+          </button>
+          <span class="pii-status" id="pii-status"></span>
+        </div>
+      </div>
     </div>
+
+    <div class="disclaimer-bar no-print">
+      <span class="disclaimer-short">⚠ Este documento es orientativo y no constituye asesoría legal profesional.</span>
+      <button class="disclaimer-expand-btn" id="disclaimer-expand-btn"
+              onclick="toggleDisclaimerFull()" aria-expanded="false" title="Ver aviso completo">ⓘ más</button>
+      <div class="disclaimer-full" id="disclaimer-full" hidden>
+        Ha sido elaborado con apoyo de inteligencia artificial como guía orientativa.
+        Su contenido es <strong>no vinculante</strong> y tiene carácter exclusivamente informativo.
+        Consulte con un abogado habilitado antes de actuar.
+        Ver sección <strong>Contactos para Verificación Profesional</strong> al final de cada documento.
+      </div>
+    </div>
+
     <h1 id="investigacion-normativa-sii-arriendo-amoblado-y-airbnb">Investigacion Normativa SII: Arriendo Amoblado y Airbnb</h1>
 <p><strong>Fecha:</strong> 2026-02-14
 <strong>Caso:</strong> Airbnb Villarrica
@@ -109,7 +170,7 @@
 <strong>Estado:</strong> Parcialmente verificado (ver leyenda de confiabilidad)</p>
 <hr>
 <h2 id="leyenda-de-confiabilidad">Leyenda de Confiabilidad</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Icono</th>
@@ -130,11 +191,11 @@
 <td>Informacion probable basada en conocimiento de la normativa chilena; VERIFICAR numero/fecha antes de citar</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="1-legislacion-base">1. LEGISLACION BASE</h2>
 <h3 id="11-dl-825-ley-sobre-impuesto-a-las-ventas-y-servicios">1.1 DL 825 - Ley sobre Impuesto a las Ventas y Servicios</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -169,7 +230,7 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Articulos clave para arriendo amoblado:</strong></p>
 <ul>
 <li>
@@ -189,7 +250,7 @@
 </li>
 </ul>
 <h3 id="12-dl-824-ley-sobre-impuesto-a-la-renta">1.2 DL 824 - Ley sobre Impuesto a la Renta</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -224,7 +285,7 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Articulos clave:</strong></p>
 <ul>
 <li><strong>Art. 20 N 1</strong>: Rentas de bienes raices (primera categoria). Incluye arriendo.</li>
@@ -233,7 +294,7 @@
 <li><strong>Art. 39 N 3</strong>: Exencion de primera categoria para rentas de arriendo de bienes raices obtenidas por personas naturales (con limites).</li>
 </ul>
 <h3 id="13-ley-21210-modernizacion-tributaria-2020">1.3 Ley 21.210 - Modernizacion Tributaria (2020)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -273,7 +334,7 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Relevancia para Airbnb:</strong>
 - Creo nuevo Art. 35 A en DL 825: regimen simplificado de IVA para prestadores extranjeros de servicios digitales
 - Nuevo Art. 8 letra n) del DL 825: grava con IVA servicios prestados por plataformas digitales desde el extranjero a usuarios chilenos
@@ -281,7 +342,7 @@
 - <strong>Tasa</strong>: 19% sobre el servicio digital
 - <strong>Impacto Airbnb</strong>: La comision que Airbnb cobra al anfitrion (servicio de intermediacion desde Irlanda) esta potencialmente gravada con IVA -- pero Airbnb como plataforma ya deberia estar declarando y pagando este IVA al SII</p>
 <h3 id="14-ley-21420-reduce-o-elimina-exenciones-tributarias-2022">1.4 Ley 21.420 - Reduce o Elimina Exenciones Tributarias (2022)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -321,10 +382,10 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Relevancia</strong>: Modifico tratamiento de IVA en venta de inmuebles nuevos. No modifico directamente el Art. 8 g) sobre arriendo amoblado, pero sí impacto en el credito fiscal por compra de inmuebles.</p>
 <h3 id="15-ley-21713-cumplimiento-de-obligaciones-tributarias-2024">1.5 Ley 21.713 - Cumplimiento de Obligaciones Tributarias (2024)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -364,12 +425,12 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Relevancia</strong>: Modificaciones adicionales a la Ley de IVA. La Circular 12/2025 y Circular 39/2025 del SII instruyeron sobre estos cambios.</p>
 <hr>
 <h2 id="2-circulares-del-sii">2. CIRCULARES DEL SII</h2>
 <h3 id="21-circular-n-42-de-2020-iva-a-servicios-digitales-extranjeros">2.1 Circular N 42 de 2020 -- IVA a Servicios Digitales Extranjeros</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -409,7 +470,7 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Implementa las instrucciones de la Ley 21.210 sobre IVA a servicios digitales
 - Define que servicios prestados desde el extranjero quedan gravados con IVA 19%
@@ -417,7 +478,7 @@
 - Incluye servicios de intermediacion de plataformas como Airbnb, Booking, Uber, Netflix, Spotify
 - <strong>Impacto directo</strong>: La comision que Airbnb cobra desde Irlanda a anfitriones chilenos esta gravada con IVA. Airbnb debe declarar y pagar este IVA al SII como contribuyente no domiciliado</p>
 <h3 id="22-circular-n-37-de-2020-modificaciones-sobre-inmuebles">2.2 Circular N 37 de 2020 -- Modificaciones sobre Inmuebles</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -457,13 +518,13 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Instrucciones sobre cambios en tributacion de inmuebles por Ley 21.210
 - Puede contener instrucciones sobre separacion terreno/construccion para efectos de IVA
 - Relevante para credito fiscal IVA en compra de inmuebles destinados a arriendo amoblado</p>
 <h3 id="23-circular-n-26-de-2021-modificaciones-iva-por-ley-21210">2.3 Circular N 26 de 2021 -- Modificaciones IVA por Ley 21.210</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -503,13 +564,13 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Complementa las instrucciones de circulares anteriores sobre IVA
 - Aborda modificaciones al DL 825 introducidas por Ley 21.210
 - <strong>Nota</strong>: La Circular 12/2025 dejo sin efecto parcialmente las instrucciones del N 6, Titulo II de esta circular</p>
 <h3 id="24-circular-n-50-de-2022-modificaciones-art-2-y-art-12-e-del-dl-825">2.4 Circular N 50 de 2022 -- Modificaciones Art. 2 y Art. 12 E del DL 825</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -549,13 +610,13 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Art. 2 define conceptos gravados (incluye servicios)
 - Art. 12 E contiene exenciones (incluye la exencion de arriendo sin amoblar)
 - Relevante para entender cambios en exenciones de IVA aplicables a arriendo</p>
 <h3 id="25-circular-n-12-de-2025-modificaciones-iva-por-ley-21713">2.5 Circular N 12 de 2025 -- Modificaciones IVA por Ley 21.713</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -595,12 +656,12 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Instrucciones actualizadas sobre IVA conforme a la ultima reforma tributaria
 - Modifica parcialmente la Circular 26/2021</p>
 <h3 id="26-circular-n-39-de-2025-iva-y-bienes-muebles-ubicados-en-el-extranjero">2.6 Circular N 39 de 2025 -- IVA y Bienes Muebles Ubicados en el Extranjero</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -640,9 +701,9 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="27-circular-n-62-de-2020-regimenes-tributarios-micro-pequena-y-mediana-empresa">2.7 Circular N 62 de 2020 -- Regimenes Tributarios Micro, Pequena y Mediana Empresa</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -682,13 +743,13 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Instrucciones sobre regimen Pro-PyME (Art. 14 D N 3)
 - Define requisitos, tasa 25%, credito 100%, depreciacion instantanea
 - Directamente aplicable a SpA que opere Airbnb</p>
 <h3 id="28-circular-n-73-de-2020-modificaciones-a-ley-de-renta-por-ley-21210">2.8 Circular N 73 de 2020 -- Modificaciones a Ley de Renta por Ley 21.210</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -728,11 +789,11 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="3-resoluciones-del-sii">3. RESOLUCIONES DEL SII</h2>
 <h3 id="31-resolucion-n-67-de-2020-iva-para-contribuyentes-no-domiciliados">3.1 Resolucion N 67 de 2020 -- IVA para Contribuyentes No Domiciliados</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -772,13 +833,13 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Establece el procedimiento para que plataformas extranjeras (Airbnb, Netflix, Spotify, etc.) declaren y paguen IVA al SII
 - Define como se registran los contribuyentes no domiciliados
 - Implementa el Art. 35 A del DL 825</p>
 <h3 id="32-resolucion-n-55-de-2020-regimen-simplificado-art-35-a">3.2 Resolucion N 55 de 2020 -- Regimen Simplificado Art. 35 A</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -818,12 +879,12 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Define el regimen simplificado para que plataformas extranjeras como Airbnb cumplan con IVA en Chile
 - Establece procedimiento de declaracion y pago</p>
 <h3 id="33-resolucion-n-74-de-2020-boletas-electronicas">3.3 Resolucion N 74 de 2020 -- Boletas Electronicas</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Campo</th>
@@ -863,7 +924,7 @@
 <td></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Contenido relevante:</strong>
 - Relevante para emision de boletas por arriendo Airbnb a consumidores finales (huespedes)</p>
 <hr>
@@ -872,7 +933,7 @@
 <p><strong>IMPORTANTE</strong>: Los oficios listados a continuacion provienen de mi conocimiento de la jurisprudencia tributaria chilena. Los numeros y fechas son PROBABLES y <strong>REQUIEREN VERIFICACION</strong> en el buscador de jurisprudencia del SII: https://www4.sii.cl/acjui/internet/</p>
 </blockquote>
 <h3 id="41-oficios-sobre-arriendo-amoblado-e-iva">4.1 Oficios sobre Arriendo Amoblado e IVA</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Oficio</th>
@@ -907,9 +968,9 @@
 <td><strong><span class="tag-verify">[REQUIERE-VERIFICACION]</span></strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="42-oficios-sobre-plataformas-digitales-y-servicios-desde-el-extranjero">4.2 Oficios sobre Plataformas Digitales y Servicios desde el Extranjero</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Oficio</th>
@@ -932,9 +993,9 @@
 <td><strong><span class="tag-verify">[REQUIERE-VERIFICACION]</span></strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="43-oficios-sobre-documentacion-tributaria-factura-vs-boleta">4.3 Oficios sobre Documentacion Tributaria (Factura vs Boleta)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Oficio</th>
@@ -951,11 +1012,11 @@
 <td><strong>[CONOCIMIENTO-FIRME]</strong> (regla general, no oficio especifico)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="5-normativa-sobre-iva-en-servicios-digitales-ley-21210">5. NORMATIVA SOBRE IVA EN SERVICIOS DIGITALES (LEY 21.210)</h2>
 <h3 id="51-marco-general">5.1 Marco General</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
@@ -1000,7 +1061,7 @@
 <td><strong><span class="tag-verified">[VERIFICADO-WEB]</span></strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="52-como-afecta-a-airbnb">5.2 Como Afecta a Airbnb</h3>
 <ol>
 <li>
@@ -1019,7 +1080,7 @@
 <strong>Confiabilidad</strong>: <strong><span class="tag-verify">[REQUIERE-VERIFICACION]</span></strong> (URL exacta puede variar)</p>
 <hr>
 <h2 id="6-codigos-de-actividad-economica-sii">6. CODIGOS DE ACTIVIDAD ECONOMICA SII</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Codigo</th>
@@ -1054,7 +1115,7 @@
 <td><strong>[CONOCIMIENTO-FIRME]</strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Recomendacion para este caso</strong>: Codigo <strong>55101</strong> para operacion Airbnb profesional.</p>
 <p><strong>Fuente de codigos</strong>: Los codigos CIIU Rev. 4 estan disponibles en:
 - https://www.sii.cl/ayudas/aprenda_sobre/3702-702-2838.html
@@ -1062,7 +1123,7 @@
 <hr>
 <h2 id="7-normas-sobre-retencion-de-impuestos-por-plataformas-digitales">7. NORMAS SOBRE RETENCION DE IMPUESTOS POR PLATAFORMAS DIGITALES</h2>
 <h3 id="71-situacion-actual-2026">7.1 Situacion Actual (2026)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
@@ -1092,9 +1153,9 @@
 <td><strong><span class="tag-verify">[REQUIERE-VERIFICACION]</span></strong></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="72-impuesto-adicional-art-59-dl-824">7.2 Impuesto Adicional (Art. 59 DL 824)</h3>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Aspecto</th>
@@ -1114,10 +1175,10 @@
 <td><strong><span class="tag-verify">[REQUIERE-VERIFICACION]</span></strong> -- verificar si esta exencion aplica a la comision de Airbnb</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="8-resumen-obligaciones-del-anfitrion-airbnb-en-chile">8. RESUMEN: OBLIGACIONES DEL ANFITRION AIRBNB EN CHILE</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>Obligacion</th>
@@ -1170,7 +1231,7 @@
 <td>Libros de compra/venta, ingresos/egresos</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="9-fuentes-pendientes-de-buscar">9. FUENTES PENDIENTES DE BUSCAR</h2>
 <p>Las siguientes fuentes NO pudieron ser verificadas por limitaciones de acceso web durante esta sesion:</p>
@@ -1185,7 +1246,7 @@
 </ol>
 <hr>
 <h2 id="10-tabla-resumen-de-fuentes-verificadas">10. TABLA RESUMEN DE FUENTES VERIFICADAS</h2>
-<table>
+<div class="table-wrapper"><table>
 <thead>
 <tr>
 <th>#</th>
@@ -1326,7 +1387,7 @@
 <td>Conocimiento firme</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <hr>
 <h2 id="11-proximos-pasos-de-verificacion">11. PROXIMOS PASOS DE VERIFICACION</h2>
 <p>Para completar esta investigacion se requiere acceso web para:</p>
@@ -1340,10 +1401,304 @@
 <li>Confirmar URLs exactas de todos los documentos</li>
 </ol>
 <p><strong>IMPORTANTE</strong>: Los numeros de oficios listados en la seccion 4 son PROBABLES y NO deben citarse como fuente sin verificacion previa en el buscador del SII.</p>
+
     <footer class="site-footer no-print">
       <hr>
-      <small>El Director v1.0 &middot; <a href="../deploy-guide.html">Guia de Despliegue</a></small>
+      <small>Contenido generado con apoyo de IA — orientativo, no vinculante. Consulte con un abogado habilitado.</small>
     </footer>
   </main>
+
+  <script>
+    // ── Indicador de página activa en sidebar ──────────────────────────────
+    (function() {
+      var current = window.location.href.split('?')[0].split('#')[0];
+      document.querySelectorAll('.sidebar a').forEach(function(link) {
+        if (link.href.split('?')[0].split('#')[0] === current)
+          link.classList.add('active');
+      });
+    })();
+
+    // ── Cargador PII client-side ───────────────────────────────────────────
+    (function() {
+      var btn = document.getElementById('pii-load-btn');
+      var status = document.getElementById('pii-status');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        var input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json,application/json';
+        input.onchange = function(e) {
+          var file = e.target.files[0];
+          if (!file) return;
+          var reader = new FileReader();
+          reader.onload = function(ev) {
+            try {
+              var manifest = JSON.parse(ev.target.result);
+              var spans = document.querySelectorAll('.pii-redacted');
+              var count = 0;
+              spans.forEach(function(span) {
+                var token = span.getAttribute('data-token');
+                if (manifest[token]) {
+                  span.textContent = manifest[token];
+                  span.classList.remove('pii-redacted');
+                  span.classList.add('pii-revealed');
+                  count++;
+                }
+              });
+              if (count > 0) {
+                btn.textContent = '✓ Datos revelados (' + count + ')';
+                btn.classList.add('pii-loaded');
+                if (status) status.textContent = '';
+              } else {
+                if (status) status.textContent = 'Sin datos en esta página';
+              }
+            } catch(err) {
+              if (status) status.textContent = 'Error: JSON inválido';
+            }
+          };
+          reader.readAsText(file);
+        };
+        input.click();
+      });
+    })();
+
+    // ── Mermaid: guardar fuentes ANTES de render, luego inicializar ────────
+    document.addEventListener('DOMContentLoaded', function() {
+      // 1. Guardar innerHTML original antes de que Mermaid lo reemplace
+      document.querySelectorAll('.mermaid').forEach(function(el, i) {
+        var id = 'mermaid-' + i;
+        el.setAttribute('data-mermaid-id', id);
+        window._mermaidSrc[id] = el.innerHTML.trim();
+      });
+      // 2. Renderizar
+      mermaid.run({ querySelector: '.mermaid' });
+    });
+
+    // ── Theme toggle ──────────────────────────────────────────────────────
+    function applyTheme(t) {
+      document.documentElement.setAttribute('data-theme', t);
+      var btn = document.getElementById('theme-toggle');
+      if (btn) btn.textContent = t === 'dark' ? '☀' : '🌙';
+
+      var mermaidTheme = t === 'dark' ? 'dark' : 'neutral';
+      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
+
+      // Re-renderizar diagramas desde fuente original guardada
+      document.querySelectorAll('.mermaid').forEach(function(el) {
+        var id = el.getAttribute('data-mermaid-id');
+        var src = id ? window._mermaidSrc[id] : null;
+        if (src) {
+          el.removeAttribute('data-processed');
+          el.innerHTML = src;
+        }
+      });
+      mermaid.run({ querySelector: '.mermaid' });
+    }
+
+    function toggleTheme() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try { localStorage.setItem('villarrica-theme', next); } catch(e) {}
+    }
+
+    // Restaurar ícono del tema al cargar
+    (function() {
+      try {
+        var saved = localStorage.getItem('villarrica-theme') || 'light';
+        var btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = saved === 'dark' ? '☀' : '🌙';
+      } catch(e) {}
+    })();
+
+    // ── Sidebar toggle (desktop) ──────────────────────────────────────────
+    function toggleSidebar() {
+      var collapsed = document.body.classList.toggle('sidebar-collapsed');
+      var btn = document.getElementById('sidebar-toggle-btn');
+      if (btn) btn.textContent = collapsed ? '☰' : '✕';
+      try { localStorage.setItem('villarrica-sidebar', collapsed ? '1' : '0'); } catch(e) {}
+    }
+
+    // Restaurar estado sidebar al cargar
+    (function() {
+      try {
+        if (localStorage.getItem('villarrica-sidebar') === '1') {
+          document.body.classList.add('sidebar-collapsed');
+          var btn = document.getElementById('sidebar-toggle-btn');
+          if (btn) btn.textContent = '☰';
+        }
+      } catch(e) {}
+    })();
+
+    // ── Font size selector ────────────────────────────────────────────────
+    var _fontSizes = { small: '0.875rem', normal: '1rem', large: '1.125rem' };
+
+    function changeFontSize(size) {
+      var val = _fontSizes[size] || '1rem';
+      document.documentElement.style.setProperty('--font-size-base', val);
+      try { localStorage.setItem('villarrica-fontsize', size); } catch(e) {}
+    }
+
+    // Restaurar tamaño de letra al cargar
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        var saved = localStorage.getItem('villarrica-fontsize');
+        if (saved && _fontSizes[saved]) {
+          document.documentElement.style.setProperty('--font-size-base', _fontSizes[saved]);
+          var sel = document.getElementById('font-size-select');
+          if (sel) sel.value = saved;
+        }
+      } catch(e) {}
+    });
+
+    // ── Disclaimer expandible ─────────────────────────────────────────────
+    function toggleDisclaimerFull() {
+      var el = document.getElementById('disclaimer-full');
+      var btn = document.getElementById('disclaimer-expand-btn');
+      if (!el || !btn) return;
+      var expanded = !el.hidden;
+      el.hidden = expanded;
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'ⓘ más' : '✕ cerrar';
+    }
+
+    // ── Sidebar accordion (secciones colapsables) ─────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      var titles = document.querySelectorAll('.sidebar li.section-title');
+      titles.forEach(function(title) {
+        var ul = title.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL') return;
+
+        // Indicador de toggle
+        var icon = document.createElement('span');
+        icon.className = 'section-toggle-icon';
+        icon.textContent = '▸';
+        title.appendChild(icon);
+        title.setAttribute('tabindex', '0');
+
+        // Empezar colapsado
+        ul.style.display = 'none';
+        ul.style.marginTop = '0';
+
+        function toggle() {
+          var open = ul.style.display !== 'none';
+          ul.style.display = open ? 'none' : '';
+          icon.textContent = open ? '▸' : '▾';
+        }
+        title.addEventListener('click', toggle);
+        title.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+
+      // Expandir la sección que contiene el enlace activo
+      var activeLink = document.querySelector('.sidebar a.active');
+      if (activeLink) {
+        var el = activeLink.parentElement;
+        var sidebar = document.querySelector('.sidebar');
+        while (el && el !== sidebar) {
+          if (el.tagName === 'UL') {
+            el.style.display = '';
+            var prev = el.previousElementSibling;
+            if (prev && prev.classList.contains('section-title')) {
+              var icon = prev.querySelector('.section-toggle-icon');
+              if (icon) icon.textContent = '▾';
+            }
+          }
+          el = el.parentElement;
+        }
+      }
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!window.IntersectionObserver) return;
+      var targets = document.querySelectorAll('h2, .table-wrapper, blockquote');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      targets.forEach(function(el) {
+        el.classList.add('reveal');
+        observer.observe(el);
+      });
+    });
+
+    // ── Score ring: count-up + fill stroke (dynamic radius) ──────────────
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.score-ring').forEach(function(ring) {
+        var numEl = ring.querySelector('.number[data-target]');
+        if (!numEl) return;
+        var target = parseInt(numEl.getAttribute('data-target'), 10);
+        var fillCircle = ring.querySelector('circle.fill');
+
+        if (fillCircle) {
+          var r = parseFloat(fillCircle.getAttribute('r') || '44');
+          var circumference = 2 * Math.PI * r;
+          fillCircle.style.strokeDasharray = String(circumference);
+          fillCircle.style.strokeDashoffset = String(circumference); // start empty
+          setTimeout(function() {
+            fillCircle.style.strokeDashoffset = String(circumference * (1 - target / 100));
+          }, 150);
+        }
+
+        // Count-up number
+        var duration = 1200;
+        var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          numEl.textContent = Math.round(target * eased);
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    });
+
+    // ── Strength tracker: dimension toggle + bar animation ────────────────
+    function toggleDimDetail(btn) {
+      var row = btn.closest('.st-dim-row');
+      if (!row) return;
+      var body = row.querySelector('.st-dim-detail-body');
+      if (!body) return;
+      var open = !body.hidden;
+      body.hidden = open;
+      btn.setAttribute('aria-expanded', String(!open));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate dimension bars on load
+      setTimeout(function() {
+        document.querySelectorAll('.st-dim-bar-fill[data-width]').forEach(function(bar) {
+          bar.style.width = bar.getAttribute('data-width') + '%';
+        });
+      }, 300);
+    });
+
+    // ── Severity row auto-detection ───────────────────────────────────────
+    // Detecta keywords en celdas cortas (<35 chars) y agrega clase al <tr>
+    document.addEventListener('DOMContentLoaded', function() {
+      var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante|🔴/i;
+      var reSuccess  = /completo|completado|resuelto|listo|blindado|✓|✅|🟢/i;
+      var reWarning  = /pendiente|revisar|verificar|atenci[oó]n|🟡|⚠/i;
+      document.querySelectorAll('table tr').forEach(function(row) {
+        if (row.closest('thead')) return;
+        var cells = row.querySelectorAll('td');
+        var detected = null;
+        cells.forEach(function(td) {
+          var t = td.textContent.trim();
+          if (t.length > 35) return;
+          if (!detected && reCritical.test(t)) detected = 'critical';
+          else if (!detected && reSuccess.test(t))  detected = 'success';
+          else if (!detected && reWarning.test(t))  detected = 'warning';
+        });
+        if (detected) row.classList.add('row-' + detected);
+      });
+    });
+  </script>
 </body>
 </html>
