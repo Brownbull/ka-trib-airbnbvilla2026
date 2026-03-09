@@ -321,27 +321,27 @@
               <tr>
                 <td style="font-weight: 500;">Consultas tributarias</td>
                 <td>Servicio de Impuestos Internos (SII)</td>
-                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">sii.cl</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;"><a href="https://www.sii.cl" target="_blank" rel="noopener" style="color: inherit;">sii.cl</a></td>
               </tr>
               <tr>
                 <td style="font-weight: 500;">Contadores</td>
                 <td>Colegio de Contadores de Chile</td>
-                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">contach.cl</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;"><a href="https://www.contach.cl" target="_blank" rel="noopener" style="color: inherit;">contach.cl</a></td>
               </tr>
               <tr>
                 <td style="font-weight: 500;">Abogados</td>
                 <td>Colegio de Abogados de Chile</td>
-                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">colegioabogados.cl</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;"><a href="https://www.colegioabogados.cl" target="_blank" rel="noopener" style="color: inherit;">colegioabogados.cl</a></td>
               </tr>
               <tr>
                 <td style="font-weight: 500;">Turismo</td>
                 <td>SERNATUR</td>
-                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">sernatur.cl</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;"><a href="https://www.sernatur.cl" target="_blank" rel="noopener" style="color: inherit;">sernatur.cl</a></td>
               </tr>
               <tr>
                 <td style="font-weight: 500;">Patentes</td>
                 <td>Municipalidad de Villarrica</td>
-                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">munivillarrica.cl</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;"><a href="https://www.munivillarrica.cl" target="_blank" rel="noopener" style="color: inherit;">munivillarrica.cl</a></td>
               </tr>
             </tbody>
           </table>
@@ -409,7 +409,7 @@
     document.querySelectorAll('.reveal, .reveal-heading').forEach(el => revealObserver.observe(el));
 
     const jumpLinks = document.querySelectorAll('.jump-list a');
-    const headings = document.querySelectorAll('[id]');
+    const headings = document.querySelectorAll('h1[id], h2[id]');
     const jumpObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
