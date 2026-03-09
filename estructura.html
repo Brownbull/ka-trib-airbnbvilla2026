@@ -283,7 +283,7 @@
             </div>
             <span class="guide-freq">cada reserva</span>
           </a>
-          <a class="guide-card" href="estrategia.html#costos-impl">
+          <a class="guide-card" href="#guia-adelanto">
             <div>
               <div style="font-weight: 500;">Guía Adelanto de Socio/a</div>
               <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">Compra con tarjeta personal a nombre SpA — cuenta corriente mercantil</div>
@@ -304,6 +304,139 @@
             </div>
             <span class="guide-freq">enero-abril</span>
           </a>
+        </div>
+      </div>
+
+      <!-- Guía Adelanto de Socio/a -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Guía Operacional · Eventual</p>
+          <h2 class="chapter-title reveal-heading" data-target-weight="600" id="guia-adelanto">Adelanto de Socio/a</h2>
+        </div>
+
+        <div class="disclaimer reveal">
+          <strong style="font-weight: 600;">Cuenta corriente mercantil</strong> (Art. 602-619 Código de Comercio). No es préstamo, no es aporte de capital, no es donación. Es una deuda de la SpA hacia el/la socio/a que adelanta. Validar con contador antes de implementar.
+        </div>
+
+        <div class="subsection reveal">
+          <h3 style="font-weight: 500; margin-bottom: 12px;">Cuándo usar</h3>
+          <div class="narrative-block">
+            <p>Solo cuando la SpA necesita comprar un activo y <strong style="font-weight: 600;">no tiene fondos ni tarjeta propia</strong>. Un socio/a adelanta el pago con su tarjeta personal. La SpA reembolsa en máximo 30 días. Método preferido siempre: transferir capital a la SpA y que la SpA pague directo.</p>
+          </div>
+          <div class="info-strip" style="margin-top: 16px;">
+            <div class="info-card">
+              <div class="info-label">MÁX POR OPERACIÓN</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">$2.000.000</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">MÁX ACUMULADO</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">$5.000.000</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">PLAZO REEMBOLSO</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">30 días</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">PLAZO ABSOLUTO</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">31 dic</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection reveal">
+          <h3 style="font-weight: 500; margin-bottom: 12px;">Prerrequisitos (todos obligatorios)</h3>
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Prerrequisito</th><th>Por qué</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight: 600;">1</td><td>SpA constituida con RUT</td><td style="font-weight: 300;">Sin RUT no se emite factura a la SpA</td></tr>
+              <tr><td style="font-weight: 600;">2</td><td style="font-weight: 600; color: var(--magenta);">Inicio actividades SpA en SII</td><td style="font-weight: 300;">Sin esto, IVA crédito fiscal es IRRECUPERABLE</td></tr>
+              <tr><td style="font-weight: 600;">3</td><td>Cuenta bancaria de la SpA</td><td style="font-weight: 300;">Sin cuenta no se puede reembolsar</td></tr>
+              <tr><td style="font-weight: 600;">4</td><td>Contrato arriendo PN→SpA firmado</td><td style="font-weight: 300;">Muebles deben ser posteriores al contrato</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection reveal">
+          <h3 style="font-weight: 500; margin-bottom: 12px;">Paso a paso (7 pasos)</h3>
+          <ul class="action-list">
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 1 — Acta de Autorización</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;"><strong style="font-weight: 500;">ANTES de comprar.</strong> El OTRO socio/a firma la autorización (no quien adelanta). Elimina autocontratación.</div>
+              </div>
+              <span class="action-urgency bloqueante">ANTES</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 2 — Pedir FACTURA a nombre de la SpA</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Razón social, RUT, giro 55101. Factura (no boleta) para recuperar IVA. Medio de pago es independiente.</div>
+              </div>
+              <span class="action-urgency critico">CRÍTICO</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 3 — Conjunto documental</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Acta bilateral + Factura SpA + Voucher tarjeta + Registro de adelanto. Siempre juntos, nunca separados.</div>
+              </div>
+              <span class="action-urgency pendiente">MISMO DÍA</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 4 — Registrar en Libro I&E</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Asiento 1: egreso del activo + IVA crédito. Asiento 2: deuda SpA→socio/a en hoja "Cuenta Corriente Socios".</div>
+              </div>
+              <span class="action-urgency pendiente">MISMO DÍA</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 5 — Reembolsar desde cuenta SpA</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Glosa: <span style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">"Reembolso adelanto ADL-XXX — FE-XXXXX"</span>. Monto exacto. Máx 30 días.</div>
+              </div>
+              <span class="action-urgency critico">CRÍTICO</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 6 — Cerrar en Registro de Adelantos</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Estado → REEMBOLSADO. Fecha, N° transferencia, glosa utilizada.</div>
+              </div>
+              <span class="action-urgency pendiente">POST-REEMBOLSO</span>
+            </li>
+            <li class="action-item">
+              <div>
+                <div class="action-title">PASO 7 — Inventario de Activos</div>
+                <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Si es activo fijo (mueble, electro): fecha, proveedor, factura, valor, depreciación instantánea año 1.</div>
+              </div>
+              <span class="action-urgency pendiente">SI CORRESPONDE</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="subsection reveal">
+          <h3 style="font-weight: 500; margin-bottom: 12px;">Ventaja dos socios + Regla anti-circularidad</h3>
+          <div class="narrative-block">
+            <p><strong style="font-weight: 600;">Autorización bilateral:</strong> Un socio adelanta, el otro autoriza y firma. Dos firmas distintas = valor probatorio fuerte. Elimina riesgo de autocontratación.</p>
+            <p style="margin-top: 8px;"><strong style="font-weight: 600;">Anti-circularidad:</strong> NUNCA aportar capital y reembolsar el mismo día. Mínimo 5 días hábiles entre aporte y reembolso. Con separación de bienes, un socio puede aportar capital y el otro ser reembolsado (patrimonios distintos).</p>
+          </div>
+        </div>
+
+        <div class="subsection reveal">
+          <h3 style="font-weight: 500; margin-bottom: 12px;">Riesgos principales</h3>
+          <div class="risk-item">
+            <span class="risk-level alto">ALTO</span>
+            <div><strong style="font-weight: 600;">Compra antes de inicio actividades:</strong> <span style="font-weight: 300;">IVA crédito IRRECUPERABLE. Verificar prerrequisitos ANTES.</span></div>
+          </div>
+          <div class="risk-item">
+            <span class="risk-level medio">MEDIO</span>
+            <div><strong style="font-weight: 500;">SII reclasifica como retiro (Art. 21):</strong> <span style="font-weight: 300;">Impuesto único 40% + multas. Mitigar con glosa + conjunto documental.</span></div>
+          </div>
+          <div class="risk-item">
+            <span class="risk-level medio">MEDIO</span>
+            <div><strong style="font-weight: 500;">Circularidad de fondos:</strong> <span style="font-weight: 300;">Aporte + reembolso mismo día = sin sustancia. Mínimo 5 días hábiles.</span></div>
+          </div>
+          <div class="risk-item">
+            <span class="risk-level medio">MEDIO</span>
+            <div><strong style="font-weight: 500;">Adelantos abiertos al 31 dic:</strong> <span style="font-weight: 300;">Pueden tratarse como retiros. Cerrar TODO antes de cierre ejercicio.</span></div>
+          </div>
         </div>
       </div>
 
@@ -376,6 +509,7 @@
         <li><a href="#estructura" class="active">Estructura</a></li>
         <li><a href="#documentos">Documentos</a></li>
         <li><a href="#operacion">Operación</a></li>
+        <li><a href="#guia-adelanto">Adelantos</a></li>
         <li><a href="#contactos">Contactos</a></li>
         <li><a href="#glosario">Glosario</a></li>
       </ul>
