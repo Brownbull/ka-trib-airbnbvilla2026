@@ -2,10 +2,373 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=99_entregable/PANEL.html">
-  <title>Redirigiendo...</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airbnb Villarrica — Panel de Control</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .hero-section {
+      text-align: center;
+      padding: 80px 32px 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-case-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 24px;
+    }
+    .hero-case-title {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .hero-case-subtitle {
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
+      font-weight: 200;
+      color: var(--ink-light);
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+    }
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 48px;
+    }
+    .section-directory { margin-top: 48px; }
+    .dir-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--ink);
+      transition: font-weight var(--morph-duration) var(--morph-ease);
+      font-weight: 300;
+    }
+    .dir-item:hover { font-weight: 600; text-decoration: none; }
+    .dir-item.restricted-dir { color: var(--purple); font-weight: 250; }
+    .dir-item.restricted-dir:hover { font-weight: 500; }
+    .dir-item .dir-name { font-size: 1.1rem; }
+    .dir-item .dir-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-faint);
+    }
+    @media (max-width: 767px) {
+      .hero-section { padding: 48px 16px 40px; }
+      .overview-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirigiendo a <a href="99_entregable/PANEL.html">99_entregable/PANEL.html</a></p>
+
+  <header class="document-header">
+    <div class="doc-meta">
+      <span class="doc-title">Airbnb Villarrica</span>
+      <span class="doc-badge score">TOCS 68/100</span>
+      <span class="doc-badge">OPTIMIZADO</span>
+    </div>
+    <div class="doc-actions">
+      <div class="mode-toggle" role="group" aria-label="Modo de visualización">
+        <button class="active" data-mode="compartible" aria-pressed="true">COMPARTIBLE</button>
+        <button data-mode="completo" aria-pressed="false">COMPLETO</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="document-layout">
+    <aside class="section-nav" aria-label="Navegación">
+      <h3>Secciones</h3>
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-item active"><span class="badge public"></span> Panel General</a></li>
+        <li><a href="estructura.html" class="nav-item"><span class="badge public"></span> Estructura</a></li>
+        <li><a href="estructura.html#documentos" class="nav-item"><span class="badge public"></span> Documentos</a></li>
+        <li><a href="estructura.html#operacion" class="nav-item"><span class="badge public"></span> Operación</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Simulación</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Riesgos</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Acciones</a></li>
+      </ul>
+    </aside>
+
+    <main class="document-content">
+      <div class="hero-section reveal">
+        <p class="hero-case-label">Estructuración Tributaria</p>
+        <h1 class="hero-case-title reveal-heading" data-target-weight="800">AIRBNB<br>VILLARRICA</h1>
+        <p class="hero-case-subtitle">SpA Pro-PyME + Persona Natural</p>
+        <div class="hero-meta">
+          <span class="hero-meta-item">Contribuyente: <span class="pii-redacted" data-token="NOMBRE_CONTRIBUYENTE" aria-label="Dato personal redactado">NOMBRE_CONTRIBUYENTE</span></span>
+          <span class="hero-meta-item">Inmueble: <span class="pii-redacted" data-token="EDIFICIO_REFERENCIA" aria-label="Dato redactado">EDIFICIO_REFERENCIA</span></span>
+        </div>
+      </div>
+
+      <div class="disclaimer reveal">
+        <strong style="font-weight: 600;">IMPORTANTE:</strong> Este documento NO constituye asesoría tributaria profesional. Ha sido elaborado como guía orientativa utilizando inteligencia artificial. Su contenido es no vinculante y tiene carácter exclusivamente informativo. Consulte con un contador o abogado tributarista habilitado antes de actuar.
+      </div>
+
+      <!-- Pipeline -->
+      <div class="chapter reveal">
+        <div class="chapter-label">Pipeline del Caso</div>
+        <div class="pipeline-track">
+          <div class="pipeline-node completed">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Intake</span>
+          </div>
+          <div class="pipeline-connector completed"></div>
+          <div class="pipeline-node completed">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Análisis</span>
+          </div>
+          <div class="pipeline-connector completed"></div>
+          <div class="pipeline-node completed">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Simulación</span>
+          </div>
+          <div class="pipeline-connector completed"></div>
+          <div class="pipeline-node completed">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Estructura</span>
+          </div>
+          <div class="pipeline-connector completed"></div>
+          <div class="pipeline-node completed">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Revisión</span>
+          </div>
+          <div class="pipeline-connector completed"></div>
+          <div class="pipeline-node current">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Acciones</span>
+          </div>
+          <div class="pipeline-connector"></div>
+          <div class="pipeline-node">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Implementación</span>
+          </div>
+          <div class="pipeline-connector"></div>
+          <div class="pipeline-node">
+            <div class="pipeline-dot"></div>
+            <span class="pipeline-node-label">Compliance</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-grid">
+        <!-- Info Cards -->
+        <div class="reveal">
+          <div class="chapter-label">Estado del Caso</div>
+          <div class="info-strip" style="grid-template-columns: 1fr;">
+            <div class="info-card">
+              <div class="info-label">FASE</div>
+              <div class="info-value" style="font-size: 0.95rem;">Diseño completo — pendiente acciones humanas</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">SCORE TOCS</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">68<span style="font-weight: 300; font-size: 0.8rem;">/100</span></div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">DIAGNÓSTICO</div>
+              <div class="info-value" style="color: var(--emerald);">OPTIMIZADO</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">TOCS POST-IMPLEMENTACIÓN</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">84<span style="font-weight: 300; font-size: 0.8rem;">/100 proyectado</span></div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">ESTRUCTURA</div>
+              <div class="info-value">SpA Pro-PyME</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">ACTUALIZACIÓN</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace; font-size: 1rem;">2026-03-09</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOCS Sub-scores -->
+        <div class="reveal">
+          <div class="chapter-label">Score TOCS — Desglose</div>
+          <div class="strength-grid">
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 720;">Diseño Estructural</span>
+              <div class="strength-track"><div class="strength-fill" style="width: 90%"></div></div>
+              <span class="strength-value">90%</span>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 680;">Documentación</span>
+              <div class="strength-track"><div class="strength-fill" style="width: 85%"></div></div>
+              <span class="strength-value">85%</span>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 656;">Guías Operacionales</span>
+              <div class="strength-track"><div class="strength-fill" style="width: 82%"></div></div>
+              <span class="strength-value">82%</span>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 624;">Control de Riesgos</span>
+              <div class="strength-track"><div class="strength-fill" style="width: 78%"></div></div>
+              <span class="strength-value">78%</span>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 320;">Sustancia Económica</span>
+              <div class="strength-track"><div class="strength-fill mid" style="width: 40%"></div></div>
+              <span class="strength-value">40%</span>
+            </div>
+            <div class="strength-row">
+              <span class="strength-label" style="font-weight: 160;">Implementación</span>
+              <div class="strength-track"><div class="strength-fill low" style="width: 20%"></div></div>
+              <span class="strength-value">20%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloqueantes y Críticos -->
+      <div class="chapter reveal">
+        <div class="chapter-header">
+          <p class="chapter-label">Acciones Pendientes</p>
+          <h2 class="chapter-title reveal-heading" data-target-weight="600" id="acciones">Bloqueantes y Críticos</h2>
+        </div>
+
+        <div class="evidence-grid">
+          <div class="evidence-card">
+            <div class="card-type">BLOQUEANTE · B1</div>
+            <div class="card-title">Reglamento Copropiedad</div>
+            <div class="card-meta">Confirmar que arriendo &lt;90 días está permitido en <span class="pii-redacted" data-token="EDIFICIO_REFERENCIA" aria-label="Dato redactado">EDIFICIO_REFERENCIA</span></div>
+            <span class="evidence-status blocker">BLOQUEANTE</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">CRÍTICO · C1</div>
+            <div class="card-title">Validar Art. 20 N°3</div>
+            <div class="card-meta">Confirmar clasificación como servicio de alojamiento con contador</div>
+            <span class="evidence-status pending">PENDIENTE</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">CRÍTICO · C2</div>
+            <div class="card-title">Inicio Actividades</div>
+            <div class="card-meta">Confirmar inicio actividades como arrendadora con contador</div>
+            <span class="evidence-status pending">PENDIENTE</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">CRÍTICO · C3</div>
+            <div class="card-title">Intereses Hipotecarios</div>
+            <div class="card-meta">Confirmar deducibilidad intereses con contador (Art. 31 N°1 vs Art. 55 bis)</div>
+            <span class="evidence-status pending">PENDIENTE</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">CRÍTICO · C4</div>
+            <div class="card-title">Comparables Arriendo</div>
+            <div class="card-meta">Obtener 3+ comparables de arriendo sin amoblar en Villarrica</div>
+            <span class="evidence-status pending">PENDIENTE</span>
+          </div>
+        </div>
+
+        <p style="font-size: 0.88rem; font-weight: 350; margin-top: 16px;">
+          <strong style="font-weight: 600;">Recomendación:</strong> Reunir C1+C2+C3 en una sola reunión con contador ($50-150K).
+          <a href="estructura.html#reunion-contador" class="cross-ref">Ver guía reunión &rarr;</a>
+        </p>
+      </div>
+
+      <!-- Section Directory -->
+      <div class="section-directory reveal">
+        <div class="chapter-label">Secciones del Expediente</div>
+        <nav style="margin-top: 16px;">
+          <a href="estructura.html" class="dir-item">
+            <span class="dir-name">Estructura Tributaria</span>
+            <span class="dir-type">PÚBLICO</span>
+          </a>
+          <a href="estructura.html#documentos" class="dir-item">
+            <span class="dir-name">Documentos del Caso</span>
+            <span class="dir-type">PÚBLICO</span>
+          </a>
+          <a href="estructura.html#operacion" class="dir-item">
+            <span class="dir-name">Guías de Operación</span>
+            <span class="dir-type">PÚBLICO</span>
+          </a>
+          <a href="estructura.html#contactos" class="dir-item">
+            <span class="dir-name">Contactos Profesionales</span>
+            <span class="dir-type">PÚBLICO</span>
+          </a>
+          <a href="estrategia.html" class="dir-item restricted-dir">
+            <span class="dir-name">Simulación Financiera</span>
+            <span class="dir-type" style="color: var(--purple);">RESTRINGIDO</span>
+          </a>
+          <a href="estrategia.html#riesgos" class="dir-item restricted-dir">
+            <span class="dir-name">Riesgos y Mitigaciones</span>
+            <span class="dir-type" style="color: var(--purple);">RESTRINGIDO</span>
+          </a>
+          <a href="estrategia.html#proximos-pasos" class="dir-item restricted-dir">
+            <span class="dir-name">Plan de Acción</span>
+            <span class="dir-type" style="color: var(--purple);">RESTRINGIDO</span>
+          </a>
+        </nav>
+      </div>
+    </main>
+
+    <aside class="jump-bar" aria-label="Navegación rápida">
+      <h4>En esta página</h4>
+      <ul class="jump-list">
+        <li><a href="#" class="active">Resumen</a></li>
+        <li><a href="#acciones">Acciones</a></li>
+        <li><a href="#">Secciones</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="document-footer">
+    <nav class="section-pager">
+      <div></div>
+      <a href="estructura.html" class="pager-link" style="text-align: right;">
+        <span class="pager-dir">Siguiente &rarr;</span>
+        <span class="pager-title">Estructura Tributaria</span>
+      </a>
+    </nav>
+    <p style="text-align: center; margin-top: 24px; font-size: 0.72rem; font-weight: 300; color: var(--ink-faint);">
+      Generado por El Tributarista · Actualizado 2026-03-09 · Framework El Director v1.0
+    </p>
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.dataset.targetWeight) {
+            entry.target.style.fontWeight = entry.target.dataset.targetWeight;
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .reveal-heading').forEach(el => revealObserver.observe(el));
+
+    const modeToggle = document.querySelector('.mode-toggle');
+    if (modeToggle) {
+      modeToggle.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        modeToggle.querySelectorAll('button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        document.body.dataset.mode = btn.dataset.mode;
+      });
+    }
+  </script>
 </body>
 </html>

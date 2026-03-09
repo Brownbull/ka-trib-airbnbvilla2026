@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrategia — Airbnb Villarrica</title>
+  <link rel="stylesheet" href="shared.css">
+</head>
+<body data-mode="compartible">
+
+  <header class="document-header">
+    <div class="doc-meta">
+      <span class="doc-title">Airbnb Villarrica</span>
+      <span class="doc-badge score">TOCS 68/100</span>
+      <span class="doc-badge" style="color: var(--purple); border-color: var(--purple);">RESTRINGIDO</span>
+    </div>
+    <div class="doc-actions">
+      <div class="mode-toggle" role="group" aria-label="Modo de visualización">
+        <button class="active" data-mode="compartible" aria-pressed="true">COMPARTIBLE</button>
+        <button data-mode="completo" aria-pressed="false">COMPLETO</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="document-layout">
+    <aside class="section-nav" aria-label="Navegación">
+      <h3>Secciones</h3>
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-item"><span class="badge public"></span> Panel General</a></li>
+        <li><a href="estructura.html" class="nav-item"><span class="badge public"></span> Estructura</a></li>
+        <li><a href="estructura.html#documentos" class="nav-item"><span class="badge public"></span> Documentos</a></li>
+        <li><a href="estructura.html#operacion" class="nav-item"><span class="badge public"></span> Operación</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted active"><span class="badge restricted"></span> Simulación</a></li>
+        <li><a href="#riesgos" class="nav-item restricted"><span class="badge restricted"></span> Riesgos</a></li>
+        <li><a href="#proximos-pasos" class="nav-item restricted"><span class="badge restricted"></span> Acciones</a></li>
+      </ul>
+    </aside>
+
+    <main class="document-content">
+
+      <!-- Typographic Gate -->
+      <div class="sensitivity-gate" id="gate" role="alert">
+        <div class="gate-bg-text" aria-hidden="true">RESTRINGIDO</div>
+        <h1 class="gate-title">Sección Restringida</h1>
+        <p class="gate-desc" id="gate-desc-blocked">
+          Simulación financiera, análisis de riesgos y plan de acción. Información confidencial de estrategia tributaria. Solo en modo <strong style="font-weight: 700; color: var(--purple);">COMPLETO</strong>.
+        </p>
+        <p class="gate-desc" id="gate-desc-ready" style="display: none;">
+          Contenido confidencial. Información de estrategia tributaria y financiera.
+        </p>
+        <div id="gate-switch-msg">
+          <p class="gate-switch">Cambie a modo COMPLETO. 4 sub-secciones de estrategia.</p>
+        </div>
+        <button class="gate-btn" id="gate-acknowledge" style="display: none;">Entendido &mdash; Ver estrategia</button>
+      </div>
+
+      <!-- Restricted Content -->
+      <div class="restricted-content" id="restricted-content">
+
+        <div class="disclaimer">
+          <strong style="font-weight: 600;">IMPORTANTE:</strong> Montos estimados con IA. Validar con contador antes de tomar decisiones financieras.
+        </div>
+
+        <!-- Simulación -->
+        <div class="chapter">
+          <div class="chapter-header reveal">
+            <p class="chapter-label">Sección Restringida · Simulación 5 Años</p>
+            <h1 class="chapter-title restricted-title reveal-heading" data-target-weight="300" id="simulacion">Simulación Financiera</h1>
+          </div>
+
+          <div class="subsection reveal">
+            <h2 id="metricas-clave" style="font-weight: 400;">Métricas Clave (Escenario Moderado)</h2>
+            <table class="data-table">
+              <thead><tr><th>Métrica</th><th>SpA Pro-PyME</th><th>Persona Natural</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight: 500;">Ingresos netos 5 años</td>
+                  <td style="font-family: 'DM Mono', monospace;">$48.235K</td>
+                  <td style="font-family: 'DM Mono', monospace;">$48.235K</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 500;">Gastos deducibles SpA</td>
+                  <td style="font-family: 'DM Mono', monospace;">-$32.822K</td>
+                  <td style="font-family: 'DM Mono', monospace;">-$32.822K</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 500;">Impuesto renta 5 años</td>
+                  <td style="font-weight: 600; font-family: 'DM Mono', monospace;">$0</td>
+                  <td style="font-family: 'DM Mono', monospace;">$0</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 500;">IVA neto 5 años</td>
+                  <td style="font-family: 'DM Mono', monospace;">$4.736K</td>
+                  <td style="font-family: 'DM Mono', monospace;">$4.736K</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 500;">Admin 5 años</td>
+                  <td style="font-family: 'DM Mono', monospace;">$2.280K</td>
+                  <td style="font-family: 'DM Mono', monospace;">$1.000K</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 700;">Total carga 5 años</td>
+                  <td style="font-weight: 700; font-family: 'DM Mono', monospace;">$7.016K</td>
+                  <td style="font-weight: 700; font-family: 'DM Mono', monospace;">$5.736K</td>
+                </tr>
+                <tr>
+                  <td style="font-weight: 500;">Separación patrimonial</td>
+                  <td style="font-weight: 700; color: var(--emerald);">SÍ</td>
+                  <td style="font-weight: 300; color: var(--magenta);">NO</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="font-size: 0.88rem; font-weight: 350; margin-top: 16px;">
+              <strong style="font-weight: 600;">Costo de la protección patrimonial:</strong>
+              <span style="font-family: 'DM Mono', monospace;">$21.333/mes</span> ($1.280K / 60 meses).
+              El 25% pagado por la SpA se devuelve íntegramente como crédito contra el IGC (porque 25% > 13,5% marginal).
+            </p>
+          </div>
+
+          <div class="subsection reveal">
+            <h2 id="costos-impl" style="font-weight: 400;">Costos de Implementación</h2>
+            <div class="info-strip">
+              <div class="info-card">
+                <div class="info-label">COSTO ÚNICO</div>
+                <div class="info-value" style="font-family: 'DM Mono', monospace;">$60-110K</div>
+              </div>
+              <div class="info-card">
+                <div class="info-label">RECURRENTE AÑO 1</div>
+                <div class="info-value" style="font-family: 'DM Mono', monospace;">$1.080K</div>
+              </div>
+              <div class="info-card">
+                <div class="info-label">RECURRENTE AÑO 2+</div>
+                <div class="info-value" style="font-family: 'DM Mono', monospace;">$920K-1M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Riesgos -->
+        <div class="chapter">
+          <div class="chapter-header reveal">
+            <p class="chapter-label">Sección Restringida · Análisis de Riesgo</p>
+            <h2 class="chapter-title restricted-title reveal-heading" data-target-weight="300" id="riesgos">Riesgos</h2>
+          </div>
+
+          <div class="subsection reveal">
+            <div class="risk-item">
+              <span class="risk-level alto">TOTAL</span>
+              <div><strong style="font-weight: 600;">Reglamento copropiedad prohíbe Airbnb:</strong> <span style="font-weight: 300;">Obtener reglamento ANTES de invertir. Sin esto, no se puede operar.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level alto">ALTO</span>
+              <div><strong style="font-weight: 600;">SII clasifica como Art. 20 N°1:</strong> <span style="font-weight: 300;">Semi-Integrado retroactivo, +$2,3M/5 años. Validar con contador + consulta vinculante SII.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level medio">MEDIO</span>
+              <div><strong style="font-weight: 500;">SII tasa arriendo PN→SpA (precios transferencia):</strong> <span style="font-weight: 300;">Multas Art. 97 N°11. Mitigar con 3+ comparables documentados.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level medio">MEDIO</span>
+              <div><strong style="font-weight: 500;">SII desconoce SpA por falta de sustancia:</strong> <span style="font-weight: 300;">Cuenta bancaria, contratos, gestión activa, actas de directorio.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level medio">MEDIO</span>
+              <div><strong style="font-weight: 500;">Intereses hipotecarios no deducibles:</strong> <span style="font-weight: 300;">Verificar Art. 31 N°1 vs Art. 55 bis con contador. Recalcular si solo Art. 55 bis.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level medio">MEDIO</span>
+              <div><strong style="font-weight: 500;">Errores formales modelo DIY:</strong> <span style="font-weight: 300;">Revisión trimestral con contador + sistema de alarmas obligatorio.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level bajo">BAJO</span>
+              <div><strong style="font-weight: 400;">SII cuestiona arriendo "sin amoblar":</strong> <span style="font-weight: 300;">Secuencia temporal: contrato ANTES de muebles. Facturas posteriores.</span></div>
+            </div>
+            <div class="risk-item">
+              <span class="risk-level bajo">BAJO</span>
+              <div><strong style="font-weight: 400;">Flujo caja estacional negativo:</strong> <span style="font-weight: 300;">Reserva de capital en SpA para meses muertos (abr-may, sep-nov).</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Próximos Pasos -->
+        <div class="chapter">
+          <div class="chapter-header reveal">
+            <p class="chapter-label">Sección Restringida · Plan de Acción</p>
+            <h2 class="chapter-title restricted-title reveal-heading" data-target-weight="300" id="proximos-pasos">Próximos Pasos</h2>
+          </div>
+
+          <div class="subsection reveal">
+            <h2 id="siguientes" style="font-weight: 400;">Secuencia Recomendada</h2>
+            <ul class="action-list">
+              <li class="action-item">
+                <div>
+                  <div class="action-title">Resolver B1 — Pedir reglamento copropiedad</div>
+                  <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Solicitar a administración del edificio. Sin esto, nada avanza.</div>
+                </div>
+                <span class="action-urgency bloqueante">BLOQUEANTE</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">Agendar reunión con contador (C1+C2+C3)</div>
+                  <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Llevar Entrega Profesional + checklist. $50-150K. Requiere B1 resuelto.</div>
+                </div>
+                <span class="action-urgency critico">CRÍTICO</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">Buscar comparables arriendo (C4)</div>
+                  <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Portal Inmobiliario, corredores Villarrica. 3+ comparables sin amoblar.</div>
+                </div>
+                <span class="action-urgency critico">CRÍTICO</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">Re-SCORE con El Tributarista</div>
+                  <div style="font-size: 0.85rem; font-weight: 300; color: var(--ink-light); margin-top: 4px;">Cuando C1-C4 estén resueltos. Activar agente → ejecutar SCORE.</div>
+                </div>
+                <span class="action-urgency pendiente">POST-ACCIONES</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="subsection reveal">
+            <h2 id="pendientes-operacion" style="font-weight: 400;">Pendientes Pre-Operación</h2>
+            <ul class="action-list">
+              <li class="action-item">
+                <div>
+                  <div class="action-title">P1 — Contratar seguro RC a nombre de SpA</div>
+                </div>
+                <span class="action-urgency pendiente">PENDIENTE</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">P2 — Verificar tratamiento IVA comisión Airbnb</div>
+                </div>
+                <span class="action-urgency pendiente">PENDIENTE</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">P3 — Revisión estatutos REA por abogado</div>
+                </div>
+                <span class="action-urgency pendiente">PENDIENTE</span>
+              </li>
+              <li class="action-item">
+                <div>
+                  <div class="action-title">P4 — Registro SERNATUR</div>
+                </div>
+                <span class="action-urgency pendiente">PENDIENTE</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="subsection reveal">
+            <h2 id="calendario-impl" style="font-weight: 400;">Calendario de Implementación</h2>
+            <div class="timeline">
+              <div class="timeline-item">
+                <p class="timeline-date">ANTES</p>
+                <p class="timeline-desc">Inicio actividades <span class="pii-redacted" data-token="NOMBRE_CONTRIBUYENTE" aria-label="Dato redactado">NOMBRE_CONTRIBUYENTE</span> (giro 68209)</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 0</p>
+                <p class="timeline-desc">Constituir SpA → Revisión estatutos por abogado</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 0-1</p>
+                <p class="timeline-desc">Inicio actividades SpA → Patente → Cuenta bancaria</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 1</p>
+                <p class="timeline-desc">Firmar contrato arriendo PN→SpA (ANTES de comprar muebles)</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 1-2</p>
+                <p class="timeline-desc">Amoblar con facturas a SpA (DESPUÉS del contrato)</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 2</p>
+                <p class="timeline-desc">Configurar Airbnb (depósito a cuenta SpA)</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 2-3</p>
+                <p class="timeline-desc">Primer arriendo → verificar extracto Airbnb</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">MES 3</p>
+                <p class="timeline-desc">Primera F29 (con ayuda contador)</p>
+              </div>
+              <div class="timeline-item">
+                <p class="timeline-date">ABRIL +1</p>
+                <p class="timeline-desc">F22 anual (contador)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <aside class="jump-bar" aria-label="Navegación rápida">
+      <h4>En esta sección</h4>
+      <ul class="jump-list">
+        <li><a href="#simulacion" class="active">Simulación</a></li>
+        <li><a href="#riesgos">Riesgos</a></li>
+        <li><a href="#proximos-pasos">Pasos</a></li>
+        <li><a href="#calendario-impl">Calendario</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="document-footer">
+    <nav class="section-pager">
+      <a href="estructura.html" class="pager-link">
+        <span class="pager-dir">&larr; Anterior</span>
+        <span class="pager-title">Estructura</span>
+      </a>
+      <div></div>
+    </nav>
+    <p style="text-align: center; margin-top: 24px; font-size: 0.72rem; font-weight: 300; color: var(--ink-faint);">
+      Generado por El Tributarista · Actualizado 2026-03-09 · Framework El Director v1.0
+    </p>
+  </footer>
+
+  <script>
+    const gate = document.getElementById('gate');
+    const restrictedContent = document.getElementById('restricted-content');
+    const gateAcknowledge = document.getElementById('gate-acknowledge');
+    const gateSwitchMsg = document.getElementById('gate-switch-msg');
+    const gateDescBlocked = document.getElementById('gate-desc-blocked');
+    const gateDescReady = document.getElementById('gate-desc-ready');
+    const modeToggle = document.querySelector('.mode-toggle');
+    let currentMode = 'compartible';
+    let acknowledged = false;
+
+    function updateGateState() {
+      if (currentMode === 'compartible') {
+        gate.style.display = 'flex';
+        restrictedContent.classList.remove('visible');
+        gateAcknowledge.style.display = 'none';
+        gateSwitchMsg.style.display = 'block';
+        gateDescBlocked.style.display = 'block';
+        gateDescReady.style.display = 'none';
+        acknowledged = false;
+      } else if (currentMode === 'completo' && !acknowledged) {
+        gate.style.display = 'flex';
+        restrictedContent.classList.remove('visible');
+        gateAcknowledge.style.display = 'inline-block';
+        gateSwitchMsg.style.display = 'none';
+        gateDescBlocked.style.display = 'none';
+        gateDescReady.style.display = 'block';
+      } else {
+        gate.style.display = 'none';
+        restrictedContent.classList.add('visible');
+      }
+    }
+
+    if (modeToggle) {
+      modeToggle.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        modeToggle.querySelectorAll('button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        currentMode = btn.dataset.mode;
+        document.body.dataset.mode = currentMode;
+        updateGateState();
+      });
+    }
+
+    if (gateAcknowledge) {
+      gateAcknowledge.addEventListener('click', () => {
+        acknowledged = true;
+        updateGateState();
+        document.querySelectorAll('.restricted-content .reveal, .restricted-content .reveal-heading').forEach(el => revealObserver.observe(el));
+      });
+    }
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.dataset.targetWeight) {
+            entry.target.style.fontWeight = entry.target.dataset.targetWeight;
+          }
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+    const jumpLinks = document.querySelectorAll('.jump-list a');
+    const headings = document.querySelectorAll('h2[id]');
+    const jumpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          jumpLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.jump-list a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+    headings.forEach(h => jumpObserver.observe(h));
+
+    updateGateState();
+  </script>
+</body>
+</html>

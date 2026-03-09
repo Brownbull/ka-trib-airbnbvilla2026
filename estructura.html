@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estructura — Airbnb Villarrica</title>
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .structure-diagram {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      background: var(--card-bg);
+      border: 1px solid var(--border-strong);
+      padding: 24px;
+      margin: 24px 0;
+      white-space: pre;
+      overflow-x: auto;
+    }
+    .guide-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      margin-bottom: 8px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: font-weight var(--morph-duration) var(--morph-ease);
+      font-weight: 350;
+    }
+    .guide-card:hover { font-weight: 500; text-decoration: none; }
+    .guide-freq {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--ink-faint);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="document-header">
+    <div class="doc-meta">
+      <span class="doc-title">Airbnb Villarrica</span>
+      <span class="doc-badge score">TOCS 68/100</span>
+    </div>
+    <div class="doc-actions">
+      <div class="mode-toggle" role="group" aria-label="Modo de visualización">
+        <button class="active" data-mode="compartible" aria-pressed="true">COMPARTIBLE</button>
+        <button data-mode="completo" aria-pressed="false">COMPLETO</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="document-layout">
+    <aside class="section-nav" aria-label="Navegación">
+      <h3>Secciones</h3>
+      <ul class="nav-list">
+        <li><a href="index.html" class="nav-item"><span class="badge public"></span> Panel General</a></li>
+        <li><a href="estructura.html" class="nav-item active"><span class="badge public"></span> Estructura</a></li>
+        <li><a href="#documentos" class="nav-item"><span class="badge public"></span> Documentos</a></li>
+        <li><a href="#operacion" class="nav-item"><span class="badge public"></span> Operación</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Simulación</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Riesgos</a></li>
+        <li><a href="estrategia.html" class="nav-item restricted"><span class="badge restricted"></span> Acciones</a></li>
+      </ul>
+    </aside>
+
+    <main class="document-content">
+      <!-- Estructura Recomendada -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Propuesta Tributaria</p>
+          <h1 class="chapter-title reveal-heading" data-target-weight="600" id="estructura">Estructura Recomendada</h1>
+        </div>
+
+        <div class="disclaimer reveal">
+          <strong style="font-weight: 600;">IMPORTANTE:</strong> Este documento NO constituye asesoría tributaria profesional. Consulte con un contador o abogado tributarista habilitado antes de actuar.
+        </div>
+
+        <div class="subsection reveal">
+          <h2>SpA Pro-PyME + Persona Natural</h2>
+          <div class="narrative-block">
+            <p>Estructura de dos capas: <span class="pii-redacted" data-token="NOMBRE_CONTRIBUYENTE" aria-label="Dato personal redactado">NOMBRE_CONTRIBUYENTE</span> como persona natural propietaria del inmueble, arrienda sin amoblar (exento IVA) a una SpA operadora bajo régimen Pro-PyME (Art. 14 D N°3 DL 824). La SpA opera el Airbnb, factura con IVA, y deduce todos los gastos operacionales.</p>
+          </div>
+
+          <div class="info-strip">
+            <div class="info-card">
+              <div class="info-label">RÉGIMEN</div>
+              <div class="info-value" style="font-size: 1rem;">Pro-PyME (Art. 14 D N°3)</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">GIRO</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace; font-size: 1rem;">55101</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">TASA 1RA CAT</div>
+              <div class="info-value" style="font-family: 'DM Mono', monospace;">25%</div>
+            </div>
+            <div class="info-card">
+              <div class="info-label">CRÉDITO IGC</div>
+              <div class="info-value" style="color: var(--emerald);">100%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection reveal">
+          <h2>Diagrama de Estructura</h2>
+          <div class="structure-diagram"><span class="pii-redacted" data-token="NOMBRE_CONTRIBUYENTE" aria-label="Dato redactado">NOMBRE_CONTRIBUYENTE</span> (Persona Natural)
+│
+├── Empleada dependiente
+│   └── Sueldo → IGC (retenido por empleador)
+│
+├── Propietaria inmueble <span class="pii-redacted" data-token="EDIFICIO_REFERENCIA" aria-label="Dato redactado">EDIFICIO_REFERENCIA</span>
+│   ├── Dividendo hipotecario: $710.000/mes
+│   └── Arrienda a SpA: $350.000/mes (sin amoblar, SIN IVA)
+│
+└── Socia SpA Operadora
+    ├── Régimen: Pro-PyME (Art. 14 D N°3)
+    ├── Código actividad: 55101 (alojamiento turístico)
+    ├── Contabilidad: Libro de Ingresos y Egresos
+    │
+    ├── INGRESOS
+    │   └── Arriendo amoblado vía Airbnb (IVA 19%)
+    │
+    ├── GASTOS DEDUCIBLES
+    │   ├── Arriendo a PN: $4.200.000/año
+    │   ├── Limpieza, servicios básicos, amenities
+    │   ├── Seguro RC, gastos comunes, patente
+    │   ├── Contador (full año 1, trimestral año 2+)
+    │   └── Depreciación instantánea muebles (año 1)
+    │
+    └── FLUJO DE IMPUESTOS
+        ├── IVA: débito - crédito → F29 mensual
+        ├── PPM: 0,25% ingresos (devuelto en abril)
+        └── 1era Categoría: 25% (crédito 100% vs IGC)</div>
+        </div>
+
+        <div class="subsection reveal">
+          <h2>Justificación</h2>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>SpA Pro-PyME</th>
+                <th>Persona Natural</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 500;">Separación patrimonial</td>
+                <td style="font-weight: 600; color: var(--emerald);">SÍ ($146M protegidos)</td>
+                <td style="font-weight: 300;">NO</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Gastos deducibles</td>
+                <td style="font-weight: 500;">Amplios + claros</td>
+                <td style="font-weight: 300;">Cuestionables por SII</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Depreciación</td>
+                <td style="font-weight: 600;">Instantánea (año 1)</td>
+                <td style="font-weight: 300;">Normal (7 años)</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Contabilidad</td>
+                <td style="font-weight: 500;">Simplificada (I&E)</td>
+                <td style="font-weight: 300;">Simplificada</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Costo protección</td>
+                <td style="font-weight: 400; font-family: 'DM Mono', monospace;">$21.333/mes</td>
+                <td style="font-weight: 300;">$0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subsection reveal" id="reunion-contador">
+          <h2>Requiere Profesional</h2>
+          <div class="evidence-grid">
+            <div class="evidence-card">
+              <div class="card-type">REUNIÓN</div>
+              <div class="card-title">Validar estructura (C1-C3)</div>
+              <div class="card-meta">Contador tributarista — $50-150K</div>
+              <span class="evidence-status pending">AGENDAR</span>
+            </div>
+            <div class="evidence-card">
+              <div class="card-type">REVISIÓN</div>
+              <div class="card-title">Estatutos REA</div>
+              <div class="card-meta">Abogado societario — $50-100K</div>
+              <span class="evidence-status pending">PENDIENTE</span>
+            </div>
+            <div class="evidence-card">
+              <div class="card-type">TRÁMITE</div>
+              <div class="card-title">Constitución SpA</div>
+              <div class="card-meta">Notario público</div>
+              <span class="evidence-status pending">PENDIENTE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documentos -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Expediente Completo</p>
+          <h2 class="chapter-title reveal-heading" data-target-weight="600" id="documentos">Documentos</h2>
+        </div>
+
+        <div class="evidence-grid reveal">
+          <div class="evidence-card">
+            <div class="card-type">ANÁLISIS</div>
+            <div class="card-title">Análisis Tributario</div>
+            <div class="card-meta">Investigación normativa, clasificación Art. 20</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">ANÁLISIS</div>
+            <div class="card-title">Mapeo Costos Operacionales</div>
+            <div class="card-meta">$15.5M/año total, modelo de gestión híbrido</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">SIMULACIÓN</div>
+            <div class="card-title">Simulación 5 Años</div>
+            <div class="card-meta">3 escenarios, PN vs SpA Pro-PyME vs Semi-Integrado</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">ESTRUCTURA</div>
+            <div class="card-title">Propuesta de Estructura</div>
+            <div class="card-meta">SpA Pro-PyME + PN, 4 fases implementación</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">ESTRUCTURA</div>
+            <div class="card-title">Comparativa Alternativas</div>
+            <div class="card-meta">7 dimensiones, SpA Pro-PyME elegida</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">REVISIÓN</div>
+            <div class="card-title">ROAST Adversarial</div>
+            <div class="card-meta">13 hallazgos: 3 críticos, 5 importantes, 5 menores</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">REVISIÓN</div>
+            <div class="card-title">PROOF Compliance</div>
+            <div class="card-meta">62/100 pre-implementación, 0 brechas diseño</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+          <div class="evidence-card">
+            <div class="card-type">ENTREGA</div>
+            <div class="card-title">Entrega Profesional</div>
+            <div class="card-meta">Documento consolidado + checklist verificación</div>
+            <span class="evidence-status available">COMPLETO</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operación -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Guías Operacionales</p>
+          <h2 class="chapter-title reveal-heading" data-target-weight="600" id="operacion">Operación</h2>
+        </div>
+
+        <div class="subsection reveal">
+          <div class="guide-card">
+            <div>
+              <div style="font-weight: 500;">Calendario de Obligaciones</div>
+              <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">F29, F22, patente, revisiones — todas las fechas</div>
+            </div>
+            <span class="guide-freq">referencia</span>
+          </div>
+          <div class="guide-card">
+            <div>
+              <div style="font-weight: 500;">Guía por Reserva</div>
+              <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">Checklist check-in/out, facturación SII, evidencia Art. 20 N°3</div>
+            </div>
+            <span class="guide-freq">cada reserva</span>
+          </div>
+          <div class="guide-card">
+            <div>
+              <div style="font-weight: 500;">Guía Adelanto de Socio/a</div>
+              <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">Compra con tarjeta personal a nombre SpA — cuenta corriente mercantil</div>
+            </div>
+            <span class="guide-freq">eventual</span>
+          </div>
+          <div class="guide-card">
+            <div>
+              <div style="font-weight: 500;">Guía Mensual</div>
+              <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">F29, Libro de Ingresos y Egresos, factura exenta arriendo</div>
+            </div>
+            <span class="guide-freq">día 1-12 cada mes</span>
+          </div>
+          <div class="guide-card">
+            <div>
+              <div style="font-weight: 500;">Guía Anual</div>
+              <div style="font-size: 0.82rem; font-weight: 300; color: var(--ink-light);">F22, renovación patente, revisión estructura</div>
+            </div>
+            <span class="guide-freq">enero-abril</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contactos -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Verificación Profesional</p>
+          <h2 class="chapter-title reveal-heading" data-target-weight="600" id="contactos">Contactos</h2>
+        </div>
+
+        <div class="subsection reveal">
+          <table class="data-table">
+            <thead><tr><th>Categoría</th><th>Institución</th><th>Contacto</th></tr></thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 500;">Consultas tributarias</td>
+                <td>Servicio de Impuestos Internos (SII)</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">sii.cl</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Contadores</td>
+                <td>Colegio de Contadores de Chile</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">contach.cl</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Abogados</td>
+                <td>Colegio de Abogados de Chile</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">colegioabogados.cl</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Turismo</td>
+                <td>SERNATUR</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">sernatur.cl</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 500;">Patentes</td>
+                <td>Municipalidad de Villarrica</td>
+                <td style="font-family: 'DM Mono', monospace; font-size: 0.82rem;">munivillarrica.cl</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Glosario -->
+      <div class="chapter">
+        <div class="chapter-header reveal">
+          <p class="chapter-label">Referencia</p>
+          <h2 id="glosario" style="font-size: 1.1rem; font-weight: 600;">Glosario</h2>
+        </div>
+        <div class="subsection reveal">
+          <table class="data-table">
+            <thead><tr><th>Término</th><th>Explicación</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight: 600;">SpA</td><td style="font-weight: 350;">Sociedad por Acciones — tipo societario flexible</td></tr>
+              <tr><td style="font-weight: 600;">Pro-PyME</td><td style="font-weight: 350;">Régimen tributario simplificado para empresas con ventas &lt; 75.000 UF (Art. 14 D N°3)</td></tr>
+              <tr><td style="font-weight: 600;">F29</td><td style="font-weight: 350;">Declaración mensual de IVA ante el SII</td></tr>
+              <tr><td style="font-weight: 600;">F22</td><td style="font-weight: 350;">Declaración anual de renta</td></tr>
+              <tr><td style="font-weight: 600;">Crédito fiscal</td><td style="font-weight: 350;">IVA pagado en compras que se descuenta del IVA cobrado en ventas</td></tr>
+              <tr><td style="font-weight: 600;">TOCS</td><td style="font-weight: 350;">Tax Optimization & Compliance Score — sistema de medición del agente</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <aside class="jump-bar" aria-label="Navegación rápida">
+      <h4>En esta sección</h4>
+      <ul class="jump-list">
+        <li><a href="#estructura" class="active">Estructura</a></li>
+        <li><a href="#documentos">Documentos</a></li>
+        <li><a href="#operacion">Operación</a></li>
+        <li><a href="#contactos">Contactos</a></li>
+        <li><a href="#glosario">Glosario</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer class="document-footer">
+    <nav class="section-pager">
+      <a href="index.html" class="pager-link">
+        <span class="pager-dir">&larr; Anterior</span>
+        <span class="pager-title">Panel General</span>
+      </a>
+      <a href="estrategia.html" class="pager-link" style="text-align: right;">
+        <span class="pager-dir">Siguiente &rarr;</span>
+        <span class="pager-title">Estrategia</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.dataset.targetWeight) {
+            entry.target.style.fontWeight = entry.target.dataset.targetWeight;
+          }
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal, .reveal-heading').forEach(el => revealObserver.observe(el));
+
+    const jumpLinks = document.querySelectorAll('.jump-list a');
+    const headings = document.querySelectorAll('[id]');
+    const jumpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          jumpLinks.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector(`.jump-list a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' });
+    headings.forEach(h => jumpObserver.observe(h));
+
+    const modeToggle = document.querySelector('.mode-toggle');
+    if (modeToggle) {
+      modeToggle.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        modeToggle.querySelectorAll('button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      });
+    }
+  </script>
+</body>
+</html>
