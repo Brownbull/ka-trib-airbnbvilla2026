@@ -227,6 +227,7 @@ button:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
   transition: transform 0.2s;
 }
 .evidence-card:hover { transform: translateY(-2px); }
+a.evidence-card, a.evidence-card:hover { text-decoration: none; color: inherit; cursor: pointer; }
 .evidence-card .card-type {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;
