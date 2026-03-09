@@ -19,6 +19,7 @@
         <button class="active" data-mode="compartible" aria-pressed="true">COMPARTIBLE</button>
         <button data-mode="completo" aria-pressed="false">COMPLETO</button>
       </div>
+      <div style="font-size: 0.72rem; font-weight: 300; color: var(--ink-faint); margin-top: 4px;">COMPARTIBLE = se puede mostrar a terceros · COMPLETO = con simulación financiera (protegido con clave)</div>
     </div>
   </header>
 
@@ -91,7 +92,7 @@
                   <td style="font-family: 'DM Mono', monospace;">$48,2 millones</td>
                 </tr>
                 <tr>
-                  <td style="font-weight: 500;">Gastos deducibles SpA</td>
+                  <td style="font-weight: 500;">Gastos deducibles SpA<div style="font-size: 0.75rem; font-weight: 300;">(gastos que la ley permite restar: arriendo, limpieza, amenities, contador, etc.)</div></td>
                   <td style="font-family: 'DM Mono', monospace;">-$32,8 millones</td>
                   <td style="font-family: 'DM Mono', monospace;">-$32,8 millones</td>
                 </tr>
@@ -100,6 +101,7 @@
                   <td style="font-weight: 600; font-family: 'DM Mono', monospace;">$0</td>
                   <td style="font-family: 'DM Mono', monospace;">$0</td>
                 </tr>
+                <tr><td colspan="3" style="font-size: 0.8rem; font-weight: 300; border-top: none; padding-top: 0;">En este escenario, los gastos deducibles superan los ingresos gravables — no hay base imponible en ningún caso. La ventaja de la SpA no es pagar menos impuesto (es $0 en ambos), sino proteger tu patrimonio personal.</td></tr>
                 <tr>
                   <td style="font-weight: 500;">IVA neto 5 años</td>
                   <td style="font-family: 'DM Mono', monospace;">$4,7 millones</td>
@@ -160,6 +162,7 @@
             <p class="chapter-label">Sección Restringida · Análisis de Riesgo</p>
             <h2 class="chapter-title restricted-title reveal-heading" data-target-weight="300" id="riesgos">Riesgos</h2>
           </div>
+          <p class="narrative-block reveal" style="margin-bottom: 8px;">Los números de arriba dependen de que no haya sorpresas. Estos son los riesgos que podrían cambiarlos:</p>
 
           <div class="subsection reveal">
             <div class="risk-item">
@@ -184,7 +187,7 @@
             </div>
             <div class="risk-item">
               <span class="risk-level medio">MEDIO</span>
-              <div><strong style="font-weight: 500;">Errores formales modelo DIY:</strong> <span style="font-weight: 300;">Revisión trimestral con contador + sistema de alarmas obligatorio.</span></div>
+              <div><strong style="font-weight: 500;">Errores formales por hacerlo tú mismo/a:</strong> <span style="font-weight: 300;">Revisión trimestral con contador + sistema de alarmas obligatorio.</span></div>
             </div>
             <div class="risk-item">
               <span class="risk-level bajo">BAJO</span>
@@ -203,6 +206,7 @@
             <p class="chapter-label">Sección Restringida · Plan de Acción</p>
             <h2 class="chapter-title restricted-title reveal-heading" data-target-weight="300" id="proximos-pasos">Próximos Pasos</h2>
           </div>
+          <p class="narrative-block reveal" style="margin-bottom: 8px;">Para avanzar y mitigar estos riesgos, sigue estos pasos:</p>
 
           <div class="subsection reveal">
             <h2 id="siguientes" style="font-weight: 400;">Secuencia Recomendada</h2>
@@ -240,6 +244,7 @@
 
           <div class="subsection reveal">
             <h2 id="pendientes-operacion" style="font-weight: 400;">Pendientes Pre-Operación</h2>
+            <p class="narrative-block" style="margin-bottom: 12px;">Estos pasos son para más adelante — después de constituir la empresa. No los necesitas ahora.</p>
             <ul class="action-list">
               <li class="action-item">
                 <div>
@@ -288,7 +293,7 @@
               </div>
               <div class="timeline-item">
                 <p class="timeline-date">MES 1</p>
-                <p class="timeline-desc">Firmar contrato arriendo PN→SpA (ANTES de comprar muebles)</p>
+                <p class="timeline-desc">Firmar contrato de arriendo entre tú y tu empresa (ANTES de comprar muebles)</p>
               </div>
               <div class="timeline-item">
                 <p class="timeline-date">MES 1-2</p>
@@ -304,11 +309,11 @@
               </div>
               <div class="timeline-item">
                 <p class="timeline-date">MES 3</p>
-                <p class="timeline-desc">Primera F29 (con ayuda contador)</p>
+                <p class="timeline-desc">Primera F29 (declaración mensual de IVA, con ayuda del contador)</p>
               </div>
               <div class="timeline-item">
                 <p class="timeline-date">ABRIL +1</p>
-                <p class="timeline-desc">F22 anual (contador)</p>
+                <p class="timeline-desc">F22 (declaración anual de renta, con contador)</p>
               </div>
             </div>
           </div>
@@ -341,11 +346,12 @@
             <table class="data-table">
               <thead><tr><th>Término</th><th>Explicación</th></tr></thead>
               <tbody>
+                <tr><td style="font-weight: 600;">Gastos deducibles</td><td style="font-weight: 350;">Gastos que la ley permite restar de los ingresos antes de calcular el impuesto: arriendo del inmueble, limpieza, amenities, seguros, contador, depreciación de muebles</td></tr>
                 <tr><td style="font-weight: 600;">IGC</td><td style="font-weight: 350;">Impuesto Global Complementario — el impuesto a la renta que pagas como persona natural. Se calcula sobre todos tus ingresos del año</td></tr>
                 <tr><td style="font-weight: 600;">PPM</td><td style="font-weight: 350;">Pago Provisional Mensual — un anticipo de impuesto que pagas cada mes (0,25% de ingresos). Se devuelve en abril si pagaste de más</td></tr>
                 <tr><td style="font-weight: 600;">F29</td><td style="font-weight: 350;">Formulario de declaración mensual de IVA ante el SII. Se presenta antes del día 12 de cada mes</td></tr>
                 <tr><td style="font-weight: 600;">F22</td><td style="font-weight: 350;">Formulario de declaración anual de renta. Se presenta en abril</td></tr>
-                <tr><td style="font-weight: 600;">Semi-Integrado</td><td style="font-weight: 350;">Régimen tributario donde la empresa paga 27% y el dueño solo puede usar 65% de ese pago como crédito contra su impuesto personal. Es el régimen que queremos evitar</td></tr>
+                <tr><td style="font-weight: 600;">Semi-Integrado</td><td style="font-weight: 350;">Régimen tributario donde la empresa paga 27% y el dueño solo puede usar 65% de ese pago como crédito contra su impuesto personal. Es el régimen que esta estructura busca evitar</td></tr>
                 <tr><td style="font-weight: 600;">Precios de transferencia</td><td style="font-weight: 350;">Reglas del SII para que las transacciones entre partes relacionadas (tú y tu empresa) sean a precio de mercado. Si el arriendo es muy bajo o alto, hay multas</td></tr>
                 <tr><td style="font-weight: 600;">Art. 20 N°1 vs N°3</td><td style="font-weight: 350;">Dos formas en que el SII clasifica tu actividad: N°1 = arriendo de inmueble (paga más impuesto), N°3 = servicio de alojamiento (tu caso ideal, paga menos)</td></tr>
                 <tr><td style="font-weight: 600;">Sustancia económica</td><td style="font-weight: 350;">Que tu empresa funcione de verdad: tenga cuenta bancaria, contratos, actividad real. Sin sustancia, el SII puede ignorar la empresa y cobrarte todo como persona natural</td></tr>
