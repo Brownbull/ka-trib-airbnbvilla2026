@@ -395,6 +395,15 @@
     </nav>
   </footer>
 
+  <div class="password-modal" id="password-modal">
+    <div class="password-modal-card">
+      <div class="password-modal-label">MODO COMPLETO · RESTRINGIDO</div>
+      <input type="password" class="password-modal-input" id="password-input" placeholder="Contraseña" autocomplete="off">
+      <button class="password-modal-btn" id="password-submit">ACCEDER</button>
+      <div class="password-modal-error" id="password-error">Contraseña incorrecta</div>
+    </div>
+  </div>
+
   <script>
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -422,10 +431,50 @@
     headings.forEach(h => jumpObserver.observe(h));
 
     const modeToggle = document.querySelector('.mode-toggle');
+    const pwModal = document.getElementById('password-modal');
+    const pwInput = document.getElementById('password-input');
+    const pwSubmit = document.getElementById('password-submit');
+    const pwError = document.getElementById('password-error');
+    const PW = '1345717249';
+
+    function isAuth() { return sessionStorage.getItem('ka-trib-auth') === 'true'; }
+
+    function activateCompleto() {
+      sessionStorage.setItem('ka-trib-auth', 'true');
+      modeToggle.querySelectorAll('button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      const btn = modeToggle.querySelector('[data-mode="completo"]');
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+    }
+
+    function tryPassword() {
+      if (pwInput.value === PW) {
+        pwModal.classList.remove('visible');
+        pwInput.value = '';
+        pwError.style.display = 'none';
+        activateCompleto();
+      } else {
+        pwError.style.display = 'block';
+        pwInput.value = '';
+        pwInput.focus();
+      }
+    }
+
+    pwSubmit.addEventListener('click', tryPassword);
+    pwInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryPassword(); });
+    pwModal.addEventListener('click', (e) => {
+      if (e.target === pwModal) { pwModal.classList.remove('visible'); pwInput.value = ''; pwError.style.display = 'none'; }
+    });
+
     if (modeToggle) {
       modeToggle.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn) return;
+        if (btn.dataset.mode === 'completo' && !isAuth()) {
+          pwModal.classList.add('visible');
+          pwInput.focus();
+          return;
+        }
         modeToggle.querySelectorAll('button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('active');
         btn.setAttribute('aria-pressed', 'true');

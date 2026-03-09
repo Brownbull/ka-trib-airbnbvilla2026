@@ -228,6 +228,66 @@ button:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
 }
 .evidence-card:hover { transform: translateY(-2px); }
 a.evidence-card, a.evidence-card:hover { text-decoration: none; color: inherit; cursor: pointer; }
+
+/* Password Gate Modal */
+.password-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.password-modal.visible { display: flex; }
+.password-modal-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  padding: 40px 36px;
+  max-width: 340px;
+  width: 90%;
+  text-align: center;
+}
+.password-modal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--purple);
+  margin-bottom: 20px;
+}
+.password-modal-input {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--border-strong);
+  background: var(--card-bg);
+  color: var(--ink);
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 14px;
+}
+.password-modal-input:focus { border-color: var(--purple); }
+.password-modal-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  padding: 8px 28px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.password-modal-btn:hover { opacity: 0.85; }
+.password-modal-error {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--crimson, #c0392b);
+  margin-top: 10px;
+  display: none;
+}
 .evidence-card .card-type {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;
