@@ -1,80 +1,36 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>C3: Confirmar Deducibilidad de Intereses Hipotecarios</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../assets/style.css">
-  <script>
-    // Guardar fuentes Mermaid ANTES de que Mermaid procese los elementos.
-    // window._mermaidSrc se llena en DOMContentLoaded, antes de mermaid.run().
-    window._mermaidSrc = {};
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script>
-    // Tema inicial: aplicar ANTES del primer render para evitar flash
-    (function() {
-      try {
-        var saved = localStorage.getItem('villarrica-theme') || 'light';
-        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
-        mermaid.initialize({ startOnLoad: false, theme: saved === 'dark' ? 'dark' : 'neutral' });
-      } catch(e) {
-        mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
-      }
-    })();
-  </script>
+  <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
 </head>
 <body>
-  <!-- Hamburger mobile (fixed, solo visible en ≤768px) -->
-  <button class="menu-toggle no-print" onclick="document.body.classList.toggle('sidebar-open')" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="sidebar-overlay no-print" onclick="document.body.classList.remove('sidebar-open')"></div>
 
-  <!-- Sidebar (sin botón de colapso interno) -->
-  <nav class="sidebar">
-    <div class="sidebar-header">
-      <a href="../../index.html" class="sidebar-home-link">Panel del caso</a>
+  <header class="document-header">
+    <div class="doc-meta">
+      <button class="nav-toggle no-print" id="nav-toggle" aria-label="Menú de navegación" aria-expanded="false">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <a href="../../index.html" class="doc-title">Estructuración Tributaria — Airbnb Villarrica</a>
+      <span class="doc-badge">CONFIDENCIAL</span>
     </div>
-    <ul>
-<li><a href="../../CASE.html">Caso Airbnb Villarrica</a></li>
-<li><a href="../../optimization-tracker.html">Optimización del Caso</a></li>
-<li class="section-title">Investigación</li>
-<ul>
-<li><a href="../../01_investigacion/INVESTIGACION-COMPILADA.html">Investigación Compilada</a></li>
-<li><a href="../../01_investigacion/investigacion-marco-legal-airbnb.html">Investigacion</a></li>
-<li><a href="../../01_investigacion/investigacion-normativa-sii.html">Investigacion Normativa SII</a></li>
-<li><a href="../../01_investigacion/investigacion-spa-operadora.html">Investigacion</a></li>
-<li><a href="../../01_investigacion/jurisprudencia-airbnb-arriendo-amoblado.html">Investigacion de Jurisprudencia y Casos Reales</a></li>
-</ul>
-<li class="section-title">Analisis</li>
-<ul>
-<li><a href="../../02_analisis/ANALISIS-TRIBUTARIO.html">Analisis Tributario</a></li>
-<li><a href="../../02_analisis/clasificacion-pro-pyme-art20.html">Clasificación Pro-PyME</a></li>
-<li><a href="../../02_analisis/mapeo-costos-operacionales.html">Mapeo De Costos Operacionales</a></li>
-</ul>
-<li class="section-title">Simulacion</li>
-<ul>
-<li><a href="../../03_simulacion/SIMULACION-5-ANOS.html">Simulacion A 5 Anos</a></li>
-</ul>
-<li class="section-title">Estructura</li>
-<ul>
-<li><a href="../../04_estructura/COMPARATIVA-ALTERNATIVAS.html">Comparativa De Alternativas</a></li>
-<li><a href="../../04_estructura/PROPUESTA-ESTRUCTURA.html">Propuesta De Estructura Tributaria</a></li>
-</ul>
-<li class="section-title">Revisión</li>
-<ul>
-<li><a href="../../05_revision/2026-02-15-correcciones-roast.html">Correcciones Post-Roast</a></li>
-<li><a href="../../05_revision/2026-02-15-proof.html">Verificacion De Compliance</a></li>
-<li><a href="../../05_revision/2026-02-15-roast.html">Revision Adversarial Sii</a></li>
-</ul>
-<li class="section-title">Entregable</li>
-<ul>
-<li><a href="../../99_entregable/ACCIONES-LEGACY.html">Acciones Humanas</a></li>
-<li><a href="../../99_entregable/PANEL.html">Panel de Control</a></li>
+    <div class="doc-actions">
+      <button class="print-btn no-print" onclick="window.print()" title="PDF">PDF</button>
+      <button class="pii-load-btn no-print" id="pii-load-btn" title="Cargar pii-manifest.json">Revelar datos</button>
+      <span class="pii-status no-print" id="pii-status"></span>
+    </div>
+  </header>
+
+  <div class="document-layout">
+
+    <nav class="section-nav no-print">
+      <ul>
 <li class="section-title">Crítico</li>
 <ul>
 <li><a href="../../99_entregable/01_critico/C1-validar-art20-n3.html">C1</a></li>
@@ -107,6 +63,7 @@
 </ul>
 <li class="section-title">Eventual</li>
 <ul>
+<li><a href="../../99_entregable/07_operacion/eventual/guia-adelanto-socia.html">Guía</a></li>
 <li><a href="../../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guia Por Reserva</a></li>
 </ul>
 <li class="section-title">Mensual</li>
@@ -120,65 +77,30 @@
 <li><a href="../../99_entregable/entrega-profesional/ENTREGA-PROFESIONAL.html">Entrega Para Revision Profesional</a></li>
 </ul>
 </ul>
-</ul>
-  </nav>
+    </nav>
 
-  <main class="content">
-    <!-- Barra de acciones: izquierda = toggle sidebar desktop | derecha = controles -->
-    <div class="top-actions no-print">
-      <div class="top-actions-left">
-        <button class="sidebar-toggle-btn" id="sidebar-toggle-btn"
-                onclick="toggleSidebar()" title="Mostrar/ocultar menú">✕</button>
-      </div>
-      <div class="top-actions-right">
-        <select class="font-size-select" id="font-size-select"
-                onchange="changeFontSize(this.value)" title="Tamaño de letra">
-          <option value="small">Aa pequeño</option>
-          <option value="normal" selected>Aa normal</option>
-          <option value="large">Aa grande</option>
-        </select>
-        <button class="theme-toggle" id="theme-toggle"
-                onclick="toggleTheme()" title="Cambiar tema">🌙</button>
-        <button class="print-btn" onclick="window.print()"
-                title="Usar 'Guardar como PDF' en el diálogo de impresión">⬇ PDF</button>
-        <div class="pii-loader">
-          <button class="pii-load-btn" id="pii-load-btn"
-                  title="Abogado: cargar pii-manifest.json para revelar datos reales">
-            🔒 Revelar datos
-          </button>
-          <span class="pii-status" id="pii-status"></span>
-        </div>
-      </div>
-    </div>
+    <div class="nav-backdrop no-print" id="nav-backdrop"></div>
 
-    <div class="disclaimer-bar no-print">
-      <span class="disclaimer-short">⚠ Este documento es orientativo y no constituye asesoría legal profesional.</span>
-      <button class="disclaimer-expand-btn" id="disclaimer-expand-btn"
-              onclick="toggleDisclaimerFull()" aria-expanded="false" title="Ver aviso completo">ⓘ más</button>
-      <div class="disclaimer-full" id="disclaimer-full" hidden>
-        Ha sido elaborado con apoyo de inteligencia artificial como guía orientativa.
-        Su contenido es <strong>no vinculante</strong> y tiene carácter exclusivamente informativo.
-        Consulte con un abogado habilitado antes de actuar.
-        Ver sección <strong>Contactos para Verificación Profesional</strong> al final de cada documento.
+    <main class="document-content">
+      <div class="disclaimer-bar no-print">
+        Documento orientativo, no vinculante. Elaborado con apoyo de IA. Consulte abogado habilitado.
       </div>
-    </div>
-
-    <h1 id="c3-confirmar-deducibilidad-de-intereses-hipotecarios">C3: Confirmar Deducibilidad de Intereses Hipotecarios</h1>
+      <h1 id="c3-confirmar-deducibilidad-de-intereses-hipotecarios">C3: Confirmar Deducibilidad de Intereses Hipotecarios</h1>
 <p><strong>Estado:</strong> PENDIENTE
-<strong>Urgencia:</strong> CRITICA — afecta calculo de IGC de Claudia en $567K/ano
-<strong>Responsable:</strong> Claudia + Contador
+<strong>Urgencia:</strong> CRITICA — afecta calculo de IGC de la contribuyente en $567K/ano
+<strong>Responsable:</strong> la contribuyente + Contador
 <strong>Creado:</strong> 2026-02-15
-<strong>Origen:</strong> SIMULACION (03_simulacion), confirmado en ROAST (hallazgo #7)</p>
+<strong>Origen:</strong> SIMULACION (03_simulacion), confirmado en revisión adversarial (#7)</p>
 <hr>
 <h2 id="que-hacer">Que hacer</h2>
-<p>Confirmar con contador si Claudia puede deducir los intereses hipotecarios ($5.112.000/ano estimado) contra la renta del arriendo que recibe de la SpA, y bajo que articulo.</p>
+<p>Confirmar con contador si la contribuyente puede deducir los intereses hipotecarios ($5.112.000/ano estimado) contra la renta del arriendo que recibe de la SpA, y bajo que articulo.</p>
 <h2 id="por-que-es-critica">Por que es critica</h2>
 <p>La simulacion a 5 anos deduce intereses hipotecarios contra el arriendo, generando resultado negativo en la PN → $0 de IGC adicional. Si esta deduccion NO es valida:
-- Claudia paga IGC sobre $4.200.000/ano de arriendo sin deduccion
+- La contribuyente paga IGC sobre $4.200.000/ano de arriendo sin deduccion
 - A tasa marginal ~13,5% = ~$567K/ano adicionales
 - En 5 anos: $2.835K de impuesto adicional NO contemplado</p>
 <h2 id="el-problema-especifico">El problema especifico</h2>
-<p>El credito hipotecario fue tomado por Claudia como PN para <strong>compra de vivienda</strong>, no como inversora arrendadora. El giro de arriendo se agrega despues. Hay dos mecanismos posibles:</p>
+<p>El credito hipotecario fue tomado por la contribuyente como PN para <strong>compra de vivienda</strong>, no como inversora arrendadora. El giro de arriendo se agrega despues. Hay dos mecanismos posibles:</p>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
@@ -205,7 +127,7 @@
 </table></div>
 <h2 id="preguntas-para-el-contador">Preguntas para el contador</h2>
 <ol>
-<li>¿Puede Claudia deducir intereses hipotecarios como gasto (Art. 31 N°1) contra la renta del arriendo?</li>
+<li>¿Puede la contribuyente deducir intereses hipotecarios como gasto (Art. 31 N°1) contra la renta del arriendo?</li>
 <li>¿El destino original del credito (compra vivienda como PN) impide la deduccion?</li>
 <li>¿O solo puede usar Art. 55 bis (credito limitado)?</li>
 <li>Si solo aplica Art. 55 bis, ¿el tope de renta ($36M sueldo + $4,2M arriendo) la excluye?</li>
@@ -252,24 +174,39 @@
 <strong>Resultado:</strong> <em>(Art. 31 aplica / Solo Art. 55 bis / Ninguno — detallar)</em>
 <strong>Impacto en simulacion:</strong> <em>(Recalcular: SI/NO)</em>
 <strong>Notas:</strong> <em>(pendiente)</em></p>
+    </main>
 
-    <footer class="site-footer no-print">
-      <hr>
-      <small>Contenido generado con apoyo de IA — orientativo, no vinculante. Consulte con un abogado habilitado.</small>
-    </footer>
-  </main>
+    <aside class="jump-bar no-print">
+      <h4>En esta pagina</h4>
+      <ul class="jump-list">
+<li><a href="#que-hacer">Que hacer</a></li>
+<li><a href="#por-que-es-critica">Por que es critica</a></li>
+<li><a href="#el-problema-especifico">El problema especifico</a></li>
+<li><a href="#preguntas-para-el-contador">Preguntas para el contador</a></li>
+<li><a href="#impacto-en-la-simulacion">Impacto en la simulacion</a></li>
+<li><a href="#evidencia-requerida">Evidencia requerida</a></li>
+<li><a href="#al-completar">Al completar</a></li>
+<li><a href="#registro-de-resultado">Registro de resultado</a></li>
+</ul>
+    </aside>
+
+  </div>
+
+  <footer class="document-footer no-print">
+    Contenido generado con apoyo de IA — orientativo, no vinculante.
+  </footer>
 
   <script>
-    // ── Indicador de página activa en sidebar ──────────────────────────────
+    /* ── Active link in section-nav ──────────────────────────────────────── */
     (function() {
       var current = window.location.href.split('?')[0].split('#')[0];
-      document.querySelectorAll('.sidebar a').forEach(function(link) {
+      document.querySelectorAll('.section-nav a').forEach(function(link) {
         if (link.href.split('?')[0].split('#')[0] === current)
           link.classList.add('active');
       });
     })();
 
-    // ── Cargador PII client-side ───────────────────────────────────────────
+    /* ── PII manifest.json loader ────────────────────────────────────────── */
     (function() {
       var btn = document.getElementById('pii-load-btn');
       var status = document.getElementById('pii-status');
@@ -297,14 +234,14 @@
                 }
               });
               if (count > 0) {
-                btn.textContent = '✓ Datos revelados (' + count + ')';
+                btn.textContent = 'Datos revelados (' + count + ')';
                 btn.classList.add('pii-loaded');
                 if (status) status.textContent = '';
               } else {
-                if (status) status.textContent = 'Sin datos en esta página';
+                if (status) status.textContent = 'Sin datos en esta pagina';
               }
             } catch(err) {
-              if (status) status.textContent = 'Error: JSON inválido';
+              if (status) status.textContent = 'Error: JSON invalido';
             }
           };
           reader.readAsText(file);
@@ -313,172 +250,158 @@
       });
     })();
 
-    // ── Mermaid: guardar fuentes ANTES de render, luego inicializar ────────
+    /* ── Mermaid render ──────────────────────────────────────────────────── */
     document.addEventListener('DOMContentLoaded', function() {
-      // 1. Guardar innerHTML original antes de que Mermaid lo reemplace
-      document.querySelectorAll('.mermaid').forEach(function(el, i) {
-        var id = 'mermaid-' + i;
-        el.setAttribute('data-mermaid-id', id);
-        window._mermaidSrc[id] = el.innerHTML.trim();
-      });
-      // 2. Renderizar
-      mermaid.run({ querySelector: '.mermaid' });
-    });
-
-    // ── Theme toggle ──────────────────────────────────────────────────────
-    function applyTheme(t) {
-      document.documentElement.setAttribute('data-theme', t);
-      var btn = document.getElementById('theme-toggle');
-      if (btn) btn.textContent = t === 'dark' ? '☀' : '🌙';
-
-      var mermaidTheme = t === 'dark' ? 'dark' : 'neutral';
-      mermaid.initialize({ startOnLoad: false, theme: mermaidTheme });
-
-      // Re-renderizar diagramas desde fuente original guardada
-      document.querySelectorAll('.mermaid').forEach(function(el) {
-        var id = el.getAttribute('data-mermaid-id');
-        var src = id ? window._mermaidSrc[id] : null;
-        if (src) {
-          el.removeAttribute('data-processed');
-          el.innerHTML = src;
-        }
-      });
-      mermaid.run({ querySelector: '.mermaid' });
-    }
-
-    function toggleTheme() {
-      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      try { localStorage.setItem('villarrica-theme', next); } catch(e) {}
-    }
-
-    // Restaurar ícono del tema al cargar
-    (function() {
-      try {
-        var saved = localStorage.getItem('villarrica-theme') || 'light';
-        var btn = document.getElementById('theme-toggle');
-        if (btn) btn.textContent = saved === 'dark' ? '☀' : '🌙';
-      } catch(e) {}
-    })();
-
-    // ── Sidebar toggle (desktop) ──────────────────────────────────────────
-    function toggleSidebar() {
-      var collapsed = document.body.classList.toggle('sidebar-collapsed');
-      var btn = document.getElementById('sidebar-toggle-btn');
-      if (btn) btn.textContent = collapsed ? '☰' : '✕';
-      try { localStorage.setItem('villarrica-sidebar', collapsed ? '1' : '0'); } catch(e) {}
-    }
-
-    // Restaurar estado sidebar al cargar
-    (function() {
-      try {
-        if (localStorage.getItem('villarrica-sidebar') === '1') {
-          document.body.classList.add('sidebar-collapsed');
-          var btn = document.getElementById('sidebar-toggle-btn');
-          if (btn) btn.textContent = '☰';
-        }
-      } catch(e) {}
-    })();
-
-    // ── Font size selector ────────────────────────────────────────────────
-    var _fontSizes = { small: '0.875rem', normal: '1rem', large: '1.125rem' };
-
-    function changeFontSize(size) {
-      var val = _fontSizes[size] || '1rem';
-      document.documentElement.style.setProperty('--font-size-base', val);
-      try { localStorage.setItem('villarrica-fontsize', size); } catch(e) {}
-    }
-
-    // Restaurar tamaño de letra al cargar
-    document.addEventListener('DOMContentLoaded', function() {
-      try {
-        var saved = localStorage.getItem('villarrica-fontsize');
-        if (saved && _fontSizes[saved]) {
-          document.documentElement.style.setProperty('--font-size-base', _fontSizes[saved]);
-          var sel = document.getElementById('font-size-select');
-          if (sel) sel.value = saved;
-        }
-      } catch(e) {}
-    });
-
-    // ── Disclaimer expandible ─────────────────────────────────────────────
-    function toggleDisclaimerFull() {
-      var el = document.getElementById('disclaimer-full');
-      var btn = document.getElementById('disclaimer-expand-btn');
-      if (!el || !btn) return;
-      var expanded = !el.hidden;
-      el.hidden = expanded;
-      btn.setAttribute('aria-expanded', String(!expanded));
-      btn.textContent = expanded ? 'ⓘ más' : '✕ cerrar';
-    }
-
-    // ── Sidebar accordion (secciones colapsables) ─────────────────────────
-    document.addEventListener('DOMContentLoaded', function() {
-      var titles = document.querySelectorAll('.sidebar li.section-title');
-      titles.forEach(function(title) {
-        var ul = title.nextElementSibling;
-        if (!ul || ul.tagName !== 'UL') return;
-
-        // Indicador de toggle
-        var icon = document.createElement('span');
-        icon.className = 'section-toggle-icon';
-        icon.textContent = '▸';
-        title.appendChild(icon);
-        title.setAttribute('tabindex', '0');
-
-        // Empezar colapsado
-        ul.style.display = 'none';
-        ul.style.marginTop = '0';
-
-        function toggle() {
-          var open = ul.style.display !== 'none';
-          ul.style.display = open ? 'none' : '';
-          icon.textContent = open ? '▸' : '▾';
-        }
-        title.addEventListener('click', toggle);
-        title.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
-        });
-      });
-
-      // Expandir la sección que contiene el enlace activo
-      var activeLink = document.querySelector('.sidebar a.active');
-      if (activeLink) {
-        var el = activeLink.parentElement;
-        var sidebar = document.querySelector('.sidebar');
-        while (el && el !== sidebar) {
-          if (el.tagName === 'UL') {
-            el.style.display = '';
-            var prev = el.previousElementSibling;
-            if (prev && prev.classList.contains('section-title')) {
-              var icon = prev.querySelector('.section-toggle-icon');
-              if (icon) icon.textContent = '▾';
-            }
-          }
-          el = el.parentElement;
-        }
+      if (document.querySelector('.mermaid')) {
+        mermaid.run({ querySelector: '.mermaid' });
       }
     });
 
-    // ── Scroll reveal ─────────────────────────────────────────────────────
+    /* ── Mermaid fullscreen (click to zoom + drag) ─────────────────────── */
     document.addEventListener('DOMContentLoaded', function() {
-      if (!window.IntersectionObserver) return;
-      var targets = document.querySelectorAll('h2, .table-wrapper, blockquote');
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            observer.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.08 });
-      targets.forEach(function(el) {
-        el.classList.add('reveal');
-        observer.observe(el);
+      var overlay = document.createElement('div');
+      overlay.className = 'mermaid-overlay';
+      overlay.innerHTML = '<button class="close-overlay no-print">&times;</button><div class="mermaid-inner"></div>';
+      document.body.appendChild(overlay);
+
+      var inner = overlay.querySelector('.mermaid-inner');
+      var closeBtn = overlay.querySelector('.close-overlay');
+      var scale = 1, posX = 0, posY = 0, startX, startY, isDragging = false;
+
+      function updateTransform() {
+        inner.style.transform = 'translate(' + posX + 'px,' + posY + 'px) scale(' + scale + ')';
+      }
+
+      function openOverlay(svg) {
+        inner.innerHTML = '';
+        var clone = svg.cloneNode(true);
+        clone.style.maxWidth = 'none';
+        clone.style.maxHeight = 'none';
+        inner.appendChild(clone);
+        scale = 1; posX = 0; posY = 0;
+        updateTransform();
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeOverlay() {
+        overlay.classList.remove('active');
+        overlay.classList.remove('dragging');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeOverlay);
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeOverlay();
       });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeOverlay();
+      });
+
+      // Click on mermaid to open
+      document.addEventListener('click', function(e) {
+        var merm = e.target.closest('.mermaid');
+        if (!merm || overlay.classList.contains('active')) return;
+        var svg = merm.querySelector('svg');
+        if (svg) openOverlay(svg);
+      });
+
+      // Drag (mouse)
+      overlay.addEventListener('mousedown', function(e) {
+        if (e.target === closeBtn) return;
+        isDragging = true;
+        startX = e.clientX - posX;
+        startY = e.clientY - posY;
+        overlay.classList.add('dragging');
+      });
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        posX = e.clientX - startX;
+        posY = e.clientY - startY;
+        updateTransform();
+      });
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+        overlay.classList.remove('dragging');
+      });
+
+      // Drag (touch)
+      var lastTouchDist = 0;
+      overlay.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX - posX;
+          startY = e.touches[0].clientY - posY;
+        } else if (e.touches.length === 2) {
+          isDragging = false;
+          lastTouchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+        }
+      }, { passive: true });
+      overlay.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 1 && isDragging) {
+          posX = e.touches[0].clientX - startX;
+          posY = e.touches[0].clientY - startY;
+          updateTransform();
+        } else if (e.touches.length === 2) {
+          var dist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (lastTouchDist > 0) {
+            scale = Math.max(0.5, Math.min(5, scale * (dist / lastTouchDist)));
+            updateTransform();
+          }
+          lastTouchDist = dist;
+        }
+      }, { passive: true });
+      overlay.addEventListener('touchend', function() {
+        isDragging = false;
+        lastTouchDist = 0;
+      });
+
+      // Zoom (scroll wheel)
+      overlay.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        var delta = e.deltaY > 0 ? 0.9 : 1.1;
+        scale = Math.max(0.5, Math.min(5, scale * delta));
+        updateTransform();
+      }, { passive: false });
     });
 
-    // ── Score ring: count-up + fill stroke (dynamic radius) ──────────────
+    /* ── Jump bar scroll tracking ────────────────────────────────────────── */
+    (function() {
+      var jumpLinks = document.querySelectorAll('.jump-list a');
+      if (!jumpLinks.length) return;
+
+      var headings = [];
+      jumpLinks.forEach(function(link) {
+        var id = link.getAttribute('href');
+        if (id && id.startsWith('#')) {
+          var el = document.getElementById(id.substring(1));
+          if (el) headings.push({ el: el, link: link });
+        }
+      });
+
+      if (!headings.length || !window.IntersectionObserver) return;
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            jumpLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px' });
+
+      headings.forEach(function(h) { observer.observe(h.el); });
+    })();
+
+    /* ── Score ring count-up + fill (for PANEL.md) ───────────────────────── */
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.score-ring').forEach(function(ring) {
         var numEl = ring.querySelector('.number[data-target]');
@@ -490,13 +413,12 @@
           var r = parseFloat(fillCircle.getAttribute('r') || '44');
           var circumference = 2 * Math.PI * r;
           fillCircle.style.strokeDasharray = String(circumference);
-          fillCircle.style.strokeDashoffset = String(circumference); // start empty
+          fillCircle.style.strokeDashoffset = String(circumference);
           setTimeout(function() {
             fillCircle.style.strokeDashoffset = String(circumference * (1 - target / 100));
           }, 150);
         }
 
-        // Count-up number
         var duration = 1200;
         var startTime = null;
         function step(ts) {
@@ -510,32 +432,84 @@
       });
     });
 
-    // ── Strength tracker: dimension toggle + bar animation ────────────────
-    function toggleDimDetail(btn) {
-      var row = btn.closest('.st-dim-row');
-      if (!row) return;
-      var body = row.querySelector('.st-dim-detail-body');
-      if (!body) return;
-      var open = !body.hidden;
-      body.hidden = open;
-      btn.setAttribute('aria-expanded', String(!open));
-    }
-
+    /* ── Sidebar accordion ───────────────────────────────────────────────── */
     document.addEventListener('DOMContentLoaded', function() {
-      // Animate dimension bars on load
-      setTimeout(function() {
-        document.querySelectorAll('.st-dim-bar-fill[data-width]').forEach(function(bar) {
-          bar.style.width = bar.getAttribute('data-width') + '%';
-        });
-      }, 300);
+      var titles = document.querySelectorAll('.section-nav li.section-title');
+      titles.forEach(function(title) {
+        var ul = title.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL') return;
+
+        var icon = document.createElement('span');
+        icon.className = 'section-toggle-icon';
+        icon.textContent = '+';
+        title.appendChild(icon);
+
+        ul.style.display = 'none';
+
+        function toggle() {
+          var open = ul.style.display !== 'none';
+          ul.style.display = open ? 'none' : '';
+          icon.textContent = open ? '+' : '-';
+        }
+        title.addEventListener('click', toggle);
+      });
+
+      var activeLink = document.querySelector('.section-nav a.active');
+      if (activeLink) {
+        var el = activeLink.parentElement;
+        var nav = document.querySelector('.section-nav');
+        while (el && el !== nav) {
+          if (el.tagName === 'UL' && el.parentElement !== nav) {
+            el.style.display = '';
+            var prev = el.previousElementSibling;
+            if (prev && prev.classList.contains('section-title')) {
+              var icon = prev.querySelector('.section-toggle-icon');
+              if (icon) icon.textContent = '-';
+            }
+          }
+          el = el.parentElement;
+        }
+      }
     });
 
-    // ── Severity row auto-detection ───────────────────────────────────────
-    // Detecta keywords en celdas cortas (<35 chars) y agrega clase al <tr>
+    /* ── Mobile drawer toggle ──────────────────────────────────────────── */
+    (function() {
+      var toggle = document.getElementById('nav-toggle');
+      var nav = document.querySelector('.section-nav');
+      var backdrop = document.getElementById('nav-backdrop');
+      if (!toggle || !nav) return;
+
+      function openDrawer() {
+        nav.classList.add('drawer-open');
+        if (backdrop) backdrop.classList.add('visible');
+        toggle.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeDrawer() {
+        nav.classList.remove('drawer-open');
+        if (backdrop) backdrop.classList.remove('visible');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      toggle.addEventListener('click', function() {
+        if (nav.classList.contains('drawer-open')) closeDrawer();
+        else openDrawer();
+      });
+      if (backdrop) backdrop.addEventListener('click', closeDrawer);
+      nav.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') closeDrawer();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('drawer-open')) closeDrawer();
+      });
+    })();
+
+    /* ── Severity row detection (border-weight) ──────────────────────────── */
     document.addEventListener('DOMContentLoaded', function() {
-      var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante|🔴/i;
-      var reSuccess  = /completo|completado|resuelto|listo|blindado|✓|✅|🟢/i;
-      var reWarning  = /pendiente|revisar|verificar|atenci[oó]n|🟡|⚠/i;
+      var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante/i;
+      var reSuccess = /completo|completado|resuelto|listo|blindado/i;
+      var reWarning = /pendiente|revisar|verificar|atenci[oó]n/i;
       document.querySelectorAll('table tr').forEach(function(row) {
         if (row.closest('thead')) return;
         var cells = row.querySelectorAll('td');
@@ -544,12 +518,13 @@
           var t = td.textContent.trim();
           if (t.length > 35) return;
           if (!detected && reCritical.test(t)) detected = 'critical';
-          else if (!detected && reSuccess.test(t))  detected = 'success';
-          else if (!detected && reWarning.test(t))  detected = 'warning';
+          else if (!detected && reSuccess.test(t)) detected = 'success';
+          else if (!detected && reWarning.test(t)) detected = 'warning';
         });
         if (detected) row.classList.add('row-' + detected);
       });
     });
   </script>
+
 </body>
 </html>
