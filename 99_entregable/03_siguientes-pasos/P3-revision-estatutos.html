@@ -31,10 +31,11 @@
 
     <nav class="section-nav no-print">
       <ul>
+<li><a href="../../99_entregable/DECISION-FINAL.html">Decisión Final</a></li>
 <li class="section-title">Crítico</li>
 <ul>
 <li><a href="../../99_entregable/01_critico/C1-validar-art20-n3.html">C1</a></li>
-<li><a href="../../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2</a></li>
+<li><a href="../../99_entregable/01_critico/C2-inicio-actividades-claudia.html">C2: Inicio de Actividades en el SII (F4415)</a></li>
 <li><a href="../../99_entregable/01_critico/C3-deducibilidad-intereses.html">C3</a></li>
 <li><a href="../../99_entregable/01_critico/C4-comparables-arriendo.html">C4</a></li>
 </ul>
@@ -47,28 +48,30 @@
 <li><a href="../../99_entregable/03_siguientes-pasos/P1-seguro-rc.html">P1</a></li>
 <li><a href="../../99_entregable/03_siguientes-pasos/P2-iva-comision-airbnb.html">P2</a></li>
 <li><a href="../../99_entregable/03_siguientes-pasos/P3-revision-estatutos.html">P3</a></li>
-<li><a href="../../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4</a></li>
+<li><a href="../../99_entregable/03_siguientes-pasos/P4-registro-sernatur.html">P4: Registro SERNATUR</a></li>
+<li><a href="../../99_entregable/03_siguientes-pasos/P5-rut-airbnb.html">P5: Informar RUT y Calidad de Contribuyente en Airbnb</a></li>
+<li><a href="../../99_entregable/03_siguientes-pasos/P6-patente-municipal.html">P6: Patente Municipal Villarrica</a></li>
 </ul>
 <li class="section-title">Con Supervision Ia</li>
 <ul>
-<li><a href="../../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1. Reunión Consolidada con Contador</a></li>
+<li><a href="../../99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1. Reunión Única de Validación con Contador</a></li>
 </ul>
 <li class="section-title">Operacion</li>
 <ul>
-<li><a href="../../99_entregable/07_operacion/CALENDARIO.html">Guia De Operacion</a></li>
-<li><a href="../../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Links</a></li>
+<li><a href="../../99_entregable/07_operacion/CALENDARIO.html">Guía De Operación</a></li>
+<li><a href="../../99_entregable/07_operacion/contactos-y-links.html">Contactos Y Enlaces</a></li>
 <li class="section-title">Anual</li>
 <ul>
-<li><a href="../../99_entregable/07_operacion/anual/guia-anual.html">Guia Anual</a></li>
+<li><a href="../../99_entregable/07_operacion/anual/guia-anual.html">Guía Anual</a></li>
 </ul>
 <li class="section-title">Eventual</li>
 <ul>
 <li><a href="../../99_entregable/07_operacion/eventual/guia-adelanto-socia.html">Guía</a></li>
-<li><a href="../../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guia Por Reserva</a></li>
+<li><a href="../../99_entregable/07_operacion/eventual/guia-por-reserva.html">Guía Por Reserva</a></li>
 </ul>
 <li class="section-title">Mensual</li>
 <ul>
-<li><a href="../../99_entregable/07_operacion/mensual/guia-mensual.html">Guia Mensual</a></li>
+<li><a href="../../99_entregable/07_operacion/mensual/guia-mensual.html">Guía Mensual</a></li>
 </ul>
 </ul>
 <li class="section-title">Entrega Profesional</li>
@@ -85,9 +88,21 @@
       <div class="disclaimer-bar no-print">
         Documento orientativo, no vinculante. Elaborado con apoyo de IA. Consulte abogado habilitado.
       </div>
+      <div class="priority-filter no-print" id="priority-filter" style="display:none;">
+        <span class="filter-label">Filtrar:</span>
+        <button class="filter-btn active" data-priority="all">Todos</button>
+        <button class="filter-btn" data-priority="critico">Critico</button>
+        <button class="filter-btn" data-priority="importante">Importante</button>
+        <button class="filter-btn" data-priority="deseable">Deseable</button>
+      </div>
       <h1 id="p3-revision-de-estatutos-rea-por-abogado">P3: Revision de Estatutos REA por Abogado</h1>
-<p><strong>Estado:</strong> PENDIENTE
-<strong>Urgencia:</strong> AL CONSTITUIR SpA
+<blockquote>
+<p><strong>⚠️ OBSOLETA (2026-06-09):</strong> No se constituirá SpA — la decisión final es operar como
+<strong>Persona Natural + DFL2</strong> (el beneficio DFL2 es exclusivo de personas naturales). Ver
+<a href="../DECISION-FINAL.html">DECISION-FINAL.md</a>. Se conserva solo como registro histórico.</p>
+</blockquote>
+<p><strong>Estado:</strong> OBSOLETA — no ejecutar
+<strong>Urgencia:</strong> <del>AL CONSTITUIR SpA</del>
 <strong>Responsable:</strong> la contribuyente + Abogado
 <strong>Creado:</strong> 2026-02-15
 <strong>Origen:</strong> Revisión adversarial (#13)</p>
@@ -458,6 +473,49 @@
           else if (!detected && reWarning.test(t)) detected = 'warning';
         });
         if (detected) row.classList.add('row-' + detected);
+      });
+    });
+
+    /* ── Priority filter ─────────────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var hasPriority = false;
+      document.querySelectorAll('table').forEach(function(table) {
+        var headers = table.querySelectorAll('th');
+        var prioCol = -1;
+        headers.forEach(function(th, idx) {
+          if (/prioridad/i.test(th.textContent)) prioCol = idx;
+        });
+        if (prioCol < 0) return;
+        hasPriority = true;
+        table.querySelectorAll('tbody tr, tr').forEach(function(row) {
+          if (row.closest('thead')) return;
+          var cells = row.querySelectorAll('td');
+          if (cells.length <= prioCol) return;
+          var val = cells[prioCol].textContent.trim().toLowerCase();
+          if (/cr[ií]tico/.test(val)) row.setAttribute('data-priority', 'critico');
+          else if (/importante/.test(val)) row.setAttribute('data-priority', 'importante');
+          else if (/deseable/.test(val)) row.setAttribute('data-priority', 'deseable');
+        });
+      });
+
+      var filterBar = document.getElementById('priority-filter');
+      if (!hasPriority || !filterBar) return;
+      filterBar.style.display = '';
+
+      var buttons = filterBar.querySelectorAll('.filter-btn');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          buttons.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var prio = btn.getAttribute('data-priority');
+          document.querySelectorAll('[data-priority]').forEach(function(row) {
+            if (prio === 'all') {
+              row.style.display = '';
+            } else {
+              row.style.display = row.getAttribute('data-priority') === prio ? '' : 'none';
+            }
+          });
+        });
       });
     });
   </script>

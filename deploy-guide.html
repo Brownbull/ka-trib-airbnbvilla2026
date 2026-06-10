@@ -39,6 +39,13 @@
       <div class="disclaimer-bar no-print">
         Documento orientativo, no vinculante. Elaborado con apoyo de IA. Consulte abogado habilitado.
       </div>
+      <div class="priority-filter no-print" id="priority-filter" style="display:none;">
+        <span class="filter-label">Filtrar:</span>
+        <button class="filter-btn active" data-priority="all">Todos</button>
+        <button class="filter-btn" data-priority="critico">Critico</button>
+        <button class="filter-btn" data-priority="importante">Importante</button>
+        <button class="filter-btn" data-priority="deseable">Deseable</button>
+      </div>
       <h1 id="guia-de-despliegue-github-pages">Guia de Despliegue — GitHub Pages</h1>
 <blockquote>
 <p>Cada caso se publica en un repositorio dedicado de GitHub Pages.
@@ -523,6 +530,49 @@ Solo se sube el sitio HTML con capacidad de exportar PDF. Nada mas.</p>
           else if (!detected && reWarning.test(t)) detected = 'warning';
         });
         if (detected) row.classList.add('row-' + detected);
+      });
+    });
+
+    /* ── Priority filter ─────────────────────────────────────────────────── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var hasPriority = false;
+      document.querySelectorAll('table').forEach(function(table) {
+        var headers = table.querySelectorAll('th');
+        var prioCol = -1;
+        headers.forEach(function(th, idx) {
+          if (/prioridad/i.test(th.textContent)) prioCol = idx;
+        });
+        if (prioCol < 0) return;
+        hasPriority = true;
+        table.querySelectorAll('tbody tr, tr').forEach(function(row) {
+          if (row.closest('thead')) return;
+          var cells = row.querySelectorAll('td');
+          if (cells.length <= prioCol) return;
+          var val = cells[prioCol].textContent.trim().toLowerCase();
+          if (/cr[ií]tico/.test(val)) row.setAttribute('data-priority', 'critico');
+          else if (/importante/.test(val)) row.setAttribute('data-priority', 'importante');
+          else if (/deseable/.test(val)) row.setAttribute('data-priority', 'deseable');
+        });
+      });
+
+      var filterBar = document.getElementById('priority-filter');
+      if (!hasPriority || !filterBar) return;
+      filterBar.style.display = '';
+
+      var buttons = filterBar.querySelectorAll('.filter-btn');
+      buttons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          buttons.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var prio = btn.getAttribute('data-priority');
+          document.querySelectorAll('[data-priority]').forEach(function(row) {
+            if (prio === 'all') {
+              row.style.display = '';
+            } else {
+              row.style.display = row.getAttribute('data-priority') === prio ? '' : 'none';
+            }
+          });
+        });
       });
     });
   </script>

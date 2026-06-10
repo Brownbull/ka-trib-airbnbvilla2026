@@ -377,6 +377,41 @@ li.task-item input[type="checkbox"] { margin-right: 0.4rem; }
   padding: 1px 6px;
 }
 
+/* --- Priority Filter --- */
+.priority-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px 16px;
+  border: 1px solid var(--ink);
+}
+.filter-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.filter-btn {
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 300;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  transition: background 0.15s, color 0.15s;
+}
+.filter-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 400;
+}
+
 /* --- Disclaimer --- */
 .disclaimer-bar {
   border: 1px solid var(--ink);
@@ -577,6 +612,14 @@ del { opacity: 0.4; }
 /* ==========================================================================
    Responsive
    ========================================================================== */
+
+/* --- Desktop wide (tables get more room) --- */
+@media (min-width: 1200px) {
+  :root { --content-max: 900px; }
+}
+@media (min-width: 1600px) {
+  :root { --content-max: 1060px; }
+}
 
 /* --- Tablet + Mobile (drawer mode) --- */
 @media (max-width: 1199px) {

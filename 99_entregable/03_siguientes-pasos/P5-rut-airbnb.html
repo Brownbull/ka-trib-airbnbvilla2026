@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>C2: Inicio de Actividades en el SII (F4415) — Paso 1 de Implementación</title>
+  <title>P5: Informar RUT y Calidad de Contribuyente en Airbnb — Paso 2 de Implementación</title>
   <link rel="stylesheet" href="../../assets/style.css">
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: false, theme: 'neutral' });</script>
@@ -95,96 +95,46 @@
         <button class="filter-btn" data-priority="importante">Importante</button>
         <button class="filter-btn" data-priority="deseable">Deseable</button>
       </div>
-      <h1 id="c2-inicio-de-actividades-en-el-sii-f4415-paso-1-de-implementacion">C2: Inicio de Actividades en el SII (F4415) — Paso 1 de Implementación</h1>
-<p><strong>Estado:</strong> PENDIENTE — ÚNICO trámite SII previo a operar
-<strong>Urgencia:</strong> CRÍTICA — antes de la primera reserva (plazo legal: 2 meses desde el primer arriendo)
-<strong>Responsable:</strong> la contribuyente (puede hacerlo sola, online)
-<strong>Creado:</strong> 2026-02-15 · <strong>Actualizado:</strong> 2026-06-09 (rehecho para estructura PN + DFL2)
-<strong>Origen:</strong> Verificación normativa junio 2026</p>
+      <h1 id="p5-informar-rut-y-calidad-de-contribuyente-en-airbnb-paso-2-de-implementacion">P5: Informar RUT y Calidad de Contribuyente en Airbnb — Paso 2 de Implementación</h1>
+<p><strong>Estado:</strong> PENDIENTE
+<strong>Urgencia:</strong> CRÍTICA — ANTES de la primera reserva (requiere C2 completado)
+<strong>Responsable:</strong> la contribuyente
+<strong>Creado:</strong> 2026-06-09
+<strong>Origen:</strong> Verificación normativa junio 2026 — Guía tributaria oficial Airbnb Chile 2026</p>
 <hr>
-<blockquote>
-<p><strong>Cambio de contexto (junio 2026):</strong> La versión anterior de esta acción preguntaba al contador
-si el inicio de actividades era necesario para facturar a una SpA. Con la decisión de operar
-como <strong>persona natural + DFL2</strong>, la pregunta quedó respondida por la verificación normativa:
-<strong>sí es necesario, y es el único trámite SII de toda la estructura.</strong></p>
-</blockquote>
 <h2 id="que-hacer">Qué hacer</h2>
-<p>Presentar el <strong>Formulario F4415 (inicio de actividades)</strong> en sii.cl con:</p>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Valor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Código de actividad</td>
-<td><strong>68201</strong> — Arriendo de inmuebles amoblados</td>
-</tr>
-<tr>
-<td>Categoría</td>
-<td>Primera categoría</td>
-</tr>
-<tr>
-<td>IVA</td>
-<td>La actividad queda exenta en este caso (DFL2, 2 primeras propiedades de PN — Oficio SII 1017/2024)</td>
-</tr>
-<tr>
-<td>Domicilio de la actividad</td>
-<td>El departamento de Villarrica</td>
-</tr>
-</tbody>
-</table></div>
-<p><strong>Cómo:</strong> sii.cl → Servicios online → RUT e inicio de actividades → Inicio de actividades. Online, gratuito, toma menos de un día.</p>
-<h2 id="por-que-es-critica-3-razones-verificadas">Por qué es crítica (3 razones verificadas)</h2>
+<p>Una vez hecho el inicio de actividades (<a href="../01_critico/C2-inicio-actividades-claudia.html">C2</a>),
+<strong>informar el RUT y la calidad de contribuyente en el perfil de anfitrión de Airbnb</strong>, en la
+sección de impuestos/datos fiscales de la cuenta.</p>
+<h2 id="por-que-es-critica">Por qué es crítica</h2>
+<p>Según la guía tributaria oficial de Airbnb Chile 2026 (preparada por firma independiente,
+noviembre 2025), por modificaciones legales recientes:</p>
+<blockquote>
+<p><em>"En ausencia de dicha comunicación, o si esta no se efectúa oportunamente (antes del pago
+de la contraprestación), Airbnb deberá recargar, declarar y enterar el IVA aplicable al
+anfitrión. La base imponible corresponderá al valor total de la operación."</em></p>
+</blockquote>
+<p>Es decir: <strong>si no informas tu RUT, Airbnb cobra IVA 19% sobre el total de cada reserva por
+defecto</strong> — aunque tu arriendo esté exento por DFL2. Informar el RUT traspasa la
+responsabilidad del IVA al anfitrión, cuyo arriendo en este caso está exento (Oficio SII
+1017/2024).</p>
+<h2 id="como-hacerlo">Cómo hacerlo</h2>
 <ol>
-<li><strong>Es obligación legal</strong>: el arriendo amoblado habitual es actividad económica — Art. 68 Código Tributario. Plazo: 2 meses desde que comienza el arriendo (Guía tributaria Airbnb Chile 2026).</li>
-<li><strong>Airbnb retiene IVA si no informas RUT</strong>: por modificaciones legales recientes, si el anfitrión no comunica su RUT y calidad de contribuyente, <strong>Airbnb recarga y entera el IVA (19%) sobre el valor total de la operación</strong> — aunque el arriendo esté exento por DFL2. El F4415 es el prerrequisito para informar el RUT (ver <a href="../03_siguientes-pasos/P5-rut-airbnb.html">P5</a>).</li>
-<li><strong>Ley 21.713</strong>: desde 2026 las plataformas deben acreditar el cumplimiento tributario de sus anfitriones. Sin inicio de actividades, el anuncio puede ser bloqueado.</li>
+<li>Airbnb → Cuenta → Impuestos (o "Información fiscal")</li>
+<li>Agregar contribuyente: Chile, RUT de la contribuyente</li>
+<li>Indicar la calidad de contribuyente registrado ante el SII</li>
+<li>Guardar y verificar que el anuncio quede sin recargo de IVA al publicar</li>
 </ol>
-<h2 id="que-obligaciones-genera-pocas-gracias-al-dfl2">Qué obligaciones genera (pocas, gracias al DFL2)</h2>
-<div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>Obligación</th>
-<th>¿Aplica?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F29 mensual</td>
-<td>NO — sin IVA que declarar</td>
-</tr>
-<tr>
-<td>PPM</td>
-<td>NO</td>
-</tr>
-<tr>
-<td>Contabilidad</td>
-<td>NO</td>
-</tr>
-<tr>
-<td>F22 anual</td>
-<td>SÍ — informativa, vía Asistente de Arriendos, impuesto $0</td>
-</tr>
-</tbody>
-</table></div>
+<p><strong>Si la plataforma no ofrece una categoría exacta para "exento por DFL2":</strong> documentar lo que
+permita el formulario y llevar la duda a la reunión con el contador (<a href="../06_con-supervision-ia/R1-reunion-contador-consolidada.html">R1</a>).</p>
 <h2 id="evidencia-requerida">Evidencia requerida</h2>
 <ul>
-<li class="task-item"><input type="checkbox" disabled>  Comprobante de inicio de actividades (PDF desde sii.cl)</li>
-<li class="task-item"><input type="checkbox" disabled>  Verificación en "Consulta situación tributaria" de que el giro 68201 quedó registrado</li>
+<li class="task-item"><input type="checkbox" disabled>  Captura del perfil fiscal de Airbnb con RUT registrado</li>
+<li class="task-item"><input type="checkbox" disabled>  Primera liquidación de Airbnb verificando que NO hay retención de IVA</li>
 </ul>
-<h2 id="al-completar">Al completar</h2>
-<ol>
-<li>Mover este archivo a <code>completado/</code></li>
-<li>Ejecutar de inmediato <a href="../03_siguientes-pasos/P5-rut-airbnb.html">P5 — Informar RUT en Airbnb</a></li>
-<li>Registrar resultado abajo</li>
-</ol>
 <hr>
 <h2 id="registro-de-resultado">Registro de resultado</h2>
 <p><strong>Fecha completado:</strong> <em>(pendiente)</em>
-<strong>Código registrado:</strong> <em>(68201 u otro)</em>
 <strong>Notas:</strong> <em>(pendiente)</em></p>
     </main>
 
@@ -192,10 +142,9 @@ como <strong>persona natural + DFL2</strong>, la pregunta quedó respondida por 
       <h4>En esta pagina</h4>
       <ul class="jump-list">
 <li><a href="#que-hacer">Qué hacer</a></li>
-<li><a href="#por-que-es-critica-3-razones-verificadas">Por qué es crítica (3 razones verificadas)</a></li>
-<li><a href="#que-obligaciones-genera-pocas-gracias-al-dfl2">Qué obligaciones genera (pocas, gracias al DFL2)</a></li>
+<li><a href="#por-que-es-critica">Por qué es crítica</a></li>
+<li><a href="#como-hacerlo">Cómo hacerlo</a></li>
 <li><a href="#evidencia-requerida">Evidencia requerida</a></li>
-<li><a href="#al-completar">Al completar</a></li>
 <li><a href="#registro-de-resultado">Registro de resultado</a></li>
 </ul>
     </aside>
