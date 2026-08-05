@@ -336,6 +336,44 @@
     alScroll();
   });
 
+  /* ── Anillo de score del panel: relleno + conteo ────────────────────────
+     Se perdió en el cambio de shell junto con su CSS. El relleno se calcula
+     desde el radio real del círculo, no de una constante: el SVG del panel
+     puede venir con otro radio y una circunferencia fija dejaría el arco
+     descuadrado. Respeta `prefers-reduced-motion` mostrando el valor final. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.score-ring').forEach(function (ring) {
+      var numEl = ring.querySelector('.number[data-target]');
+      if (!numEl) return;
+      var target = parseInt(numEl.getAttribute('data-target'), 10);
+      if (isNaN(target)) return;
+
+      var fill = ring.querySelector('circle.fill');
+      if (fill) {
+        var r = parseFloat(fill.getAttribute('r') || '44');
+        var circ = 2 * Math.PI * r;
+        fill.style.strokeDasharray = String(circ);
+        fill.style.strokeDashoffset = String(quieto ? circ * (1 - target / 100) : circ);
+        if (!quieto) {
+          setTimeout(function () {
+            fill.style.strokeDashoffset = String(circ * (1 - target / 100));
+          }, 150);
+        }
+      }
+
+      if (quieto) { numEl.textContent = String(target); return; }
+      var dur = 1100, t0 = null;
+      function paso(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / dur, 1);
+        numEl.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(paso);
+      }
+      requestAnimationFrame(paso);
+    });
+  });
+
   /* ── severidad de fila por palabra clave ───────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
     var reCritical = /urgente|cr[ií]tic[ao]|bloqueado|bloqueante/i;

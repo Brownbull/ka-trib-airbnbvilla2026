@@ -231,3 +231,83 @@
 .docbody table { font-size: max(12.5px, .92rem); }
 .docbody th    { font-size: max(12px, .82rem); }
 .docbody td    { font-size: inherit; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Componentes del panel de caso (HTML crudo dentro del markdown)
+   --------------------------------------------------------------------------
+   REGRESIÓN CORREGIDA 2026-08-04: al pasar del kit gabe-artifact al shell A3 se
+   eliminó tools/templates/style.css, que era donde vivían estos estilos, y no
+   se portaron. El PANEL quedó con el anillo de score y el pipeline sin estilo:
+   el SVG del anillo se dibujaba a tamaño intrínseco —de ahí el hueco enorme— y
+   las etiquetas caían como texto suelto al final de la sección.
+   Reescritos sobre los tokens de a3.css.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.case-hero {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--panel);
+  padding: 20px;
+  margin: 0 0 24px;
+}
+.case-hero-top {
+  display: flex; align-items: center; gap: 24px;
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+
+/* ── anillo de score ── */
+.score-ring { position: relative; width: 104px; height: 104px; flex: 0 0 auto; }
+.score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); display: block; }
+.score-ring .bg { stroke: var(--line); }
+.score-ring .fill { stroke: var(--accent); transition: stroke-dashoffset 1.2s ease-out; }
+.score-ring .label {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  line-height: 1.15;
+}
+.score-ring .number {
+  font: var(--mono); font-size: 1.7rem; font-weight: 600; color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.score-ring .grade {
+  font-size: max(12px, .74rem); font-weight: 600; letter-spacing: .06em;
+  color: var(--muted); text-transform: uppercase;
+}
+
+/* ── pipeline de fases ── */
+.pipeline { display: flex; align-items: center; flex: 1; flex-wrap: wrap; row-gap: 8px; }
+.pipeline-stage { display: flex; align-items: center; flex-shrink: 0; }
+.pipeline-node {
+  min-width: 92px; height: 32px;
+  font-size: max(12px, .8rem);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 13px; text-align: center; white-space: nowrap;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); color: var(--ink-2);
+}
+.pipeline-node.completed { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+.pipeline-node.current   { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+.pipeline-node.pending   { color: var(--muted); border-style: dashed; }
+.pipeline-connector { width: 18px; height: 1px; background: var(--line); flex-shrink: 0; }
+.pipeline-connector.completed { background: var(--accent); }
+
+/* ── tarjetas de estado ── */
+.status-details {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px;
+  border-top: 1px solid var(--line); padding-top: 16px;
+}
+.detail-card { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.detail-card .label {
+  font: var(--mono); font-size: max(12px, .74rem); letter-spacing: .07em;
+  text-transform: uppercase; color: var(--muted);
+}
+.detail-card .value { font-size: max(12px, .92rem); color: var(--ink); }
+.detail-card .value.mono { font: var(--mono); font-size: max(12px, .88rem); }
+.detail-card .value.success { font-weight: 600; color: var(--good); }
+
+@media (max-width: 767px) {
+  .case-hero-top { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .score-ring { width: 84px; height: 84px; }
+  .score-ring .number { font-size: 1.35rem; }
+}
