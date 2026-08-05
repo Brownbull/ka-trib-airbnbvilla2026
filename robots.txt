@@ -1,11 +1,20 @@
 User-agent: *
 Allow: /
 
+# Bots de IA — acceso permitido (contenido orientativo público)
 User-agent: GPTBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
+
+Sitemap: https://brownbull.github.io/ka-trib-airbnbvilla2026/sitemap.xml
