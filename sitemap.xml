@@ -23,13 +23,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P1-seguro-rc.html"/>
   </url>
   <url>
-    <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P4-registro-sernatur.html</loc>
-    <lastmod>2026-08-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P4-registro-sernatur.html"/>
-  </url>
-  <url>
     <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P5-rut-airbnb.html</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -37,11 +30,18 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P5-rut-airbnb.html"/>
   </url>
   <url>
-    <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P6-patente-municipal.html</loc>
+    <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/06_con-supervision-ia/Q1-registro-sernatur.html</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/03_siguientes-pasos/P6-patente-municipal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/06_con-supervision-ia/Q1-registro-sernatur.html"/>
+  </url>
+  <url>
+    <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/06_con-supervision-ia/Q2-patente-municipal.html</loc>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/06_con-supervision-ia/Q2-patente-municipal.html"/>
   </url>
   <url>
     <loc>https://brownbull.github.io/ka-trib-airbnbvilla2026/99_entregable/06_con-supervision-ia/R1-reunion-contador-consolidada.html</loc>
