@@ -93,7 +93,7 @@
     <div class="crumb"><a href="../../index.html">Inicio</a> › Siguientes Pasos › <b>P5: Informar RUT y Calidad de Contribuyente en Airbnb — Paso 2 de Implementación</b></div>
     <div class="spacer"></div>
     <div class="case-actions"><span class="case-badge">CONFIDENCIAL</span><button class="case-btn no-print" onclick="window.print()" title="Exportar a PDF">PDF</button><button class="case-btn is-primary no-print" id="pii-load-btn" title="Cargar pii-manifest.json desde tu equipo">Revelar datos</button><span class="pii-status no-print" id="pii-status"></span></div>
-    <span class="stamp">regen · 2026-08-05 13:23</span>
+    <span class="stamp">regen · 2026-08-05 17:33</span>
   </div>
   <div class="subject">
     <div class="subjecthead">
@@ -116,17 +116,35 @@
 <strong>informar el RUT y la calidad de contribuyente en el perfil de anfitrión de Airbnb</strong>, en la
 sección de impuestos/datos fiscales de la cuenta.</p>
 <h2 id="por-que-es-critica"><span class="num">02</span>Por qué es crítica</h2>
-<p>Según la guía tributaria oficial de Airbnb Chile 2026 (preparada por firma independiente,
-noviembre 2025), por modificaciones legales recientes:</p>
+<blockquote>
+<p><strong>⚠️ Corregido 2026-08-05 (auditoría externa).</strong> La versión anterior afirmaba que sin RUT
+«Airbnb cobra IVA 19% sobre el total de cada reserva, aunque el arriendo esté exento». Esa
+conclusión <strong>no se sostiene como obligación legal</strong>: el Art. 3° bis del DL 825 hace a la
+plataforma responsable del IVA solo en <strong>operaciones gravadas</strong>, y la exención DFL2 saca la
+operación de ese supuesto <span class="confidence-tag">[VERIFICADO-NORMATIVA]</span> (<a href="https://www.bcn.cl/leychile/navegar?idNorma=6369">DL 825, BCN</a>).
+El anticipo de IVA de la Res. Ex. SII N°168 de 27-11-2025 [VERIFICADO-WEB — resolutivo 7°]
+tampoco es la razón: su porcentaje aún no se dicta y su gatillo es el incumplimiento
+tributario, no el RUT.</p>
+</blockquote>
+<p>Las razones vigentes para informar el RUT son dos:</p>
+<ol>
+<li><strong>Obligación del ecosistema Ley 21.713</strong>: el Art. 68 inciso 12° del Código Tributario obliga
+   a la plataforma a exigir acreditación de inicio de actividades a sus prestadores
+   <span class="confidence-tag">[VERIFICADO-NORMATIVA]</span> (<a href="https://www.bcn.cl/leychile/navegar?idNorma=1207746">Ley 21.713, BCN</a>).
+   Informar el RUT con el giro 68201 ya registrado es la forma limpia de acreditarlo.</li>
+<li><strong>Riesgo operativo de la plataforma</strong> [ANÁLISIS-IA — inferencia: la guía tributaria de
+   Airbnb Chile 2026 (fuente secundaria) describe que sin comunicación oportuna la plataforma
+   recarga IVA por defecto → sin RUT informado, Airbnb no puede saber que la operación está
+   exenta y puede aplicar recargos operativos]. Informar el RUT elimina esa fricción.</li>
+</ol>
+<p>La cita de la guía de Airbnb que fundaba la versión anterior se conserva como referencia de la
+práctica de la plataforma, no como norma:</p>
 <blockquote>
 <p><em>"En ausencia de dicha comunicación, o si esta no se efectúa oportunamente (antes del pago
 de la contraprestación), Airbnb deberá recargar, declarar y enterar el IVA aplicable al
-anfitrión. La base imponible corresponderá al valor total de la operación."</em></p>
+anfitrión."</em> [VERIFICADO-WEB — guía tributaria Airbnb Chile 2026, firma independiente,
+noviembre 2025 — <strong>fuente secundaria</strong>]</p>
 </blockquote>
-<p>Es decir <span class="confidence-tag">[VERIFICADO-WEB]</span>: <strong>si no informas tu RUT, Airbnb cobra IVA 19% sobre el total de cada reserva por
-defecto</strong> — aunque tu arriendo esté exento por DFL2. Informar el RUT traspasa la
-responsabilidad del IVA al anfitrión, cuyo arriendo en este caso está exento (Oficio SII
-1017/2024).</p>
 <h2 id="como-hacerlo"><span class="num">03</span>Cómo hacerlo</h2>
 <ol>
 <li>Airbnb → Cuenta → Impuestos (o "Información fiscal")</li>
@@ -139,7 +157,7 @@ permita el formulario y llevar la duda a la reunión con el contador (<a href=".
 <h2 id="evidencia-requerida"><span class="num">04</span>Evidencia requerida</h2>
 <ul>
 <li class="task-item"><input type="checkbox" disabled>  Captura del perfil fiscal de Airbnb con RUT registrado</li>
-<li class="task-item"><input type="checkbox" disabled>  Primera liquidación de Airbnb verificando que NO hay retención de IVA</li>
+<li class="task-item"><input type="checkbox" disabled>  Primera liquidación de Airbnb verificando montos íntegros, sin recargos inesperados</li>
 </ul>
 <hr>
 <h2 id="registro-de-resultado"><span class="num">05</span>Registro de resultado</h2>

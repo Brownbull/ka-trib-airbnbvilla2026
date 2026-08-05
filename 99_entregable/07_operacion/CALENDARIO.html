@@ -93,7 +93,7 @@
     <div class="crumb"><a href="../../index.html">Inicio</a> › Operación › <b>GUÍA DE OPERACIÓN — Airbnb Villarrica (Persona Natural + DFL2)</b></div>
     <div class="spacer"></div>
     <div class="case-actions"><span class="case-badge">CONFIDENCIAL</span><button class="case-btn no-print" onclick="window.print()" title="Exportar a PDF">PDF</button><button class="case-btn is-primary no-print" id="pii-load-btn" title="Cargar pii-manifest.json desde tu equipo">Revelar datos</button><span class="pii-status no-print" id="pii-status"></span></div>
-    <span class="stamp">regen · 2026-08-05 13:23</span>
+    <span class="stamp">regen · 2026-08-05 17:33</span>
   </div>
   <div class="subject">
     <div class="subjecthead">
@@ -113,8 +113,8 @@ Si entregas esta carpeta a un tercero, debería ser suficiente para operar.</p>
 Guía orientativa elaborada con IA, no vinculante. Consulte con un profesional habilitado.</p>
 </blockquote>
 <p><strong>Caso:</strong> airbnb_villarrica_202602
-<strong>Última actualización:</strong> 2026-06-09 (rehecha para estructura PN + DFL2 — reemplaza la versión SpA de 2026-02-15)
-<strong>Prerrequisito:</strong> Pasos de implementación completados (C2, P5, P6, P1 — ver <a href="../DECISION-FINAL.html">DECISION-FINAL.md</a>)</p>
+<strong>Última actualización:</strong> 2026-08-05 (alineada con la auditoría externa — reemplaza la versión del 2026-06-09)
+<strong>Prerrequisito:</strong> Pasos de implementación completados (C2, P5, P1), evidencia de servicios construida (<a href="../01_critico/C5-evidencia-negativa-servicios.html">C5</a>) y decisiones Q2 → Q1 resueltas — ver <a href="../DECISION-FINAL.html">DECISION-FINAL.md</a></p>
 <hr>
 <h2 id="resumen-de-la-operacion"><span class="num">01</span>Resumen de la Operación</h2>
 <div class="table-wrapper"><table>
@@ -172,29 +172,29 @@ Guía orientativa elaborada con IA, no vinculante. Consulte con un profesional h
 <tr>
 <th>Guía</th>
 <th>Frecuencia</th>
-<th>Archivo</th>
+<th>Abrir</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Por cada reserva</td>
 <td>Cada check-in/check-out</td>
-<td><code>eventual/guia-por-reserva.md</code></td>
+<td><a href="eventual/guia-por-reserva.html">Guía por reserva</a></td>
 </tr>
 <tr>
 <td>Mensual (ligera, 10 min)</td>
 <td>Inicio de cada mes</td>
-<td><code>mensual/guia-mensual.md</code></td>
+<td><a href="mensual/guia-mensual.html">Guía mensual</a></td>
 </tr>
 <tr>
 <td>Anual</td>
 <td>Enero-julio</td>
-<td><code>anual/guia-anual.md</code></td>
+<td><a href="anual/guia-anual.html">Guía anual</a></td>
 </tr>
 <tr>
 <td>Contactos y links</td>
 <td>Referencia permanente</td>
-<td><code>contactos-y-links.md</code></td>
+<td><a href="contactos-y-links.html">Contactos y enlaces</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -213,17 +213,17 @@ Guía orientativa elaborada con IA, no vinculante. Consulte con un profesional h
 <tr>
 <td>1-5</td>
 <td>Descargar liquidación mensual de Airbnb y archivarla</td>
-<td><code>guia-mensual.md</code></td>
+<td><a href="mensual/guia-mensual.html">Guía mensual</a></td>
 </tr>
 <tr>
 <td>1-5</td>
 <td>Actualizar planilla de reservas e ingresos</td>
-<td><code>guia-mensual.md</code></td>
+<td><a href="mensual/guia-mensual.html">Guía mensual</a></td>
 </tr>
 <tr>
 <td>1-5</td>
-<td>Verificar que Airbnb no haya retenido IVA</td>
-<td><code>guia-mensual.md</code></td>
+<td>Revisar la liquidación: montos íntegros, sin recargos ni descuentos inesperados</td>
+<td><a href="mensual/guia-mensual.html">Guía mensual</a></td>
 </tr>
 </tbody>
 </table></div>
@@ -238,34 +238,29 @@ Guía orientativa elaborada con IA, no vinculante. Consulte con un profesional h
 </thead>
 <tbody>
 <tr>
-<td>Enero</td>
-<td>Pagar 1ª cuota patente municipal</td>
-<td>Según municipio</td>
-</tr>
-<tr>
 <td><strong>Abril</strong></td>
 <td><strong>F22 — declarar uso DFL2 vía Asistente de Arriendos (impuesto $0)</strong></td>
 <td><strong>30 de abril</strong></td>
 </tr>
 <tr>
 <td>Abril / junio / sept / nov</td>
-<td>Contribuciones (con rebaja 50% DFL2)</td>
+<td>Contribuciones (con rebaja 50% DFL2 vigente — recepción municipal 2025)</td>
 <td>Fechas TGR</td>
-</tr>
-<tr>
-<td>Julio</td>
-<td>Pagar 2ª cuota patente municipal</td>
-<td>Según municipio</td>
 </tr>
 <tr>
 <td>Diciembre</td>
 <td>Renovar seguro RC</td>
 <td>Antes del vencimiento</td>
 </tr>
+<tr>
+<td><em>(Enero y julio)</em></td>
+<td><em>Cuotas de patente municipal — </em><em>SOLO si</em><em> el municipio negó la no afectación y exige patente (ver <a href="../06_con-supervision-ia/Q2-patente-municipal.html">Q2</a>). La ruta vigente es la solicitud de </em><em>no afectación</em><em>: si se concede, esta fila no aplica</em></td>
+<td>Según municipio</td>
+</tr>
 </tbody>
 </table></div>
 <h3 id="por-reserva">Por reserva</h3>
-<p>Ver <code>eventual/guia-por-reserva.md</code> — checklist operativo (sin facturación obligatoria).</p>
+<p>Ver la <a href="eventual/guia-por-reserva.html">guía por reserva</a> — checklist operativo (sin facturación obligatoria).</p>
 <hr>
         </article>
         <p class="docsource">Fuente: <code>99_entregable/07_operacion/CALENDARIO.md</code></p>
