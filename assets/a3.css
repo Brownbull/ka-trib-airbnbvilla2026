@@ -1,0 +1,1130 @@
+/* Direction A — "Catalog" skin. Light, airy developer-portal (Backstage-echo).
+   Self-contained: no PNG icon dependency (inline SVG), one accent, dark sidebar.
+   Deliberately NOT skin J: cool neutrals, generous whitespace, persistent sidebar,
+   density pushed off the landing and down into the feature page. */
+
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --panel:#fbfcfd; --line:#e7e9ee; --line-2:#eef0f4;
+  --ink:#141a24; --ink-2:#3d4756; --muted:#7a8595; --faint:#aab2be;
+  --accent:#4f46e5; --accent-soft:#eef0fe; --accent-ink:#4338ca;
+  --good:#16794c; --good-soft:#e7f4ee; --warn:#b45309; --warn-soft:#fcf1e2; --bad:#d1443c; --bad-soft:#fbeceb;
+  --sidebar:#101726; --sidebar-2:#1b2436; --sidebar-ink:#c7cfdd; --sidebar-muted:#79839a;
+  --radius:10px; --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.05);
+  --shadow-lift:0 4px 14px rgba(16,24,40,.10);
+  /* Viewer settings (a3-settings.js writes these on :root, persisted per
+     browser). --root-size drives every rem in the shell, so one value scales
+     nav + content together; --font-content is CONTENT-only, so re-typesetting
+     the reading column never disturbs the navigation's identity. */
+  --root-size:14px;
+  --font-ui:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-content:Menlo,Consolas,'DejaVu Sans Mono',ui-monospace,monospace;
+  --side-w:248px;
+  --font:0.9375rem/1.55 var(--font-ui);
+  --mono:0.75rem/1.5 ui-monospace,'Cascadia Mono',Consolas,monospace;
+}
+html{font-size:var(--root-size)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+svg{flex:none}
+
+/* ---------- app shell: sidebar + main ---------- */
+.app{display:grid;grid-template-columns:var(--side-w) 1fr;min-height:100vh}
+.side{background:var(--sidebar);color:var(--sidebar-ink);padding:16px 12px;position:sticky;top:0;height:100vh;overflow:auto;display:flex;flex-direction:column;gap:4px}
+.brand{display:flex;align-items:center;gap:10px;padding:6px 8px 12px}
+.brand .logo{width:30px;height:30px;border-radius:8px;background:#fff;display:grid;place-items:center;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.14)}
+.brand b{font-size:.92rem;color:#fff;letter-spacing:-.01em;display:block;line-height:1.2}
+.brand small{font-size:.66rem;color:var(--sidebar-muted);text-transform:uppercase;letter-spacing:.08em}
+.navlabel{font-size:.62rem;text-transform:uppercase;letter-spacing:.11em;color:var(--sidebar-muted);padding:12px 10px 4px;font-weight:600}
+.navitem{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;color:var(--sidebar-ink);text-decoration:none;font-size:.84rem;font-weight:500}
+.navitem:hover{background:var(--sidebar-2);color:#fff}
+.navitem.on{background:var(--accent);color:#fff}
+.navitem.on svg{color:#fff}
+.navitem svg{width:17px;height:17px;color:var(--sidebar-muted)}
+.navitem .count{margin-left:auto;font:var(--mono);font-size:.64rem;background:rgba(255,255,255,.08);border-radius:20px;padding:1px 8px;color:var(--sidebar-ink)}
+.navitem .count.alert{background:var(--bad);color:#fff}
+.navsub{display:flex;flex-direction:column;gap:1px;margin:1px 0 4px 8px;padding-left:14px;border-left:1px solid #26314a}
+.navsub a{color:var(--sidebar-muted);text-decoration:none;font-size:.78rem;padding:4px 10px;border-radius:6px}
+.navsub a:hover{color:#fff;background:var(--sidebar-2)}
+.navsub a.on{color:#fff}
+.side .foot{margin-top:auto;font:var(--mono);font-size:.6rem;color:var(--sidebar-muted);padding:12px 10px 2px;border-top:1px solid #26314a}
+
+/* ---------- main column ---------- */
+.main{min-width:0;font-family:var(--font-content)}
+.topbar{display:flex;align-items:center;gap:14px;padding:12px 30px;
+  background:var(--bar-bg,rgba(246,247,249,.86));backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.crumb{font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:7px;min-width:0}
+.crumb a{color:var(--muted);text-decoration:none}.crumb a:hover{color:var(--accent)}
+.crumb b{color:var(--ink)}
+.crumb .sep{color:var(--faint)}
+.topbar .spacer{flex:1}
+.statuspill{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;padding:5px 11px;border-radius:20px;border:1px solid var(--line)}
+/* In the sticky bar the pills are a status LINE, not page furniture — tighter
+   than the same component in a page head, where there is room to breathe. */
+.tabbar .statuspill{font-size:calc(.35rem + 4.8px);padding:4px 8px;gap:5px;
+  white-space:nowrap}
+/* The pills are LINKS: each one jumps to the section that owns its number.
+   A number a reader cannot trace is a number they have to take on faith,
+   which is the opposite of what this page is for. */
+a.statuspill{text-decoration:none;cursor:pointer;transition:filter .12s,transform .12s}
+a.statuspill:hover{filter:brightness(.96);transform:translateY(-1px)}
+[data-theme="dark"] a.statuspill:hover{filter:brightness(1.25)}
+a.statuspill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tabbar .stamp{font-size:calc(.31rem + 4.3px);white-space:nowrap}
+.statuspill .dot{width:8px;height:8px;border-radius:50%}
+.statuspill.ok{background:var(--good-soft);color:var(--good);border-color:#cfe6da}.statuspill.ok .dot{background:var(--good)}
+.statuspill.warn{background:var(--warn-soft);color:var(--warn);border-color:#f0dcc0}.statuspill.warn .dot{background:var(--warn)}
+.stamp{font:var(--mono);font-size:.66rem;color:var(--faint)}
+.wrap{max-width:1060px;margin:0 auto;padding:26px 30px 60px}
+
+/* ---------- headings / hero ---------- */
+.pagehead{margin:2px 0 22px}
+.pagehead h1{font-size:1.62rem;font-weight:700;letter-spacing:-.02em;margin:0 0 4px}
+.pagehead p{color:var(--ink-2);font-size:.98rem;margin:0;max-width:64ch}
+h2.sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700;
+  margin:30px 0 12px;display:flex;align-items:center;gap:9px}
+h2.sec svg{width:15px;height:15px;color:var(--muted)}
+h2.sec .more{margin-left:auto;font-size:.74rem;text-transform:none;letter-spacing:0;color:var(--accent);text-decoration:none;font-weight:600}
+h2.sec .more:hover{text-decoration:underline}
+
+/* ---------- KPI cards ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow)}
+.kpi .lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px}
+.kpi .lab svg{width:14px;height:14px;color:var(--faint)}
+.kpi .val{font-size:1.85rem;font-weight:750;letter-spacing:-.02em;margin:8px 0 2px;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:.74rem;color:var(--muted)}
+.kpi .trend{display:flex;gap:2px;align-items:flex-end;height:20px;margin-top:9px}
+.kpi .trend i{width:6px;background:var(--good-soft);border-radius:2px 2px 0 0;flex:none}
+.kpi .trend i.b{background:#d7ebe0}
+.kpi.alert{border-color:#f0cfcf}.kpi.alert .val{color:var(--bad)}
+.kpi.alert .lab svg{color:var(--bad)}
+
+/* ---------- callout (waiting on you) ---------- */
+.callout{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--radius);
+  padding:14px 18px;box-shadow:var(--shadow);margin:14px 0}
+.callout.warn{border-left-color:var(--warn)}
+.callout h3{margin:0 0 4px;font-size:.9rem;display:flex;align-items:center;gap:8px}
+.callout h3 svg{width:16px;height:16px;color:var(--warn)}
+.callout .items{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:8px}
+.callout .items a{display:flex;align-items:center;gap:7px;text-decoration:none;font-size:.82rem;color:var(--ink-2)}
+.callout .items a:hover{color:var(--accent)}
+.callout .items b{color:var(--ink);font-variant-numeric:tabular-nums}
+.callout .items .tag{font:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.05em;background:var(--warn-soft);color:var(--warn);border-radius:5px;padding:1px 6px}
+
+/* ---------- feature catalog rows ---------- */
+.catalog{display:flex;flex-direction:column;gap:8px}
+.frow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:13px 16px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:border-color .12s,box-shadow .12s}
+.frow:hover{border-color:var(--accent);box-shadow:var(--shadow-lift)}
+.frow .nm{min-width:0}
+.frow .nm b{font-size:.93rem;font-weight:650;letter-spacing:-.01em}
+.frow .nm p{margin:2px 0 0;font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frow .meta{display:flex;align-items:center;gap:16px}
+.frow .health{text-align:right}
+.frow .health .pct{font-size:1.02rem;font-weight:700;font-variant-numeric:tabular-nums}
+.frow .health small{display:block;font-size:.66rem;color:var(--muted)}
+.frow .health.ok .pct{color:var(--good)} .frow .health.none .pct{color:var(--faint)}
+.echips{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.echip{font-size:.64rem;font-weight:600;letter-spacing:.02em;padding:2px 8px;border-radius:20px;
+  border:1px solid var(--ec,#ccc);color:var(--ec,#888);background:var(--surface)}
+.arrow{color:var(--faint)}
+.frow:hover .arrow{color:var(--accent)}
+
+/* ---------- generic panel / segmented / tables ---------- */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:0;overflow:hidden}
+.seg{display:flex;gap:4px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:4px;margin:0 0 16px;width:fit-content}
+.seg a{font-size:.8rem;font-weight:600;color:var(--ink-2);text-decoration:none;padding:6px 14px;border-radius:9px;display:flex;align-items:center;gap:7px}
+.seg a .n{font:var(--mono);font-size:.66rem;color:var(--muted)}
+.seg a.on{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.seg a.on .n{color:var(--accent)}
+.surfrow{display:grid;grid-template-columns:auto 1fr auto auto;gap:14px;align-items:center;padding:13px 18px;border-top:1px solid var(--line-2);text-decoration:none;color:inherit}
+.surfrow:first-child{border-top:none}
+.surfrow:hover{background:var(--panel)}
+.surfrow .ic{width:34px;height:34px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center}
+.surfrow .ic svg{width:17px;height:17px}
+.surfrow .nm b{font-size:.9rem;font-weight:640}
+.surfrow .nm small{display:block;color:var(--muted);font-size:.76rem;margin-top:1px}
+.surfrow .ct{font-size:1.05rem;font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.surfrow .ct small{display:block;font-size:.66rem;color:var(--muted);font-weight:400}
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.tbl th{text-align:left;font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;padding:10px 18px;border-bottom:1px solid var(--line)}
+.tbl td{padding:10px 18px;border-top:1px solid var(--line-2);color:var(--ink-2);vertical-align:middle}
+.tbl td b{color:var(--ink);font-weight:600}
+.tbl tr:hover td{background:var(--panel)}
+.tbl .num{font-variant-numeric:tabular-nums;text-align:right}
+.bar{height:6px;border-radius:4px;background:var(--line-2);overflow:hidden;min-width:90px}
+.bar i{display:block;height:100%;background:var(--good)} .bar i.warn{background:var(--warn)} .bar i.bad{background:var(--bad)}
+
+/* ---------- chips / badges ---------- */
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:650;padding:3px 9px;border-radius:20px;border:1px solid transparent;letter-spacing:.01em;white-space:nowrap}
+.chip.ok{background:var(--good-soft);color:var(--good);border-color:#cfe6da}
+.chip.warn{background:var(--warn-soft);color:var(--warn);border-color:#f0dcc0}
+.chip.bad{background:var(--bad-soft);color:var(--bad);border-color:#f0cfcf}
+.chip.mut{background:var(--panel);color:var(--muted);border-color:var(--line)}
+.chip.grow{background:var(--accent-soft);color:var(--accent-ink);border-color:#d6d8fb}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+.freshtag{font:var(--mono);font-size:.68rem;color:var(--muted)}
+
+/* ---------- feature page: health strip + angle cards ---------- */
+.hstrip{display:flex;flex-wrap:wrap;gap:2px 30px;align-items:baseline;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:var(--shadow);padding:14px 20px;margin:16px 0 6px}
+.hstrip .cell b{font-size:1.3rem;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.hstrip .cell span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-left:6px}
+.hstrip .cell em{font-style:normal;color:var(--faint);font-size:.72rem;display:block;margin-top:1px}
+.hstrip .cell.warn b{color:var(--warn)}
+.storyquote{border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin:18px 0;font-size:1.02rem;color:var(--ink-2);max-width:70ch}
+.angles{display:flex;flex-direction:column;gap:10px}
+.angle{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.angle>summary{display:flex;align-items:center;gap:14px;padding:14px 18px;cursor:pointer;list-style:none}
+.angle>summary::-webkit-details-marker{display:none}
+.angle>summary .ic{width:38px;height:38px;border-radius:9px;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;flex:none}
+.angle>summary .ic svg{width:19px;height:19px}
+.angle>summary .nm{flex:1;min-width:0}
+.angle>summary .nm b{font-size:.92rem;font-weight:650;display:block}
+.angle>summary .nm small{color:var(--muted);font-size:.78rem}
+.angle>summary .caret{color:var(--faint);transition:transform .15s}
+.angle[open]>summary .caret{transform:rotate(90deg)}
+.angle[open]>summary{border-bottom:1px solid var(--line-2)}
+.angle .body{padding:6px 18px 16px}
+.angle .fdet{font-size:.82rem;color:var(--ink-2);margin:12px 0 4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.angle .fdet b{color:var(--ink)}
+.angle .fdet a{color:var(--muted);font:var(--mono);font-size:.68rem;text-decoration:none;border-bottom:1px dotted var(--accent)}
+.tlist{list-style:none;margin:2px 0 4px;padding:0;columns:2;column-gap:28px;font-size:.8rem}
+.tlist li{margin:3px 0;break-inside:avoid;color:var(--ink-2);display:flex;align-items:baseline;gap:7px}
+.tlist li .d{width:6px;height:6px;border-radius:50%;background:var(--good);flex:none;transform:translateY(-1px)}
+@media(max-width:640px){.tlist{columns:1}}
+.grow{background:var(--accent-soft);border-radius:8px;padding:11px 14px;font-size:.82rem;color:var(--accent-ink);margin:6px 0}
+.grow b{color:var(--accent-ink)}
+.matchnote{font:var(--mono);font-size:.68rem;color:var(--faint);margin:12px 0 0}
+
+/* ---------- demo gallery ---------- */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:10px 0 6px}
+.shot{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);box-shadow:var(--shadow);text-decoration:none;color:inherit}
+.shot .ph{aspect-ratio:4/3;background:repeating-linear-gradient(135deg,#eef0f4,#eef0f4 10px,#e7e9ee 10px,#e7e9ee 20px);display:grid;place-items:center;color:var(--faint);font:var(--mono);font-size:.64rem}
+.shot .cap{padding:7px 10px}
+.shot .cap b{font:var(--mono);font-size:.62rem;color:var(--accent);display:block}
+.shot .cap span{font-size:.74rem;color:var(--ink-2)}
+.legclaim{font-size:.86rem;color:var(--ink-2);margin:14px 0 2px}
+.legclaim b{color:var(--accent);font:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;margin-right:6px}
+
+.footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font:var(--mono);font-size:.66rem;color:var(--faint)}
+
+@media(max-width:820px){
+  .app{grid-template-columns:1fr}
+  .side{position:static;height:auto;flex-direction:column}
+  .wrap,.topbar{padding-left:18px;padding-right:18px}
+}
+
+/* ============================================================
+   A3 — "Tabbed subject" nav-shell additions ONLY.
+   Skin tokens above are catalog.css verbatim; nothing below invents
+   a color/font/radius. The right pane is a SELF-SIMILAR tabbed page:
+   Overview · Tests · Evidence · Risk — pure-CSS :target tabs
+   (file://-safe, no JS, deep-linkable). Same shell for every subject.
+   ============================================================ */
+
+/* The subject container. 1060px is a READING MEASURE — correct for prose, wrong
+   for a sticky title bar, which has no measure. Capping both at 1060 left 612px
+   of the main column unused at 1920px while the bar wrapped to three lines. The
+   container now widens; the PANES keep the reading measure and stay left-aligned
+   with the bar, so the bar and the content share a left edge and only the status
+   cluster uses the extra room. */
+/* width now lives once in --content-max (Action Ledger fold, at the END of this
+   file); .subject keeps only its centering here. */
+.subject{margin:0 auto}
+.subjecthead{padding:24px 30px 0}
+.subjecthead .pagehead{margin-bottom:12px}
+
+/* tab strip — reuses the .seg segmented-control look, sticky under topbar */
+/* nowrap, never truncate: under width pressure the bar scrolls sideways so a
+   number is never hidden and never cut. Wrapping was the bug — the operator
+   ruling is that this bar IS the title bar on scroll, and a title bar that
+   grows to three lines has stopped being one. */
+.tabbar{position:sticky;top:0;z-index:6;display:flex;gap:3px;flex-wrap:nowrap;align-items:center;
+  overflow-x:auto;scrollbar-width:none;
+  padding:10px 16px 10px 30px;background:var(--bar-bg,rgba(246,247,249,.86));backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line)}
+.tabbar a{display:inline-flex;font-size:calc(.41rem + 5.6px);font-weight:600;color:var(--ink-2);text-decoration:none;
+  padding:7px 9px;border-radius:9px;display:flex;align-items:center;gap:6px;
+  border:1px solid transparent;white-space:nowrap}
+.tabbar a svg{width:13px;height:13px;color:var(--faint)}
+.tabbar a .n{font:var(--mono);font-size:.63rem;color:var(--muted);background:var(--panel);
+  border:1px solid var(--line);border-radius:20px;padding:1px 7px}
+.tabbar a:hover{background:var(--panel);color:var(--ink)}
+.tabbar::-webkit-scrollbar{display:none}
+
+/* panes: only the targeted pane shows; Overview is the default */
+.tabpane{display:none;padding:22px 30px 60px;scroll-margin-top:118px}
+.tabpane:target{display:block}
+.tabpane:has(:target){display:block}
+.tabbody:not(:has(:target)) #tab-overview{display:block}
+
+/* active-tab highlight (mirrors .seg a.on); default = Overview */
+/* The selected tab. Two rules the four-tab original got wrong: Code was added
+   later and never joined this list, and every selector keyed on `#tab-X:target`
+   ONLY — so jumping to a section anchor INSIDE a pane un-highlighted every tab
+   and the reader lost the answer to "where am I". Matching a descendant target
+   as well keeps the pill lit through subnav jumps. */
+.subject:not(:has(:target)) .tabbar a[href="#tab-overview"],
+.subject:has(#tab-overview:target, #tab-overview :target) .tabbar a[href="#tab-overview"],
+.subject:has(#tab-code:target, #tab-code :target) .tabbar a[href="#tab-code"],
+.subject:has(#tab-tests:target, #tab-tests :target) .tabbar a[href="#tab-tests"],
+.subject:has(#tab-evidence:target, #tab-evidence :target) .tabbar a[href="#tab-evidence"],
+.subject:has(#tab-risk:target, #tab-risk :target) .tabbar a[href="#tab-risk"]{
+  background:var(--surface);color:var(--ink);box-shadow:var(--shadow);border-color:var(--line)}
+.subject:not(:has(:target)) .tabbar a[href="#tab-overview"] svg,
+.subject:has(#tab-overview:target, #tab-overview :target) .tabbar a[href="#tab-overview"] svg,
+.subject:has(#tab-code:target, #tab-code :target) .tabbar a[href="#tab-code"] svg,
+.subject:has(#tab-tests:target, #tab-tests :target) .tabbar a[href="#tab-tests"] svg,
+.subject:has(#tab-evidence:target, #tab-evidence :target) .tabbar a[href="#tab-evidence"] svg,
+.subject:has(#tab-risk:target, #tab-risk :target) .tabbar a[href="#tab-risk"] svg{color:var(--accent)}
+
+/* risk grid (re-housed verbatim from A-catalog's inline block) */
+.riskgrid{width:100%;border-collapse:separate;border-spacing:5px;font-size:.72rem}
+.riskgrid td{text-align:center}
+.riskgrid td.void{border:1px dashed var(--line);border-radius:7px;background:transparent}
+.riskgrid th.area{color:var(--muted);font-weight:600;font-size:.62rem;text-transform:uppercase}
+.riskgrid .tier{text-align:right;white-space:nowrap}
+.riskgrid .tier small{color:var(--faint);font-size:.6rem}
+.riskgrid .cell{display:block;background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:6px 8px}
+.riskgrid .cell b{font-size:.9rem;font-variant-numeric:tabular-nums}
+.riskgrid .cell small{color:var(--faint);font-size:.58rem}
+.riskgrid a.cell{text-decoration:none}
+.riskgrid .cell.safety{background:var(--bad-soft);border:1px solid #f0cfcf;border-left:3px solid var(--bad)}
+.riskgrid .cell.safety b{color:var(--bad)}
+.riskgrid .cell.here{border:2px solid var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+
+@media(max-width:820px){
+  .subjecthead,.tabbar,.tabpane{padding-left:18px;padding-right:18px}
+  /* The tab strip STAYS sticky here. It used to go static, so scrolling into a
+     pane many screens long left no way back to the tabs at all — and .subnav's
+     top:49px was never reset, so it stuck into the gap the strip left behind.
+     Narrow means scrollable, not absent. */
+  .tabbar{top:0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+  .tabbar::-webkit-scrollbar{display:none}
+  .tabbar .tpills{margin-left:12px}
+  .subnav{top:44px}
+}
+
+/* ---------- identity layer — the landed-map palette shipped with the shell ----------
+   Group colors (--g-*) and command colors mirror the connection-map artifact's CSS vars.
+   Section banners (.sechead) make every map section identifiable wherever it renders:
+   wrap in <section data-sec="<id>" style="--gc:<group color>"> — shipped in the skeletons. */
+:root{--g-now:#0d7a84;--g-board:#1f6feb;--g-ent:#0a7d6b;--g-docs:#8e4585;--g-code:#5a53a8;--g-test:#3f6d4c;--g-ledger:#9a5a00;--g-rel:#7a5a8a;--g-leaf:#8494a4}
+.navlabel.g-now{color:#3bb3bd}.navlabel.g-board{color:#6aa6f5}.navlabel.g-ent{color:#4fc3a8}.navlabel.g-docs{color:#c98bbb}
+.navlabel.g-code{color:#9b93e6}.navlabel.g-test{color:#6fa77d}.navlabel.g-ledger{color:#d79a3c}.navlabel.g-rel{color:#b795c9}.navlabel.g-leaf{color:#8494a4}
+section[data-sec]{margin:0 0 22px}
+/* Section banners are TITLES over their rows — never cards beside them. The
+   tint HUGS the label (inline-flex + fit-content); the card signals (full-width
+   surface, border, shadow) are gone, so a section header can never be mistaken
+   for one of the item rows it introduces. */
+.sechead{display:flex;gap:9px;align-items:flex-start;background:none;border:0;border-radius:0;padding:0;margin:2px 0 12px;box-shadow:none}
+.secic{width:28px;height:28px;flex:none;border-radius:50%;background:var(--gc,var(--accent));color:#fff;display:grid;place-items:center}
+.secic svg{width:15px;height:15px}
+.sechead h2{margin:0;font-size:.95rem;font-weight:700;letter-spacing:-.01em;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;width:fit-content;background:color-mix(in srgb,var(--gc,var(--accent)) 12%,transparent);border-radius:999px;padding:3px 14px}
+.sechead .gtag{font-size:.64rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gc,var(--accent))}
+.sechead p{margin:5px 0 0 3px;color:var(--muted);font-size:.78rem}
+/* (tab box + icon size are declared once, above — a later duplicate at equal
+   specificity silently overrode the compressed values for a whole session) */
+
+/* ---------- raw-skeleton affordance (assets/slots.js) — inert on generated pages ---------- */
+.slottoken{display:inline-flex;align-items:center;font:var(--mono);font-size:.66rem;color:var(--accent-ink);background:var(--accent-soft);border:1px dashed var(--accent-ink);border-radius:6px;padding:1px 7px;margin:0 2px;white-space:nowrap;vertical-align:baseline}
+.side .slottoken{color:#aab6ff;background:rgba(255,255,255,.07);border-color:#5560a8;margin:4px 10px}
+.slotnotice{background:var(--warn-soft);border:1px solid #ecd9b8;color:var(--warn);border-radius:10px;padding:10px 14px;margin:12px 18px 0;font-size:.8rem}
+
+/* ---------- viewer settings: density + rail ---------- */
+/* COMPACT = vertical density. Same width, less air: the sidebar fits more rows
+   without changing what any row says. */
+:root[data-compact="1"] .side{padding:8px 10px;gap:1px}
+:root[data-compact="1"] .brand{padding:2px 8px 7px}
+:root[data-compact="1"] .navlabel{padding:7px 10px 2px}
+:root[data-compact="1"] .navitem{padding:4px 10px}
+:root[data-compact="1"] .navsub a{padding:2px 10px}
+:root[data-compact="1"] .side .foot{padding:7px 10px 2px}
+
+/* RAIL = collapse to icons, width to content. Toggled by the button in the
+   sidebar's bottom-right corner, independent of density. */
+:root[data-rail="1"]{--side-w:64px}
+:root[data-rail="1"] .navlabel,
+:root[data-rail="1"] .navsub,
+:root[data-rail="1"] .side .foot,
+:root[data-rail="1"] .brand small,
+:root[data-rail="1"] .brand b,
+:root[data-rail="1"] .navitem .count{display:none}
+:root[data-rail="1"] .side{align-items:center}
+:root[data-rail="1"] .brand{padding:6px 0 12px}
+:root[data-rail="1"] .navitem{justify-content:center;gap:0;font-size:0;padding:9px 0;width:100%}
+:root[data-rail="1"] .navitem svg{width:18px;height:18px}
+
+/* collapse toggle: icon-only, directly AFTER the last menu group */
+.a3rail{align-self:flex-start;margin:8px 0 0 8px;display:inline-flex;align-items:center;
+  justify-content:center;background:var(--sidebar-2);border:1px solid #26314a;
+  color:var(--sidebar-muted);border-radius:8px;padding:6px;cursor:pointer}
+.a3rail:hover{color:var(--sidebar-ink);border-color:#3a4763}
+:root[data-rail="1"] .a3rail{align-self:center;margin-left:0}
+
+/* Diagram text follows the content font. Mermaid inlines its own
+   <style>#m0{font-family:...} — an ID selector — so this must be !important. */
+.dgm svg,.dgm svg text,.dgm svg tspan,.dgm svg .nodeLabel,.dgm svg .edgeLabel,
+.dgm svg foreignObject div,.dgm svg span{font-family:var(--font-content)!important}
+
+/* ---------- diagram picker: one diagram at a time, no script ---------- */
+.dgm>input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.dgmbar{display:inline-flex;gap:4px;background:var(--panel);border:1px solid var(--line);
+  border-radius:11px;padding:4px;margin:0 0 14px}
+.dgmbar a{text-decoration:none;font-size:.78rem;font-weight:600;color:var(--ink-2);padding:5px 13px;
+  border-radius:8px;cursor:pointer;user-select:none}
+.dgmbar a:hover{color:var(--accent)}
+.dgm .pane{display:none}
+.dgm .panes svg{max-width:100%;height:auto}
+/* :target, not a radio — the choice now rides in the URL, so a link to "the
+   dataflow of transaction" survives a reload and a paste to a colleague.
+   Nothing else on the page can be inside .dgm, so :not(:has(:target)) is a
+   safe "nobody picked yet" default. */
+.dgm:not(:has(:target)) .panes .p0{display:block}
+.dgm .panes .pane:target{display:block}
+.dgm:not(:has(:target)) .dgmbar a:nth-of-type(1),
+.dgm:has(.p0:target) .dgmbar a:nth-of-type(1),
+.dgm:has(.p1:target) .dgmbar a:nth-of-type(2),
+.dgm:has(.p2:target) .dgmbar a:nth-of-type(3){background:var(--surface);color:var(--ink);
+  box-shadow:var(--shadow)}
+
+/* ---------- settings panel (injected by a3-settings.js) ---------- */
+.a3gear{display:inline-flex;align-items:center;gap:7px;background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:5px 12px;font-size:.74rem;
+  font-weight:600;color:var(--ink-2);cursor:pointer;font-family:var(--font-ui)}
+.a3gear:hover{color:var(--accent);border-color:var(--accent)}
+.a3panel{position:fixed;right:20px;top:56px;z-index:60;width:270px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-lift);
+  padding:14px;display:none;font-family:var(--font-ui)}
+.a3panel.on{display:block}
+.a3panel h4{margin:0 0 10px;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--muted)}
+.a3panel label.row{display:block;font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--muted);margin:12px 0 5px}
+.a3panel select{width:100%;font-size:.82rem;padding:6px 8px;border:1px solid var(--line);
+  border-radius:8px;background:var(--panel);color:var(--ink);font-family:inherit}
+.a3seg{display:flex;gap:4px}
+.a3seg button{flex:1;font-size:.76rem;font-weight:600;padding:6px 0;border-radius:7px;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink-2);cursor:pointer;
+  font-family:inherit}
+.a3seg button.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.a3toggle{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  font-size:.82rem;color:var(--ink);margin-top:4px}
+
+/* ---------- gabe-lens block: the page's opening ---------- */
+.lens{margin:0 0 20px}
+.lenshandle{margin:0 0 14px;font-size:1.08rem;font-weight:650;letter-spacing:-.01em;
+  color:var(--ink);font-family:var(--font-content)}
+.lensbox{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;
+  margin:0 0 14px}
+.lenscell{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:9px;padding:10px 12px}
+.lenscell b{display:block;font-size:.62rem;text-transform:uppercase;letter-spacing:.09em;
+  color:var(--muted);margin-bottom:3px}
+.lenscell span{font-size:.84rem;color:var(--ink-2)}
+.lenscell:nth-child(2){border-left-color:var(--warn)}
+.lenscell:nth-child(3){border-left-color:var(--good)}
+.lensanalogy{margin:0 0 12px;font-size:.9rem;color:var(--ink-2);font-style:italic}
+
+/* Progressive disclosure — the full card is present, just folded. */
+details.more{margin:18px 0 0;border-top:1px solid var(--line);padding-top:12px}
+details.more>summary{cursor:pointer;font-size:.8rem;font-weight:650;color:var(--accent);
+  list-style:none;display:flex;align-items:center;gap:7px;font-family:var(--font-ui)}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"▸";font-size:.9rem}
+details.more[open]>summary::before{content:"▾"}
+details.more>summary:hover{opacity:.8}
+
+/* ---------- semantic color tags: HTTP verbs · code layers · severities ----------
+   One vocabulary, used with a legend beside every table that speaks it. */
+.tag.m-get{background:var(--good-soft);color:var(--good)}
+.tag.m-post{background:var(--accent-soft);color:var(--accent-ink)}
+.tag.m-mut{background:var(--warn-soft);color:var(--warn)}
+.tag.m-del{background:var(--bad-soft);color:var(--bad)}
+.tag.l-api{background:var(--accent-soft);color:var(--accent-ink)}
+.tag.l-services{background:#e0f2f1;color:#0f766e}
+.tag.l-models{background:#f3e8ff;color:#7c3aed}
+.tag.l-schemas{background:#e0e7ff;color:#4338ca}
+.tag.l-web{background:var(--good-soft);color:var(--good)}
+.tag.l-mobile{background:#ffedd5;color:#c2410c}
+.tag.l-evidence{background:#fce7f3;color:#be185d}
+/* growth pricing: effort class + the maturity stage it belongs to */
+.tag.e-xs{background:var(--good-soft);color:var(--good)}
+.tag.e-s{background:#e0f2f1;color:#0f766e}
+.tag.e-m{background:var(--warn-soft);color:var(--warn)}
+.tag.e-l{background:var(--bad-soft);color:var(--bad)}
+.tag.st-mvp{background:var(--accent-soft);color:var(--accent-ink)}
+.tag.st-ent{background:#f3e8ff;color:#7c3aed}
+.tag.st-scale{background:var(--line-2);color:var(--muted)}
+.tag.s-high{background:var(--bad-soft);color:var(--bad)}
+.tag.s-med{background:var(--warn-soft);color:var(--warn)}
+.tag.s-low{background:var(--accent-soft);color:var(--accent-ink)}
+.tag.s-ok{background:var(--good-soft);color:var(--good)}
+.tag.s-gap{background:var(--line-2);color:var(--muted)}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:2px 0 12px;
+  font-size:.76rem;color:var(--muted)}
+.leg .tag{font-size:.62rem}
+
+/* proof-set rows: a toggleable row that opens into its own gallery */
+details.proofset{border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);margin:0 0 8px;box-shadow:var(--shadow)}
+details.proofset>summary{cursor:pointer;list-style:none;display:flex;align-items:center;
+  gap:10px;padding:11px 16px;font-size:.85rem}
+details.proofset>summary::-webkit-details-marker{display:none}
+details.proofset>summary::before{content:"▸";color:var(--accent);font-size:.85rem}
+details.proofset[open]>summary::before{content:"▾"}
+details.proofset>summary b{font-weight:650}
+details.proofset>summary .count{margin-left:auto;font:var(--mono);font-size:.68rem;
+  color:var(--muted)}
+details.proofset .gal{padding:0 14px 14px;margin:0}
+
+/* ---------- code-tab cross-links: rows are anchor targets ---------- */
+/* font-only verb colors (backgrounds stay for the endpoints table's own tags) */
+.fm-get{color:var(--good)} .fm-post{color:var(--accent-ink)}
+.fm-mut{color:var(--warn)} .fm-del{color:var(--bad)}
+a.fm-get,a.fm-post,a.fm-mut,a.fm-del{text-decoration:none;font:var(--mono);
+  font-size:.68rem;white-space:nowrap}
+a.fm-get:hover,a.fm-post:hover,a.fm-mut:hover,a.fm-del:hover{text-decoration:underline}
+a.flink{text-decoration:none;font-weight:600}
+a.flink:hover{text-decoration:underline}
+a.dlink{text-decoration:none;font-weight:600;color:#7c3aed}
+a.dlink:hover{text-decoration:underline}
+/* expandable purpose cell — closed shows the cut, open swaps in the full text */
+details.pmore{display:inline}
+details.pmore summary{list-style:none;cursor:pointer;display:inline}
+details.pmore summary::-webkit-details-marker{display:none}
+details.pmore .full{display:none}
+details.pmore[open] .cut{display:none}
+details.pmore[open] .full{display:inline}
+details.pmore i{font-style:normal;color:var(--accent);font-size:.7rem;
+  white-space:nowrap;margin-left:4px}
+details.pmore i::after{content:"⊕ more"}
+details.pmore[open] i::after{content:"⊖ less"}
+
+/* right cluster of the sticky tabbar: pills + sync ride with the tabs, so the
+   one bar that stays on screen carries tests · phase · last-sync */
+.tabbar .tpills{margin-left:auto;display:flex;gap:5px;align-items:center;
+  flex-wrap:nowrap;flex:none}
+
+/* secondary nav: per-tab section links, sticky just under the tabbar */
+.subnav{position:sticky;top:55px;z-index:5;display:flex;gap:2px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;
+  background:var(--bg);border-bottom:1px solid var(--line-2);padding:6px 0;margin:0 0 14px}
+.subnav a{font-size:.74rem;font-weight:600;color:var(--muted);text-decoration:none;
+  padding:4px 11px;border-radius:7px}
+.subnav a:hover{background:var(--panel);color:var(--ink)}
+.subnav a.on{background:var(--panel);color:var(--ink)}
+.subnav a.on svg{color:var(--accent)}
+[id^="sec-"]{scroll-margin-top:118px}
+[id^="ep-"],[id^="cm-"],[id^="dm-"]{scroll-margin-top:150px}
+
+/* ---------- dark mode (a3-settings.js toggles data-theme on :root) ---------- */
+[data-theme="dark"]{
+  --bg:#0f141c; --surface:#161d29; --panel:#1b2433; --line:#2a3547; --line-2:#242e40;
+  --ink:#e6ebf3; --ink-2:#b7c1d1; --muted:#8391a5; --faint:#5c6a80;
+  --accent:#818cf8; --accent-soft:#272e4d; --accent-ink:#a5b0ff;
+  --good:#4ade80; --good-soft:#173226; --warn:#fbbf24; --warn-soft:#3a2c14;
+  --bad:#f87171; --bad-soft:#3b1f1e;
+  --shadow:none; --shadow-lift:0 6px 18px rgba(0,0,0,.5);
+  --bar-bg:rgba(15,20,28,.88)}
+/* pre-rendered mermaid SVGs carry light-theme colors — give them a light plate
+   rather than pretending they re-theme */
+[data-theme="dark"] .dgm .pane{background:#f6f7f9;border-radius:10px;padding:10px}
+[data-theme="dark"] .shot .ph{background:repeating-linear-gradient(135deg,#1b2433,#1b2433 10px,#242e40 10px,#242e40 20px)}
+.a3gear.icononly{width:30px;height:30px;padding:0;justify-content:center;border-radius:50%;flex:none}
+
+
+/* subnav: icons + true vertical centering (same height) */
+/* labels ride LOWER in the same bar height: more air above, less below */
+.subnav{align-items:center;padding:8px 0 2px}
+.subnav a{display:inline-flex;align-items:center;gap:6px}
+.subnav a svg{width:12px;height:12px;color:var(--faint);flex:none}
+.subnav a:hover svg{color:var(--accent)}
+
+/* section-title info toggle: the title row is the summary; ⊕ reveals the
+   section's description + legends (never its tables) */
+details.secinfo{margin:0}
+details.secinfo>summary{list-style:none;cursor:pointer}
+details.secinfo>summary::-webkit-details-marker{display:none}
+details.secinfo>summary h2{display:inline-flex;align-items:center;gap:8px;margin:0}
+.secinfo i.tgl{font-style:normal;display:inline-flex;width:17px;height:17px;flex:none;
+  border-radius:50%;align-items:center;justify-content:center;font-size:.78rem;
+  font-weight:700;background:color-mix(in srgb,var(--gc,var(--accent)) 16%,transparent);
+  color:var(--gc,var(--accent))}
+.secinfo i.tgl::after{content:"+"}
+details.secinfo[open] i.tgl::after{content:"–"}
+.secinfo .secbody{margin-top:7px}
+.secinfo .secbody p{margin:3px 0 0;color:var(--muted);font-size:.78rem}
+.secinfo .secbody .leg{margin:8px 0 2px}
+
+/* the settings gear sits in the brand row, right of the title — BARE icon,
+   no container; its panel opens anchored to the cog (positioned by JS) */
+.brand .a3gear{margin-left:auto;background:none;border:0;padding:0;
+  width:auto;height:auto;color:var(--sidebar-muted)}
+.brand .a3gear:hover{color:var(--sidebar-ink)}
+.brand .a3gear svg{width:15px;height:15px}
+:root[data-rail="1"] .side .brand{flex-direction:column;gap:8px}
+:root[data-rail="1"] .brand .a3gear{margin-left:0}
+/* .a3panel position is set from the gear's rect by a3-settings.js */
+
+/* ---------- data-model TYPE vocabulary: family = hue, depth = width ----------
+   Three families a reader scans a Type column for -- numeric, temporal,
+   textual -- one hue each. Within a family the WIDER type renders DEEPER: an
+   int is the plain member of the numeric family, a float/Decimal the deep one.
+   Legended wherever used (a color without a legend is decoration). */
+.ty{font:var(--mono);font-size:.76rem;font-weight:600}
+.ty-num1{color:#7089c4} .ty-num2{color:#1d4ed8}
+.ty-tim1{color:#c08a4a} .ty-tim2{color:#9a4b06}
+.ty-str1{color:#4f9a86} .ty-str2{color:#0b6a55}
+.ty-bool{color:#b83280} .ty-json{color:#7c6bb8} .ty-id{color:#78849a}
+.ty-null{color:var(--faint);font-weight:500}
+[data-theme="dark"] .ty-num1{color:#9db4ee}
+[data-theme="dark"] .ty-num2{color:#6c8cff}
+[data-theme="dark"] .ty-tim1{color:#e3b579}
+[data-theme="dark"] .ty-tim2{color:#f0913c}
+[data-theme="dark"] .ty-str1{color:#84c9b6}
+[data-theme="dark"] .ty-str2{color:#3fd6ac}
+[data-theme="dark"] .ty-bool{color:#f472b6}
+[data-theme="dark"] .ty-json{color:#b4a8f0}
+[data-theme="dark"] .ty-id{color:#8391a5}
+
+/* ---------- meter: a counter and its proportion in one cell ----------
+   A percentage alone hides the denominator; a bar alone hides the count. */
+.meter{display:flex;align-items:center;gap:8px;min-width:118px}
+.meter .bar{flex:1;min-width:52px}
+.meter .pct{font:var(--mono);font-size:.7rem;color:var(--muted);
+  font-variant-numeric:tabular-nums;min-width:36px;text-align:right}
+.meter.full .pct{color:var(--good)}
+
+/* ---------- expander row: a table row that opens INSIDE the table ----------
+   The detail belongs to the row, so it renders under it rather than on a page
+   the reader has to navigate away to. */
+.tbl tr.exp>td{padding:0;border-top:0;background:var(--panel);
+  box-shadow:inset 3px 0 0 transparent;transition:background .12s}
+.tbl tr.exp details.more{margin:0;padding:5px 18px 10px;border-top:0}
+.tbl tr.exp details.more>summary{font-size:.72rem;color:var(--muted);font-weight:600}
+/* an OPEN expander is highlighted: with several sets on one page, the row that
+   is currently unfolded has to be findable without re-reading every summary */
+.tbl tr.exp:has(details.more[open])>td{background:var(--accent-soft);
+  box-shadow:inset 3px 0 0 var(--accent)}
+.tbl tr.exp details.more[open]>summary{color:var(--accent-ink);font-weight:700}
+.tbl tr.exp details.more[open]>summary code{color:inherit}
+.tbl tr.exp .tbl{font-size:.76rem;background:var(--surface);
+  border:1px solid var(--line);border-radius:8px;margin-top:8px}
+.tbl tr.exp .tbl td,.tbl tr.exp .tbl th{padding:6px 12px}
+.cid{font:var(--mono);font-size:.68rem;font-weight:700;color:var(--accent-ink);
+  background:var(--accent-soft);border-radius:5px;padding:1px 6px}
+.cid.none{color:var(--faint);background:var(--line-2);font-weight:600}
+
+/* ---------- proof viewer: the artifact opens IN the page ----------
+   Navigating away to a raw PNG loses the reader's place in the page and the
+   set they were reading. The viewer keeps both: one gallery is one navigable
+   group, moved through with the side arrows or the left/right keys. */
+.a3lb{position:fixed;inset:0;z-index:80;display:none;background:rgba(9,12,18,.93);
+  backdrop-filter:blur(3px);align-items:center;justify-content:center;padding:64px 72px 96px}
+.a3lb.on{display:flex}
+.a3lb-stage{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;
+  max-width:100%;max-height:100%}
+.a3lb-media{display:flex;align-items:center;justify-content:center;min-height:0}
+.a3lb-media img,.a3lb-media video{max-width:min(1180px,92vw);max-height:76vh;
+  border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.55);background:#fff;display:block}
+.a3lb-cap{display:flex;flex-direction:column;align-items:center;gap:4px;
+  max-width:min(900px,90vw);color:#c9d3e2;font-size:.8rem;text-align:center}
+.a3lb-cap b{font:var(--mono);font-size:.72rem;color:#aeb9c9;font-weight:500}
+.a3lb-cap .note{color:#d3dbe7;font-size:.86rem;line-height:1.5}
+.a3lb-cap .set{color:#6f7d92;font-size:.72rem}
+/* the top line: which leg, and where in it — it changes as the arrows cross
+   from one leg into the next, so the reader is never lost mid-walk */
+.a3lb-title{position:absolute;top:18px;left:50%;transform:translateX(-50%);
+  color:#c9d3e2;font-size:.86rem;letter-spacing:.01em;text-align:center;
+  max-width:70vw}
+.a3lb-title b{font:var(--mono);font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.06em;background:rgba(129,140,248,.22);color:#b9c2ff;
+  border-radius:5px;padding:2px 8px;margin-right:7px}
+.a3lb-nav,.a3lb-x{position:absolute;background:rgba(255,255,255,.08);border:1px solid
+  rgba(255,255,255,.16);color:#e8eef8;cursor:pointer;border-radius:50%;
+  display:grid;place-items:center;transition:background .12s}
+.a3lb-nav{top:50%;transform:translateY(-50%);width:46px;height:46px}
+.a3lb-nav svg{width:22px;height:22px}
+.a3lb-nav.prev{left:14px} .a3lb-nav.next{right:14px}
+.a3lb-x{top:14px;right:14px;width:34px;height:34px;font-size:1.3rem;line-height:1}
+.a3lb-nav:hover,.a3lb-x:hover{background:rgba(255,255,255,.2)}
+.a3lb-nav:focus-visible,.a3lb-x:focus-visible{outline:2px solid #818cf8;outline-offset:2px}
+.a3lb-nav[hidden]{display:none}
+.a3lb-idx{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);
+  font:var(--mono);font-size:.72rem;color:#8f9db2}
+@media (max-width:640px){
+  .a3lb{padding:40px 12px 84px}
+  .a3lb-nav{width:38px;height:38px} .a3lb-nav.prev{left:6px} .a3lb-nav.next{right:6px}
+}
+
+/* gallery tiles are viewer triggers, not file links */
+a.shot[data-lb]{cursor:zoom-in}
+.shot .ph.vid{font:var(--mono);font-size:.8rem;color:var(--accent);letter-spacing:.06em}
+.leghead{margin:14px 0 4px;font-size:.82rem;color:var(--ink-2)}
+.leghead b{font:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--accent-ink);background:var(--accent-soft);border-radius:5px;padding:2px 7px}
+
+/* gallery tile: its position in the leg, so a shot read on its own still
+   says where in the walk it sits */
+.shot .cap .ix{float:right;font:var(--mono);font-size:.6rem;color:var(--faint)}
+
+/* a leg of a walk: its own collapsible sub-section inside the set expander,
+   so a 53-artifact set can be read one journey at a time */
+details.legset{margin:12px 0 0}
+details.legset>summary{cursor:pointer;list-style:none;display:flex;align-items:center;
+  gap:9px;font-size:.82rem;color:var(--ink-2);padding:3px 0}
+details.legset>summary::-webkit-details-marker{display:none}
+details.legset>summary::before{content:"▸";color:var(--accent);font-size:.8rem}
+details.legset[open]>summary::before{content:"▾"}
+details.legset>summary b{font:var(--mono);font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.05em;color:var(--accent-ink);background:var(--accent-soft);
+  border-radius:5px;padding:2px 7px}
+details.legset>summary .count{font:var(--mono);font-size:.66rem;color:var(--faint)}
+details.legset .gal{margin:8px 0 4px}
+
+/* ===== Action Ledger additions — folded from the retrofit. Loads AFTER the
+   base rules so it wins on source order; the superseded .subject/.tabbody/
+   .subjecthead base widths were removed (width lives once in --content-max). ===== */
+/* Expandable-row table (xtable): click a row to open its detail in place; open
+   row highlights; no button. Generic via --xcols. */
+.xtbl{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);margin:0 0 16px}
+.xhead,.xrow>summary,.xrow.xflat>.xsummary{display:grid;grid-template-columns:var(--xcols,1fr);gap:14px;align-items:center;padding:11px 16px}
+.xhead{background:var(--panel);border-bottom:1px solid var(--line);font-size:.63rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+.xrow{border-bottom:1px solid var(--line-2)}
+.xrow:last-child{border-bottom:0}
+.xrow>summary{cursor:pointer;list-style:none;font-size:.82rem}
+.xrow>summary::-webkit-details-marker{display:none}
+.xrow>summary>span,.xrow.xflat .xsummary>span{min-width:0;overflow-wrap:anywhere}
+.xrow>summary:hover{background:var(--panel)}
+.xrow[open]>summary{background:var(--accent-soft)}
+.xrow.xflat>.xsummary{cursor:default;font-size:.82rem}
+.xrow.xflat .xtgl{visibility:hidden}
+.xrow .xtgl{position:relative;width:14px;height:14px;justify-self:end;transition:transform .18s}
+.xrow .xtgl::before,.xrow .xtgl::after{content:"";position:absolute;top:6px;width:8px;height:2px;background:var(--muted);border-radius:1px}
+.xrow .xtgl::before{left:0;transform:rotate(45deg)}
+.xrow .xtgl::after{right:0;transform:rotate(-45deg)}
+.xrow[open] .xtgl{transform:rotate(180deg)}
+.xbody{padding:2px 16px 16px;border-top:1px dashed var(--line);background:var(--panel)}
+.xbody .tbl{margin:8px 0 0}
+@media(max-width:760px){.xhead{display:none}.xrow>summary,.xrow.xflat>.xsummary{grid-template-columns:1fr 18px}.xrow>summary>span:not(:first-child):not(:last-child),.xrow.xflat .xsummary>span:not(:first-child):not(:last-child){display:none}}
+/* row-click opens all expanders in a standard .tbl row (JS below) */
+.tbl tbody>tr:not(.exp):has(details),.tbl tbody>tr:not(.exp):has(+ tr.exp){cursor:pointer}
+.tbl tbody>tr.rowopen>td,.tbl tbody>tr.rowopen>th,.tbl tbody>tr.exp.rowopen>td{background:var(--accent-soft)}
+.xrow.xflat.rowopen>.xsummary{background:var(--accent-soft)}
+/* fixed-layout wide-column tables (action ledger / risk) — text columns get room */
+.tbl.wcol{table-layout:fixed}
+.tbl.wcol td,.tbl.wcol th{overflow-wrap:anywhere;word-break:break-word}
+
+/* LAYOUT — one content width for the subject, the panes AND the tab bar, so the
+   status pills (which live in the tab bar) align to the content edge instead of
+   floating into the old wider "subject" box; the top bar tracks the same centered
+   box; a minimized (rail) nav hands the reclaimed width to all of it. Base keeps a
+   readable measure; rail widens for the tables. Width lives ONLY here now — the
+   superseded .subject/.tabbody/.subjecthead base widths were removed above. */
+:root{--content-max:1120px}
+:root[data-rail="1"]{--content-max:1440px}
+.subject,.subjecthead,.tabbody,.tabbar{max-width:var(--content-max)}
+.topbar{padding-left:max(30px,calc((100% - var(--content-max)) / 2 + 30px));
+        padding-right:max(30px,calc((100% - var(--content-max)) / 2 + 30px))}
+:root[data-rail="1"] .wrap{max-width:1300px}
+.tbl.wcol .tag{white-space:nowrap;word-break:keep-all}
+/* narrow-screen escape for the wide fixed-layout ledger/risk tables — on the
+   phone/tablet widths the center already writes @media rules for, let the wide
+   table SCROLL sideways inside its panel instead of crushing 8 columns into a
+   wall of stacked characters (base .panel clips with overflow:hidden). The .xtbl
+   tables already drop columns at this breakpoint; .tbl.wcol keeps them and
+   scrolls. */
+@media(max-width:760px){
+  .panel:has(.tbl.wcol){overflow-x:auto}
+  .tbl.wcol{min-width:700px}
+}
+/* a targeted xrow (jumped-to via a #dm-… cross-reference link) — rowclick.js
+   opens it; this flags where the reader landed. */
+.xrow:target>summary{background:var(--accent-soft)}
+/* SECTION SEPARATION — a section title never sits flush against the content
+   above it. The trailing table notes used to provide this gap; they folded into
+   the ⊕, so the gap is now structural: any sechead that FOLLOWS content gets
+   breathing room. A sechead after the subnav (first in its tab) stays tight —
+   the subnav spaces itself. */
+.panel+.sechead,.xtbl+.sechead,p+.sechead,details+.sechead,ul+.sechead,
+.dgm+.sechead,.lens+.sechead,.kpis+.sechead,table+.sechead{margin-top:34px}
+/* NEW — rows touched THIS iteration (diff vs the last committed rows-seen
+   snapshot). Solid fill on purpose: every other tag is soft-background, so
+   the one badge that means "look here first" cannot be mistaken for taxonomy. */
+.tag.t-new{background:var(--accent);color:#fff;font-weight:800;letter-spacing:.06em}
+/* Model-insight lens (data-model tables): icon chips keep each flag's color
+   pair; words live in tooltips + the section's ⊕ dictionary. */
+.tag.ic{display:inline-flex;align-items:center;gap:4px;vertical-align:middle;padding:2px 7px}
+.tag.ic svg{flex:none}
+.t-base{background:color-mix(in srgb,#0a7d6b 16%,transparent);color:#0a7d6b}
+.t-god{background:color-mix(in srgb,#b3403a 14%,transparent);color:#b3403a}
+.t-sim{background:color-mix(in srgb,#b5771a 16%,transparent);color:#b5771a}
+.t-orph{background:color-mix(in srgb,#64748b 18%,transparent);color:#64748b}
+.ubar{display:inline-block;height:7px;border-radius:4px;background:var(--accent,#0d6e78);vertical-align:middle;margin-right:5px}
+.ubar.u-int{background:#7c3aed}
+.dmchips{margin:10px 0 4px}
+.dmchips .chip{font:inherit;font-size:.72rem;font-weight:600;padding:3px 12px;border-radius:14px;margin-right:6px;border:1px solid var(--line,#d8dee6);background:var(--surface,#fff);color:var(--muted,#64748b);cursor:pointer}
+.dmchips .chip.on{background:var(--accent,#0d6e78);color:#fff;border-color:var(--accent,#0d6e78)}
+.iclist{margin:6px 0 2px;padding-left:18px;line-height:2.1}
+.dm-meta{margin-bottom:10px}
+.dm-meta .metak{font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted,#64748b);width:190px;white-space:nowrap}
+.tag.ic{border-radius:11px}
+.dmh{display:flex;align-items:center;gap:7px;margin:16px 0 6px;color:var(--dc,#64748b);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em}
+.dmh b{font-weight:750}
+.dmh svg{flex:none}
+.t-uq{background:color-mix(in srgb,#0d6e78 14%,transparent);color:#0d6e78}
+.t-in{background:color-mix(in srgb,#0d6e78 14%,transparent);color:#0d6e78}
+.t-out{background:color-mix(in srgb,#b45309 15%,transparent);color:#b45309}
+.t-io{background:color-mix(in srgb,#5a53a8 14%,transparent);color:#5a53a8}
+.t-ent{background:color-mix(in srgb,#0a7d6b 12%,transparent);color:#0a7d6b}
+.navitem>svg{flex:none;opacity:.85}
+.t-tbd{background:color-mix(in srgb,#64748b 10%,transparent);color:#64748b;border:1px dashed #94a3b8}
+/* Architecture estate (2026-07-23): entity filter bar, colored entity badges,
+   nav subpages, dashboard cards. */
+.entb{display:inline-flex;align-items:center;gap:5px;vertical-align:middle}
+/* The bar STICKS so the filter is reachable however deep the page scrolls;
+   the kind (khide) and entity (ehide) filters compose — a row shows only
+   when neither hides it. */
+.entchips{margin:2px 0 14px;position:sticky;top:0;z-index:40;background:var(--bg);padding:10px 0 6px;border-bottom:1px solid var(--line)}
+/* Estate pages stack the sticky menu ABOVE the sticky entity bar as ONE
+   unit — two independent top:0 bars overlap, the later covering the earlier. */
+.stickstack{position:sticky;top:0;z-index:40;background:var(--bg)}
+.stickstack .subnav,.stickstack .entchips{position:static}
+.xrow.khide,.xrow.ehide,tr.khide,tr.ehide{display:none!important}
+.entchips .chip{font:inherit;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:14px;margin:0 6px 6px 0;border:1px solid var(--line,#d8dee6);background:var(--surface,#fff);color:var(--muted,#64748b);cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.entchips .chip.on{background:var(--accent,#0d6e78);color:#fff;border-color:var(--accent,#0d6e78)}
+.entchips .chip.on .entb{color:#fff!important}
+.navitem.navsubitem{margin-left:16px;font-size:.78rem;opacity:.92}
+.navitem.navsub2item{margin-left:32px;font-size:.76rem}
+:root[data-rail="1"] .navitem.navsub2item{margin-left:16px}
+.archgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
+.archcard{display:flex;gap:11px;align-items:flex-start;background:var(--surface,#fff);border:1px solid var(--line,#d8dee6);border-radius:10px;padding:13px 15px;text-decoration:none;color:inherit}
+.archcard:hover{border-color:var(--accent,#0d6e78)}
+.archcard svg{flex:none;margin-top:2px;color:var(--accent,#0d6e78)}
+.archcard b{display:block;font-size:.88rem}
+.archcard .sub{font-size:.72rem}
+/* The test↔code thread (2026-07-23): kind chips + tier labels on code rows.
+   .tk rides .tag; t-tgap = named gap (dashed), t-via = composed tier (T2). */
+.tag.tk{border-radius:11px;font-weight:700}
+.tag.t-tgap{background:transparent;color:var(--muted,#64748b);border:1px dashed #c6ccd6}
+.tag.t-via{background:transparent;color:#4f46e5;border:1px solid #c7c2f2}
+/* The case LEDGER (2026-07-24): C-id rows, dropdown filters (R2), tiered
+   exercises chips — solid = the case's own T1 facts, dashed = via file. */
+.ledbar{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:8px;align-items:flex-end;margin:2px 0 14px;position:sticky;top:0;z-index:40;background:var(--bg);padding:8px 0 6px;border-bottom:1px solid var(--line)}
+.ledbar label{flex:0 1 auto;min-width:0}
+.ledbar select{max-width:120px}
+.ledbar input{max-width:110px;min-width:56px}
+.tabpane .ledbar{position:static}
+.ledbar label{display:flex;flex-direction:column;gap:2px;font-size:.62rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted,#64748b)}
+.ledbar select,.ledbar input{font:var(--mono,ui-monospace);font-size:.72rem;padding:3px 8px;border:1px solid var(--line,#d8dee6);border-radius:7px;background:var(--surface,#fff);color:inherit}
+.ledbar #ledcount{align-self:center;margin-left:auto;white-space:nowrap;padding-left:10px}
+.lchip{display:inline-block;font:var(--mono);font-size:.66rem;border:1px solid var(--line,#d8dee6);border-radius:5px;padding:0 6px;margin:1px 4px 1px 0;text-decoration:none;color:inherit;white-space:nowrap}
+.lchip:hover{border-color:var(--accent,#0d6e78)}
+.lc-ep{border-color:color-mix(in srgb,#4f46e5 40%,transparent)}
+.lc-mdl{border-color:color-mix(in srgb,#8e4585 40%,transparent)}
+.lc-fn{border-color:color-mix(in srgb,#0d6e78 45%,transparent)}
+.lc-via{border-style:dashed;opacity:.75}
+.lc-more,.lc-file{color:var(--muted,#64748b)}
+.lfile{display:block;font-size:.66rem;color:var(--muted,#64748b);margin-top:2px}
+.xrow.lhide{display:none!important}
+/* Ledger fold: labeled metadata rows instead of compacted prose. */
+.ledmeta{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:2px 0 6px;align-items:baseline}
+.ledmeta .k{font:var(--mono);font-size:.6rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted,#64748b);white-space:nowrap}
+.ledmeta .v{font-size:.78rem;min-width:0}
+/* Provenance tokens (DF3, W1, #8) inside group names — the tag facet. */
+.ltag{display:inline-block;font:var(--mono);font-size:.62rem;font-weight:600;padding:0 5px;border-radius:4px;background:var(--accent-soft,#e0f2f4);color:var(--accent-ink,#0d6e78)}
+/* Per-filter clear × — rides the TITLE line (zero extra bar width),
+   lights up while its column holds a value. */
+.ledbar .ltit{display:flex;align-items:center;gap:4px;width:100%}
+.ledbar .lx{border:0;background:none;color:var(--muted,#64748b);cursor:pointer;font-size:.95rem;font-weight:600;line-height:1;padding:0 2px;margin-left:auto;visibility:hidden}
+.ledbar .lx.on{visibility:visible}
+.ledbar .lx:hover{color:var(--bad,#b3403a)}
+/* Tier explainer ⓘ — a small POPOVER anchored to the icon: normal prose
+   (never the label's uppercase mono), an × to close, auto-dismissed by the
+   ledger script. */
+.tinfo{display:inline-block;vertical-align:1px;margin-left:4px;position:relative}
+.tinfo summary{list-style:none;cursor:pointer;color:var(--muted,#64748b);font-size:.68rem;border:1px solid var(--line,#d8dee6);border-radius:50%;width:15px;height:15px;display:inline-flex;align-items:center;justify-content:center}
+.tinfo summary::-webkit-details-marker{display:none}
+.tinfo[open] summary{color:var(--accent-ink,#0d6e78);border-color:var(--accent,#0d6e78)}
+.tinfo.tflip .tx{left:auto;right:-6px}
+.tinfo .tx{position:absolute;left:-6px;top:20px;z-index:60;background:var(--surface,#fff);border:1px solid var(--line,#d8dee6);border-radius:8px;box-shadow:var(--shadow,0 8px 24px rgba(15,40,60,.14));padding:8px 26px 8px 11px;width:max-content;max-width:min(46ch,72vw);white-space:normal;overflow-wrap:break-word;font-family:var(--font-content,system-ui);font-size:.72rem;font-weight:400;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--ink,#22313a)}
+.tinfo .tclose{position:absolute;top:3px;right:5px;border:0;background:none;color:var(--muted,#64748b);cursor:pointer;font-size:.85rem;line-height:1;padding:2px}
+.tinfo .tclose:hover{color:var(--bad,#b3403a)}
+/* Wide fold rows (uses): label line first, content spans the full fold. */
+.ledmeta .kwide,.ledmeta .vwide{grid-column:1/-1}
+.ledmeta .kwide{margin-top:2px}
+.lsig{white-space:normal}
+
+/* ---------- BOARD station (2026-07-25) ----------
+   Every open move as a card, re-columned six ways. The board is a PROJECTION:
+   no drag, no stored state — cards move when PLAN/PENDING/adoption move. */
+.bwrap{padding:0 0 40px}
+.bfilters{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  padding:10px 0 12px;border-bottom:1px solid var(--line);margin-bottom:14px;
+  position:sticky;top:0;background:var(--bg);z-index:30}
+.bfgrp{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.bfx{margin-left:auto}
+.bcount{font:var(--mono);font-size:.68rem;color:var(--muted);margin-right:8px}
+.bfsel{display:flex;align-items:center;gap:6px}
+.bfsel>span{font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--muted);font-weight:700}
+.bfilters select{font:inherit;font-size:.72rem;font-weight:600;padding:4px 8px;
+  border-radius:8px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink-2);cursor:pointer;max-width:190px}
+.bfilters select.set{border-color:var(--accent);color:var(--accent-ink);
+  background:var(--accent-soft)}
+.bchip{font:inherit;font-size:.7rem;font-weight:600;padding:3px 10px;
+  border-radius:14px;border:1px solid var(--line);background:var(--surface);
+  color:var(--muted);cursor:pointer;line-height:1.5}
+.bchip:hover{border-color:var(--accent);color:var(--ink)}
+.bchip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.bmodes{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);
+  border-radius:12px;padding:4px;width:fit-content;margin:0 0 16px;flex-wrap:wrap}
+.bmodes button{font:inherit;font-size:.8rem;font-weight:600;color:var(--ink-2);
+  padding:6px 14px;border-radius:9px;border:1px solid transparent;background:none;
+  cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:1px;
+  min-width:132px}
+.bmodes button.on{background:var(--accent-soft);border-color:var(--line)}
+.bmodes button.on span{color:var(--accent-ink)}
+.bmodes button i{font-style:normal;font-size:.62rem;color:var(--muted);font-weight:500}
+
+.bseq{margin:0 0 16px;padding:10px 14px;background:var(--surface);
+  border:1px solid var(--line);border-radius:10px}
+.bseqhead{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:7px}
+.bseqhead b{font-size:.78rem}
+.bseqhead span{font-size:.68rem;color:var(--muted)}
+.bseqrail{display:flex;gap:3px;flex-wrap:wrap}
+.ph{font:var(--mono);font-size:.58rem;font-weight:700;padding:2px 6px;
+  border-radius:4px;cursor:pointer;border:1px solid transparent}
+.ph:hover{filter:brightness(.94)}
+.ph.on{outline:2px solid var(--accent);outline-offset:1px}
+.ph-done{background:var(--good-soft);color:var(--good)}
+.ph-inflight{background:var(--accent);color:#fff}
+.ph-todo{background:var(--panel);color:var(--faint);border-color:var(--line)}
+.bseqdet{margin-top:10px;padding:11px 13px;background:var(--panel);
+  border:1px solid var(--line);border-radius:9px}
+.bsdhead{display:flex;align-items:flex-start;gap:10px}
+.bsdhead b{font-size:.82rem;letter-spacing:-.01em;flex:1}
+.bsdx{border:0;background:none;font-size:1rem;line-height:1;color:var(--muted);
+  cursor:pointer;padding:0 2px}
+.bsdx:hover{color:var(--ink)}
+.bsdtags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0}
+.bseqdet p{margin:8px 0 0;font-size:.73rem;color:var(--muted);line-height:1.5}
+.bseqdet .bc-rail{margin-top:10px;gap:10px}
+.bseqdet .bc-rail span{min-width:44px;font-size:.62rem}
+
+.bboard{display:grid;gap:14px;align-items:start;
+  grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
+.bcol{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:0 0 10px;min-width:0;border-top:3px solid var(--cc)}
+.bcol>header{padding:11px 14px 9px;border-bottom:1px solid var(--line-2)}
+.bcol h3{margin:0;font-size:.82rem;font-weight:700;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:8px;color:var(--cc)}
+.bcol h3 .n{font:var(--mono);font-size:.66rem;background:var(--surface);
+  border:1px solid var(--line);border-radius:20px;padding:0 7px;color:var(--muted)}
+.bcol .rp{font-size:.62rem;font-weight:700;color:var(--good);letter-spacing:.02em}
+.bcol header p{margin:4px 0 0;font-size:.68rem;color:var(--muted);line-height:1.45}
+.bcol header p.mix{font:var(--mono);font-size:.58rem;color:var(--faint);margin-top:3px}
+.bcol.empty{opacity:.45}
+.bcol.empty header p.mix{display:none}
+.bstack{display:flex;flex-direction:column;gap:8px;padding:10px 10px 0}
+.bfold{display:none;flex-direction:column;gap:8px}
+.bfold.open{display:flex}
+.bmore{font:inherit;font-size:.68rem;font-weight:600;color:var(--accent-ink);
+  background:var(--accent-soft);border:0;border-radius:7px;padding:6px;
+  cursor:pointer;width:100%;margin-top:2px}
+.bmore:hover{background:var(--accent);color:#fff}
+.bempty{padding:14px;font-size:.72rem;color:var(--faint);text-align:center}
+
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  padding:9px 11px 8px;box-shadow:var(--shadow);border-left:3px solid var(--tc)}
+.bcard:hover{box-shadow:var(--shadow-lift)}
+.bcard.hide{display:none}
+.bc-top{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-bottom:5px}
+.bcard h4{margin:0 0 3px;font-size:.79rem;font-weight:650;line-height:1.35;
+  letter-spacing:-.01em}
+.bcard p{margin:0;font-size:.7rem;color:var(--muted);line-height:1.45}
+.bc-tk,.bc-ent,.bc-area,.bc-eff,.bc-pri,.bc-gate,.bc-def,.bc-age,.bc-ripe,
+.bc-cross,.bc-closed{font-size:.6rem;font-weight:700;letter-spacing:.02em;
+  padding:1px 7px;border-radius:20px;white-space:nowrap;display:inline-flex;
+  align-items:center;gap:4px}
+.bc-tk{background:color-mix(in srgb,var(--tc) 14%,transparent);color:var(--tc)}
+.bc-ent{border:1px solid var(--ec);color:var(--ec);background:var(--surface)}
+.bc-ent i{width:6px;height:6px;border-radius:50%;background:var(--ec);
+  display:inline-block}
+.bc-cross{background:var(--line-2);color:var(--muted);font-style:italic}
+.bc-area{background:var(--line-2);color:var(--ink-2)}
+.bc-eff{border:1px solid var(--fc);color:var(--fc)}
+.bc-pri.p-high{background:var(--bad-soft);color:var(--bad)}
+.bc-pri.p-medium{background:var(--warn-soft);color:var(--warn)}
+.bc-pri.p-low{background:var(--line-2);color:var(--muted)}
+.bc-gate{background:var(--bad-soft);color:var(--bad)}
+.bc-def{background:var(--panel);color:var(--faint);border:1px solid var(--line-2)}
+.bc-age{background:var(--panel);color:var(--faint);border:1px solid var(--line-2)}
+.bc-age.age-aging{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.bc-age.age-stale{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.bc-closed{background:var(--good-soft);color:var(--good)}
+.bc-ripe{background:var(--good-soft);color:var(--good);margin-left:auto}
+.bc-rail{display:flex;gap:3px;margin-top:7px;flex-wrap:wrap}
+.bc-rail span{font-size:.58rem;color:var(--faint);display:flex;
+  flex-direction:column;align-items:center;line-height:1.3;min-width:30px}
+.bc-rail span i{font-style:normal;letter-spacing:.02em}
+.bc-rail span.owed{color:var(--warn);font-weight:700}
+.bc-prog{height:3px;background:var(--line-2);border-radius:3px;margin-top:8px;
+  overflow:hidden}
+.bc-prog i{display:block;height:100%;background:var(--good)}
+.bc-progl{font-size:.58rem;color:var(--muted);margin-top:2px}
+.bc-next{margin-top:7px;padding:4px 7px;background:var(--accent-soft);border-radius:5px}
+.bc-next code{font:var(--mono);font-size:.63rem;color:var(--accent-ink)}
+.bc-src{margin-top:6px;font:var(--mono);font-size:.55rem;color:var(--faint);
+  display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.bc-inf{color:var(--warn);font-style:italic;cursor:help;font-size:.55rem;
+  padding:0;background:none}
+.donemode .bcard{border-left-color:var(--good)}
+
+/* GUARD lens chips (2026-07-25) — "would anything go red if I changed this?"
+   t-hot is the one unguarded subset that earns a visible mark on a per-row
+   table; plain unguarded rides the existing gap chip and is reached by filter. */
+.tag.t-hot{background:var(--bad-soft);color:var(--bad)}
+.tag.t-unguarded{}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   .docbody — the PROSE layer (docsite merge, 2026-07-31)
+
+   Everything above this line styles machine facts: tables, chips, meters,
+   section banners. a3.css had literally ZERO rules for a paragraph, a heading
+   or a list, because until now nothing authored ever rendered inside the
+   center. The markdown pages changed that, and without this layer they render
+   as unstyled text on a themed page — the one thing a reader reads as broken.
+
+   Ported from the retiring Cifra stylesheet (site.css, 501 lines) and remapped
+   onto the center's own tokens, so light/dark, the viewer's font choice and the
+   density settings all reach prose for free. Scoped to .docbody: it can never
+   touch a generated table.
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* WIDTH INVERSION (operator ruling 2026-08-01). The cap used to sit on the
+   whole body, which squeezed every table, code block, diagram and embedded
+   prism component into ~700px of an 1120px pane — sections read "skewed left
+   and contracted", and wide tables lost columns to wrapping. Same contract as
+   the prism stage now: the BODY spans the pane, the SENTENCE caps at 76ch.
+   Wide furniture (tables, pre, figures, fragments) earns the full width. */
+.docbody { color: var(--ink-2); font-size: .95rem; line-height: 1.65; max-width: none; }
+.docbody p, .docbody li, .docbody blockquote, .docbody .note { max-width: 76ch; }
+.docbody > *:first-child { margin-top: 0; }
+
+.docbody h2 {
+  margin: 34px 0 12px; font-size: 1.22rem; font-weight: 700; letter-spacing: -.01em;
+  color: var(--ink); padding-bottom: 6px; border-bottom: 1px solid var(--line);
+  max-width: none;
+}
+.docbody h2 .num { font: var(--mono); font-size: .62em; color: var(--accent); margin-right: 9px; }
+.docbody h3 { margin: 26px 0 8px; font-size: 1.03rem; font-weight: 650; color: var(--ink); }
+.docbody h4 { margin: 20px 0 6px; font-size: .93rem; font-weight: 650; color: var(--ink); }
+.docbody p { margin: 0 0 13px; }
+.docbody a { color: var(--accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.docbody a:hover { border-bottom-color: var(--accent); }
+.docbody strong, .docbody b { color: var(--ink); font-weight: 650; }
+.docbody em { font-style: italic; }
+.docbody ul, .docbody ol { margin: 0 0 14px 20px; padding: 0; }
+.docbody li { margin: 0 0 5px; }
+.docbody li > ul, .docbody li > ol { margin-top: 5px; }
+.docbody hr { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+.docbody blockquote {
+  margin: 0 0 14px; padding: 10px 14px; border-left: 3px solid var(--accent);
+  background: var(--panel); color: var(--ink-2); border-radius: 0 6px 6px 0;
+}
+.docbody blockquote p:last-child { margin-bottom: 0; }
+.docbody code {
+  font: var(--mono); font-size: .87em; padding: 1px 5px; border-radius: 4px;
+  background: var(--panel); border: 1px solid var(--line-2); color: var(--ink);
+}
+.docbody pre {
+  margin: 0 0 15px; padding: 12px 14px; overflow-x: auto; border-radius: 8px;
+  background: var(--panel); border: 1px solid var(--line); line-height: 1.5;
+}
+.docbody pre code { background: none; border: 0; padding: 0; font-size: .85em; color: var(--ink-2); }
+
+/* Tables inside prose are AUTHORED, not generated — they take the center's
+   table look so a doc table and an estate table cannot be told apart, which is
+   the whole point of merging the two sites. */
+.docbody table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: .88em; }
+.docbody th {
+  text-align: left; font-size: .78em; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--muted); font-weight: 600; padding: 8px 12px; border-bottom: 1px solid var(--line);
+}
+.docbody td { padding: 8px 12px; border-top: 1px solid var(--line-2); vertical-align: top; }
+.docbody tr:hover td { background: var(--panel); }
+
+.docbody .tasklist { list-style: none; margin-left: 2px; }
+.docbody .tasklist li { padding-left: 24px; position: relative; }
+.docbody .tasklist li::before { content: "☐"; position: absolute; left: 0; color: var(--muted); }
+.docbody .tasklist li.done::before { content: "☑"; color: var(--good); }
+
+/* The :::note callout directive the markdown converter emits. */
+.docbody .note {
+  margin: 0 0 15px; padding: 11px 14px; border-radius: 8px;
+  background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent);
+}
+.docbody .note .note-label {
+  display: block; font-size: .72em; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
+}
+.docbody .note p:last-child { margin-bottom: 0; }
+
+/* Diagrams: a pre-rendered SVG figure (build-time path) and the runtime
+   mermaid block get the SAME plate, so a reader cannot tell which path ran —
+   only the build log and the gate can, which is where that fact belongs. */
+.docbody .mermaid-fig, .docbody pre.mermaid {
+  margin: 0 0 16px; padding: 14px; border-radius: 8px; overflow-x: auto;
+  background: var(--panel); border: 1px solid var(--line); text-align: left;
+}
+.docbody .mermaid-fig svg, .docbody pre.mermaid svg { max-width: 100%; height: auto; }
+/* Dark theme gets an honest light plate under the diagram rather than an
+   inverted one — mermaid's own palette is authored for light grounds. */
+[data-theme="dark"] .docbody .mermaid-fig,
+[data-theme="dark"] .docbody pre.mermaid { background: #ece6d8; border-color: #d8d0bd; }
+.docbody pre.mermaid-fallback { border-color: var(--bad); }
+
+.docsource {
+  margin: 22px 0 0; font-size: .74rem; color: var(--muted); font: var(--mono);
+  padding-top: 10px; border-top: 1px dashed var(--line);
+}
+
+/* Reference chips — the OUTBOUND half of the docs↔estate graph. Derived on
+   every build from the page's own text; a reference that stops resolving stops
+   being rendered, so a chip is never a stale claim. */
+.refs { margin: 30px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.refs h2 { margin: 0 0 4px; font-size: .95rem; font-weight: 700; color: var(--ink); }
+.refs-note { margin: 0 0 10px; font-size: .74rem; color: var(--muted); max-width: 70ch; }
+.refchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.refchip {
+  font: var(--mono); font-size: .74rem; text-decoration: none;
+  padding: 3px 9px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--panel); color: var(--ink-2);
+}
+.refchip:hover { border-color: var(--accent); color: var(--accent); }
+.refchip.r-entity { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.refchip.r-case   { border-color: color-mix(in srgb, var(--good) 45%, transparent); }
+.refchip.r-skill  { border-color: color-mix(in srgb, var(--warn, #d97a3d) 45%, transparent); }
+.refchip.r-doc    { border-style: dashed; }
+
+/* The INBOUND half, rendered on the estate side. Authored prose on a machine
+   page, and it says so — documentation is evidence that something is described,
+   never evidence that it works. */
+.docref { margin: 4px 0 0; font-size: .78rem; color: var(--muted); }
+.docref a { color: var(--accent); }
+
+/* ── doc-page images (docsite merge follow-up, found by check-prism-fit.mjs)
+   _markdown.py classifies every image as doc-meme / doc-fig / doc-icon, and the
+   standalone site.css styles all three. Center mode inherited the classes and
+   none of the rules, so a 1,017px meme rendered at full size and scrolled the
+   page body sideways at 1440 and below. Same intent as site.css, center vars. */
+.docbody img { max-width: 100%; height: auto; }
+.doc-meme { display: block; max-width: 380px; width: 100%; height: auto;
+  margin: 18px auto; border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+.doc-fig { display: block; max-width: 100%; width: 100%; height: auto; margin: 20px 0; }
+.doc-icon { max-width: 100%; height: auto; vertical-align: middle; }
