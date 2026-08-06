@@ -172,6 +172,12 @@
 }
 .side .navitem .count { flex: 0 0 auto; margin-left: auto; }
 
+/* Página actual: el builder emite aria-current="page", pero el shell
+   vendorizado solo pinta su clase .navitem.on — este puente pinta el
+   estado real con los mismos tokens del shell. */
+.side .navitem[aria-current="page"] { background: var(--accent); color: #fff; }
+.side .navitem[aria-current="page"] svg { color: #fff; }
+
 /* Grupo plegable: el encabezado es un botón real (responde al teclado). */
 .side .navtoggle {
   display: flex; align-items: center; gap: 6px; width: 100%;
